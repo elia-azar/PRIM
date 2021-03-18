@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from numpy import sum
+from numpy import sum, mean, sqrt, var
 
 # create data 
 file_name = "results_dump"
@@ -16,7 +16,8 @@ lower_total = []
 upper_total = []
 total_box = []
 
-x = [0,10,20,30,40,50,60,70,80,90,100] 
+N = 20
+x = [0,10,20,30,40,50,60,70,80,90,100]
 
 for i in range(11):
     file = open(file_name + str(i) + ".txt", 'r')
@@ -55,19 +56,27 @@ for i,j in zip(cap_box,filter_box):
 # basic plot
 
 for i in range(11):
-    sub_cap = cap_box[20*i:20*(i+1)]
-    sub_filter = filter_box[20*i:20*(i+1)]
-    sub_total = total_box[20*i:20*(i+1)]
-    sub_total, sub_cap, sub_filter = (list(t) for t in zip(*sorted(zip(sub_total, sub_cap, sub_filter))))
-    lower_total.append(sub_total[4])
-    upper_total.append(sub_total[-5])
-    total.append(sum(sub_total)/12)
-    lower_cap.append(sub_cap[4])
-    upper_cap.append(sub_cap[-5])
-    cap.append(sum(sub_cap)/12)
-    lower_filter.append(sub_filter[4])
-    upper_filter.append(sub_filter[-5])
-    filter.append(sum(sub_filter)/12)
+    sub_cap = cap_box[N*i:N*(i+1)]
+    sub_filter = filter_box[N*i:N*(i+1)]
+    sub_total = total_box[N*i:N*(i+1)]
+    #sub_total, sub_cap, sub_filter = (list(t) for t in zip(*sorted(zip(sub_total, sub_cap, sub_filter))))
+    mean_cap = mean(sub_cap)
+    cap.append(mean_cap)
+    std = sqrt(var(sub_cap))
+    lower_cap.append(max(0,mean_cap - 1.96 * std / sqrt(len(sub_cap))))
+    upper_cap.append(mean_cap + 1.96 * std / sqrt(len(sub_cap)))
+
+    mean_filter = mean(sub_filter)
+    filter.append(mean_filter)
+    std = sqrt(var(sub_filter))
+    lower_filter.append(max(0,mean_filter - 1.96 * std / sqrt(len(sub_filter))))
+    upper_filter.append(mean_filter + 1.96 * std / sqrt(len(sub_filter)))
+
+    mean_total = mean(sub_total)
+    total.append(mean_total)
+    std = sqrt(var(sub_total))
+    lower_total.append(max(0,mean_total - 1.96 * std / sqrt(len(sub_total))))
+    upper_total.append(mean_total + 1.96 * std / sqrt(len(sub_total)))
 
 
 plt.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)

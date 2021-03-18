@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from numpy import sum
+from numpy import var, mean, sqrt
 
 # create data 
 file_name = "results_dump"
@@ -15,6 +15,7 @@ pkt_loss = []
 upper_loss = []
 lower_loss = []
 
+N = 20
 # value returned by parser.py
 x = [0.9964999999999998, 2.0029999999999997, 3.0089999999999995, 4.017999999999999, 5.024499999999999, 6.0295000000000005, 7.036, 8.056000000000001, 9.054000000000002, 10.068499999999998, 11.059000000000001, 11.941500000000001, 12.424499999999998, 12.91, 13.376, 13.854500000000002, 14.4055, 14.8375]
 
@@ -41,14 +42,15 @@ for i in range(1,19):
 for i in range(18):
     rx = []
     tx = []
-    for j in range(20):
+    for j in range(N):
         rx.append(received[i*18+j])
         tx.append(sent[i*18+j])
     loss_val = loss(rx,tx)
-    loss_val.sort()
-    pkt_loss.append(sum(loss_val)/12)
-    lower_loss.append(loss_val[4])
-    upper_loss.append(loss_val[-5])
+    mean_val = mean(loss_val)
+    pkt_loss.append(mean_val)
+    std = sqrt(var(loss_val))
+    lower_loss.append(max(0,mean_val - 1.96 * std / sqrt(len(loss_val))))
+    upper_loss.append(mean_val + 1.96 * std / sqrt(len(loss_val)))
 
 def print_list(x):
     for xx in x:

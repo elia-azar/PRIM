@@ -1,4 +1,4 @@
-from numpy import sum
+from numpy import sum, var, mean
 file_name = "results_generator"
 
 x = []
