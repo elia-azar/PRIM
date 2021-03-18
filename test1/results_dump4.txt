@@ -1,0 +1,80 @@
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.51 (StdDev 1.32) Mpps, 1797 (StdDev 675) Mbit/s (2359 Mbit/s with framing), total 231653763 packets with 14825840832 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.48 (StdDev 1.34) Mpps, 1782 (StdDev 685) Mbit/s (2339 Mbit/s with framing), total 231718788 packets with 14830002432 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.53 (StdDev 1.30) Mpps, 1810 (StdDev 664) Mbit/s (2375 Mbit/s with framing), total 233278516 packets with 14929825024 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.32) Mpps, 1795 (StdDev 678) Mbit/s (2356 Mbit/s with framing), total 233403534 packets with 14937826176 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.54 (StdDev 1.29) Mpps, 1811 (StdDev 660) Mbit/s (2376 Mbit/s with framing), total 233388590 packets with 14936869760 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.32) Mpps, 1795 (StdDev 676) Mbit/s (2356 Mbit/s with framing), total 233455509 packets with 14941152576 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.53 (StdDev 1.30) Mpps, 1806 (StdDev 666) Mbit/s (2371 Mbit/s with framing), total 232828445 packets with 14901020480 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.50 (StdDev 1.34) Mpps, 1791 (StdDev 684) Mbit/s (2351 Mbit/s with framing), total 232904007 packets with 14905856448 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.51 (StdDev 1.32) Mpps, 1800 (StdDev 675) Mbit/s (2362 Mbit/s with framing), total 231985995 packets with 14847103680 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.49 (StdDev 1.33) Mpps, 1785 (StdDev 682) Mbit/s (2343 Mbit/s with framing), total 232086456 packets with 14853533184 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.53 (StdDev 1.29) Mpps, 1809 (StdDev 662) Mbit/s (2375 Mbit/s with framing), total 233245858 packets with 14927734912 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.32) Mpps, 1795 (StdDev 677) Mbit/s (2356 Mbit/s with framing), total 233377389 packets with 14936152896 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.48 (StdDev 1.37) Mpps, 1782 (StdDev 703) Mbit/s (2340 Mbit/s with framing), total 233256986 packets with 14928447104 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.50 (StdDev 1.32) Mpps, 1794 (StdDev 678) Mbit/s (2355 Mbit/s with framing), total 233320878 packets with 14932536192 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.54 (StdDev 1.29) Mpps, 1815 (StdDev 660) Mbit/s (2382 Mbit/s with framing), total 233905824 packets with 14969972736 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.31) Mpps, 1799 (StdDev 672) Mbit/s (2361 Mbit/s with framing), total 233954658 packets with 14973098112 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.54 (StdDev 1.29) Mpps, 1811 (StdDev 661) Mbit/s (2376 Mbit/s with framing), total 233391203 packets with 14937036992 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.32) Mpps, 1795 (StdDev 676) Mbit/s (2356 Mbit/s with framing), total 233458029 packets with 14941313856 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.49 (StdDev 1.35) Mpps, 1789 (StdDev 690) Mbit/s (2347 Mbit/s with framing), total 234043624 packets with 14978791936 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.52 (StdDev 1.31) Mpps, 1800 (StdDev 670) Mbit/s (2363 Mbit/s with framing), total 234110142 packets with 14983049088 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.53 (StdDev 1.29) Mpps, 1806 (StdDev 658) Mbit/s (2371 Mbit/s with framing), total 232865215 packets with 14903373760 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.50 (StdDev 1.33) Mpps, 1791 (StdDev 681) Mbit/s (2350 Mbit/s with framing), total 232931538 packets with 14907618432 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.55 (StdDev 1.28) Mpps, 1816 (StdDev 657) Mbit/s (2383 Mbit/s with framing), total 234081160 packets with 14981194240 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.52 (StdDev 1.31) Mpps, 1801 (StdDev 668) Mbit/s (2363 Mbit/s with framing), total 234144477 packets with 14985246528 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.46 (StdDev 1.38) Mpps, 1770 (StdDev 708) Mbit/s (2322 Mbit/s with framing), total 231558720 packets with 14819758080 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.48 (StdDev 1.34) Mpps, 1782 (StdDev 684) Mbit/s (2338 Mbit/s with framing), total 231695793 packets with 14828530752 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.55 (StdDev 1.26) Mpps, 1816 (StdDev 647) Mbit/s (2383 Mbit/s with framing), total 234089099 packets with 14981702336 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.52 (StdDev 1.30) Mpps, 1800 (StdDev 664) Mbit/s (2363 Mbit/s with framing), total 234153171 packets with 14985802944 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.54 (StdDev 1.28) Mpps, 1813 (StdDev 655) Mbit/s (2380 Mbit/s with framing), total 233771879 packets with 14961400256 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.31) Mpps, 1798 (StdDev 670) Mbit/s (2359 Mbit/s with framing), total 233822988 packets with 14964671232 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.52 (StdDev 1.32) Mpps, 1801 (StdDev 675) Mbit/s (2363 Mbit/s with framing), total 232099421 packets with 14854362944 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.49 (StdDev 1.33) Mpps, 1785 (StdDev 682) Mbit/s (2343 Mbit/s with framing), total 232163820 packets with 14858484480 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.52 (StdDev 1.32) Mpps, 1802 (StdDev 674) Mbit/s (2365 Mbit/s with framing), total 232315045 packets with 14868162880 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.49 (StdDev 1.34) Mpps, 1788 (StdDev 686) Mbit/s (2347 Mbit/s with framing), total 232512210 packets with 14880781440 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.52 (StdDev 1.32) Mpps, 1800 (StdDev 676) Mbit/s (2363 Mbit/s with framing), total 232073571 packets with 14852708544 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.49 (StdDev 1.34) Mpps, 1785 (StdDev 686) Mbit/s (2342 Mbit/s with framing), total 232139691 packets with 14856940224 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.48 (StdDev 1.38) Mpps, 1781 (StdDev 705) Mbit/s (2337 Mbit/s with framing), total 233010192 packets with 14912652288 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.50 (StdDev 1.32) Mpps, 1792 (StdDev 678) Mbit/s (2352 Mbit/s with framing), total 233061948 packets with 14915964672 bytes (incl. CRC)
+New results
+[1;36m[Capture, thread #1] RX[0m: 3.54 (StdDev 1.27) Mpps, 1814 (StdDev 652) Mbit/s (2381 Mbit/s with framing), total 233874889 packets with 14967992896 bytes (incl. CRC)
+[1;36m[Filter reject, thread #1] RX[0m: 0.00 (StdDev 0.00) Mpps, 0 (StdDev 0) Mbit/s (0 Mbit/s with framing), total 0 packets with 0 bytes (incl. CRC)
+[1;36m[Device: id=0] RX[0m: 3.51 (StdDev 1.30) Mpps, 1799 (StdDev 667) Mbit/s (2361 Mbit/s with framing), total 233939286 packets with 14972114304 bytes (incl. CRC)

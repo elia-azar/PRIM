@@ -1,0 +1,80 @@
+
+Capture 253228727 
+Filter  260630008 
+Device: 862932105 
+
+Capture 216938135 
+Filter  223410893 
+Device: 865167282 
+
+Capture 248126162 
+Filter  255102226 
+Device: 865209555 
+
+Capture 251230026 
+Filter  258696328 
+Device: 863732457 
+
+Capture 215509483 
+Filter  221959143 
+Device: 848975463 
+
+Capture 245631751 
+Filter  252707205 
+Device: 857042046 
+
+Capture 215633751 
+Filter  222068215 
+Device: 860814486 
+
+Capture 216598972 
+Filter  223097479 
+Device: 855655101 
+
+Capture 244183510 
+Filter  251548855 
+Device: 861888888 
+
+Capture 252259147 
+Filter  259598947 
+Device: 858081798 
+
+Capture 253315985 
+Filter  260948158 
+Device: 865191285 
+
+Capture 219495926 
+Filter  226045397 
+Device: 866637702 
+
+Capture 253548630 
+Filter  260869754 
+Device: 863790039 
+
+Capture 218154435 
+Filter  224553570 
+Device: 862044561 
+
+Capture 215478393 
+Filter  221946895 
+Device: 862037946 
+
+Capture 217280424 
+Filter  223711091 
+Device: 865146870 
+
+Capture 246890947 
+Filter  254687590 
+Device: 863879436 
+
+Capture 217024396 
+Filter  223493284 
+Device: 865359936 
+
+Capture 217484505 
+Filter  223896846 
+Device: 865810512 
+
+Capture 215501146 
+Filter  221902769 
+Device: 859293162 

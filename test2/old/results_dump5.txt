@@ -1,0 +1,20 @@
+
+Capture 210704557
+Filter  217010200
+Device: 866394837
+
+Capture 217767389
+Filter  224214792
+Device: 867409515
+
+Capture 254048476
+Filter  261475875
+Device: 865410966
+
+Capture 251252430
+Filter  258623638
+Device: 858546738
+
+Capture 255269468
+Filter  262572887
+Device: 866549187

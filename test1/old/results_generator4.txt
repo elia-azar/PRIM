@@ -1,0 +1,80 @@
+New results 1
+0.97
+0.02
+0.01
+New results 2
+1.97
+0.00
+0.03
+New results 3
+0.00
+2.93
+0.08
+New results 4
+3.88
+0.01
+0.14
+New results 5
+4.87
+0.01
+0.15
+New results 6
+0.01
+5.89
+0.13
+New results 7
+0.00
+6.82
+0.21
+New results 8
+0.07
+0.13
+7.85
+New results 9
+8.80
+0.17
+0.09
+New results 10
+0.04
+9.64
+0.38
+New results 11
+0.10
+10.77
+0.19
+New results 12
+0.12
+11.70
+0.18
+New results 13
+12.23
+0.33
+0.03
+New results 14
+12.43
+0.10
+0.46
+New results 15
+0.03
+12.31
+0.45
+New results 16
+0.15
+13.61
+0.26
+New results 17
+0.01
+13.89
+0.64
+New results 18
+14.19
+0.01
+0.67
+New results 19
+0.51
+0.10
+14.26
+New results 20
+14.43
+0.03
+0.43

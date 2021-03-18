@@ -1,0 +1,60 @@
+New results
+57940152 packets with 3708169728 bytes (incl. CRC)
+57940911 packets with 3708218304 bytes (incl. CRC)
+New results
+116698003 packets with 7468672192 bytes (incl. CRC)
+116718210 packets with 7469965440 bytes (incl. CRC)
+New results
+175212294 packets with 11213586816 bytes (incl. CRC)
+175241304 packets with 11215443456 bytes (incl. CRC)
+New results
+232453575 packets with 14877028800 bytes (incl. CRC)
+232513659 packets with 14880874176 bytes (incl. CRC)
+New results
+292209842 packets with 18701429888 bytes (incl. CRC)
+292310298 packets with 18707859072 bytes (incl. CRC)
+New results
+349291463 packets with 22354653632 bytes (incl. CRC)
+349419735 packets with 22362863040 bytes (incl. CRC)
+New results
+407326744 packets with 26068911616 bytes (incl. CRC)
+407799504 packets with 26099168256 bytes (incl. CRC)
+New results
+466679102 packets with 29867462528 bytes (incl. CRC)
+466880904 packets with 29880377856 bytes (incl. CRC)
+New results
+515404359 packets with 32985878976 bytes (incl. CRC)
+525793842 packets with 33650805888 bytes (incl. CRC)
+New results
+520071314 packets with 33284564096 bytes (incl. CRC)
+586510659 packets with 37536682176 bytes (incl. CRC)
+New results
+640464021 packets with 40989697344 bytes (incl. CRC)
+640778481 packets with 41009822784 bytes (incl. CRC)
+New results
+501329173 packets with 32085067072 bytes (incl. CRC)
+692859951 packets with 44343036864 bytes (incl. CRC)
+New results
+504715913 packets with 32301818432 bytes (incl. CRC)
+728919828 packets with 46650868992 bytes (incl. CRC)
+New results
+501505786 packets with 32096370304 bytes (incl. CRC)
+754567758 packets with 48292336512 bytes (incl. CRC)
+New results
+451044524 packets with 28866849536 bytes (incl. CRC)
+780704253 packets with 49965072192 bytes (incl. CRC)
+New results
+272531374 packets with 17442007936 bytes (incl. CRC)
+818986329 packets with 52415125056 bytes (incl. CRC)
+New results
+496661550 packets with 31786339200 bytes (incl. CRC)
+814527693 packets with 52129772352 bytes (incl. CRC)
+New results
+497516784 packets with 31841074176 bytes (incl. CRC)
+863491167 packets with 55263434688 bytes (incl. CRC)
+New results
+516899547 packets with 33081571008 bytes (incl. CRC)
+863860095 packets with 55287046080 bytes (incl. CRC)
+New results
+511361832 packets with 32727157248 bytes (incl. CRC)
+865027926 packets with 55361787264 bytes (incl. CRC)
