@@ -1,5 +1,5 @@
 from numpy import mean
-file_name = "results_generator"
+file_name = "data/results_generator"
 
 x = []
 

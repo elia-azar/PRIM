@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-from numpy import sum, mean, sqrt, var
+from numpy import mean, sqrt, var
 
 # create data 
-file_name = "results_dump"
+file_name = "data/results_dump"
 cap = []
 lower_cap = []
 upper_cap = []
@@ -16,7 +16,7 @@ lower_total = []
 upper_total = []
 total_box = []
 
-N = 20
+N = 50
 x = [0,10,20,30,40,50,60,70,80,90,100]
 
 for i in range(11):

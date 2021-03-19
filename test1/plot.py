@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 
 # create data 
-file_name = "results_dump"
+file_name = "data/results_dump"
 received = []
 mean_received = []
 upper_received = []

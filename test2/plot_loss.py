@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import mean, sqrt, var
 
 # create data 
-file_name = "results_dump"
+file_name = "data/results_dump"
 cap_box = []
 filter_box = []
 lower_total = []
@@ -10,7 +10,7 @@ upper_total = []
 total_box = []
 total = []
 
-N = 20
+N = 50
 
 x = [0,10,20,30,40,50,60,70,80,90,100] 
 
@@ -54,11 +54,11 @@ for i in range(11):
     upper_total.append(mean_total + 1.96 * std / sqrt(len(sub_total)))
 
 
-plt.plot(x, lower_total, x, upper_total, color='blue', alpha=0.1)
-plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='blue', interpolate=True)
+plt.plot(x, lower_total, x, upper_total, color='red', alpha=0.1)
+plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='red', interpolate=True)
 
 # plot lines 
-plt.plot(x, total, label = "Lost pkts", color="blue")
+plt.plot(x, total, label = "Lost pkts", color="red")
 plt.title('Packet loss vs matching filter')
 plt.ylabel('Lost pkts (%)')
 plt.xlabel('Pkts matching the filter (%)')

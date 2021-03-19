@@ -1,0 +1,200 @@
+
+Capture 46705095
+Filter  413610785
+Device: 863691759
+
+Capture 64721083
+Filter  573890736
+Device: 865576593
+
+Capture 46501424
+Filter  411817962
+Device: 863692956
+
+Capture 46634138
+Filter  412845471
+Device: 866070954
+
+Capture 64722950
+Filter  574563212
+Device: 864917235
+
+Capture 46643672
+Filter  413020184
+Device: 867482217
+
+Capture 46394313
+Filter  410980607
+Device: 862994601
+
+Capture 47469661
+Filter  420653006
+Device: 865096407
+
+Capture 47141203
+Filter  417314850
+Device: 863088786
+
+Capture 64709031
+Filter  573799398
+Device: 852170382
+
+Capture 45474981
+Filter  402523586
+Device: 863347968
+
+Capture 45659683
+Filter  404839364
+Device: 857620953
+
+Capture 46113243
+Filter  408685901
+Device: 866629134
+
+Capture 46264149
+Filter  409610219
+Device: 862093512
+
+Capture 66341175
+Filter  587911414
+Device: 866725902
+
+Capture 66790731
+Filter  591412765
+Device: 866602233
+
+Capture 46419839
+Filter  411075544
+Device: 859309101
+
+Capture 63766723
+Filter  566090992
+Device: 859757283
+
+Capture 47199591
+Filter  418153342
+Device: 861097545
+
+Capture 66325184
+Filter  587534898
+Device: 862777188
+
+Capture 46917088
+Filter  415416341
+Device: 864655785
+
+Capture 46490323
+Filter  411700555
+Device: 862195761
+
+Capture 66072921
+Filter  585268519
+Device: 857249064
+
+Capture 46793979
+Filter  414270872
+Device: 863733654
+
+Capture 46829961
+Filter  414769388
+Device: 865314198
+
+Capture 46351970
+Filter  410590177
+Device: 859175667
+
+Capture 46684450
+Filter  413356970
+Device: 865968894
+
+Capture 63812059
+Filter  566427377
+Device: 862330959
+
+Capture 44752712
+Filter  396217209
+Device: 850143231
+
+Capture 64975681
+Filter  576909010
+Device: 867573567
+
+Capture 64709996
+Filter  574465397
+Device: 863716833
+
+Capture 65559447
+Filter  581970565
+Device: 862480899
+
+Capture 46532850
+Filter  411980400
+Device: 860428989
+
+Capture 46871983
+Filter  415031592
+Device: 866768742
+
+Capture 66076440
+Filter  585231560
+Device: 862437303
+
+Capture 46491370
+Filter  411625391
+Device: 863981370
+
+Capture 46926715
+Filter  415433624
+Device: 866651625
+
+Capture 46605362
+Filter  412758059
+Device: 862211763
+
+Capture 46300194
+Filter  410104908
+Device: 864768303
+
+Capture 46508998
+Filter  411736796
+Device: 859354461
+
+Capture 46870489
+Filter  415057747
+Device: 865277532
+
+Capture 46593543
+Filter  412619394
+Device: 865440702
+
+Capture 66829368
+Filter  591817271
+Device: 865827648
+
+Capture 46507609
+Filter  411859445
+Device: 859757283
+
+Capture 65191217
+Filter  578625476
+Device: 864200484
+
+Capture 66005862
+Filter  585800785
+Device: 866186748
+
+Capture 45942263
+Filter  407739412
+Device: 862605828
+
+Capture 46615541
+Filter  412368750
+Device: 865956357
+
+Capture 65953621
+Filter  584179554
+Device: 858629331
+
+Capture 65654974
+Filter  581801322
+Device: 856137429
