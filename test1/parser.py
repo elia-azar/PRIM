@@ -1,4 +1,4 @@
-from numpy import sum, var, mean
+from numpy import mean
 file_name = "results_generator"
 
 x = []
@@ -32,7 +32,7 @@ def print_list(x):
 def mean_list(x):
     l = []
     for xx in x:
-        l.append(sum(xx)/len(xx))
+        l.append(mean(xx))
     return l
 
 #print_list(x)
