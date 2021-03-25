@@ -5,12 +5,12 @@ labels = ['print', 'pcap', '/dev/null', '/dev/null w. filter']
 tcpdump = [3854197, 97485587, 98667143, 12322299]
 moongen = [279853, 212805119, 518657863, 448772404]
 pdump = [0, 102185086, 158297349, 0]
-xdp = [892457, 97197078, 103568567, 0]
+xdp = [892457, 97197078, 103568567, 66722471]
 
 tcpdump_loss = [99.56, 88.71, 88.53, 98.57]
 moongen_loss = [99.97, 75.33, 40.01, 48.13]
 pdump_loss = [0, 88.20,  81.75, 0]
-xdp_loss = [99.9, 88.67, 88, 0]
+xdp_loss = [99.9, 88.67, 88, 92.24]
 
 x = np.arange(len(labels))  # the label locations
 width = 0.35  # the width of the bars
