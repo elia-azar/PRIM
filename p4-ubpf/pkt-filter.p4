@@ -70,6 +70,14 @@ parser MyParser(packet_in packet, out headers hdr, inout metadata meta) {
 
 control MyPipe(inout headers hdr, inout metadata meta) {
 
+    Register<bit<32>, bit<32>>(1) packet_counter_reg;
+
+    apply {
+        bit<32> last_count;
+        bit<32> index = 0;
+        last_count = packet_counter_reg.read(index);
+        packet_counter_reg.write(index, last_count + 1);
+    }
 }
 
 control MyDeparser(packet_out packet, in headers hdr) {

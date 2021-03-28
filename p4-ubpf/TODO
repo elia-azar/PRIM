@@ -1,7 +1,20 @@
-[TODO] Install Open vSwitch with AF_XDP
+[TODO] Install Open vSwitch with AF_XDP 
+https://github.com/Orange-OpenSource/p4rt-ovs/blob/master/Documentation/intro/install/afxdp.rst
+
+[ERROR] Kernel version is old
+p4rt-ovs# ./boot.sh && ./configure --enable-afxdp
+-> configure: error: unable to find linux/if_xdp.h for AF_XDP support
+cause: kernel current version: Linux fdio 4.15.0-135-generic
+kernel required version: 5.0+
+
 [TODO] Install P4rt-OVS
+https://github.com/Orange-OpenSource/p4rt-ovs
+
 [TODO] Implement the pipeline in p4
 [TODO] Compile with ubpf-p4 and load it
+Follow examples:
+https://github.com/p4lang/p4c/blob/master/backends/ubpf/docs/EXAMPLES.md
+
 [TODO] Check if counters are updated accordingly
 [TODO] See how to save packets in pcap file with p4
 [IDEA] Create an extern function in a file that saves pkts to pcap file
