@@ -1,0 +1,7 @@
+[TODO] Install Open vSwitch with AF_XDP
+[TODO] Install P4rt-OVS
+[TODO] Implement the pipeline in p4
+[TODO] Compile with ubpf-p4 and load it
+[TODO] Check if counters are updated accordingly
+[TODO] See how to save packets in pcap file with p4
+[IDEA] Create an extern function in a file that saves pkts to pcap file
