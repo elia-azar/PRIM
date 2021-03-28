@@ -4,3 +4,5 @@ Create match-action table to match specific port 320 (actions: drop or save)
 See how to save packets in pcap file with p4 -> maybe do DMA if possible
 
 Once done, see if I can compile it with p4c-ebpf and load it in the kernel
+Use bcc to access the control plane and to compile the generated C code to ebpf
+create an extern function in a file that saves pkts to pcap file

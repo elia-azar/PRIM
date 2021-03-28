@@ -77,8 +77,8 @@ parser MyParser(packet_in packet, out headers hdr) {
     }
 
     state parse_udp {
-	pkt.extract(hdr.udp);
-	transition accept;
+	    packet.extract(hdr.udp);
+	    transition accept;
     }
 
 }
@@ -90,15 +90,13 @@ parser MyParser(packet_in packet, out headers hdr) {
 
 control MyFilter(inout headers hdr, out bool accept) {
     
-    CounterArray(2, true) drop_save_counter;
+    CounterArray(32w2, true) drop_save_counter;
 
     action drop() {
-        drop_save_counter.increment(0);
         accept = false;
     }
 
     action save(){
-        drop_save_counter.increment(1);
         accept = true;
     }
     
@@ -109,7 +107,6 @@ control MyFilter(inout headers hdr, out bool accept) {
         actions = {
             drop;
             save;
-            NoAction;
         }
         size = 64;
         default_action = drop();
@@ -124,8 +121,14 @@ control MyFilter(inout headers hdr, out bool accept) {
     }
     
     apply {
+        accept = false;
         if (hdr.udp.isValid()) {
             udp_exact.apply();
+        }
+        if (accept) {
+            drop_save_counter.increment(1);
+        }else{
+            drop_save_counter.increment(0);
         }
     }
 }

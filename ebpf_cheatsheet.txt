@@ -1,0 +1,59 @@
+# compile p4 to C with ebpf
+$ p4c-ebpf <prog>.p4 -o <prog>.c
+
+# compile P4 to ebpf obj file
+$ make -f $P4C/backends/ebpf/runtime/kernel.mk BPFOBJ=<prog>.o P4FILE=<prog>.p4
+
+# compile C to ebpf obj file
+$ clang -O2 -target bpf -c <prog>.c -o <prog>.o
+
+
+# compiling and loading xdp prog
+$ clang -O2 -Wall -target bpf -c <prog>.c -o <prog>.o
+$ ip link set dev enp4s0f0 xdp obj <prog>.o
+
+# unload xdp prog from an interface
+$ sudo ip link set dev enp4s0f0 xdp off
+
+# show prog loaded on interface
+$ ip -d link show enp4s0f0
+
+# use tc to load bpd prog
+$ tc qdisc add dev enp4s0f0 clsact
+$ tc filter add dev enp4s0f0 ingress bpf da obj <prog>.o section prog verbose
+
+# tc list
+$ tc qdisc show dev enp4s0f0
+
+# inspect prog attached to the tc ingress hook
+$ tc filter show dev enp4s0f0 ingress
+
+# delete loaded prog with tc
+$ tc qdisc del dev enp4s0f0
+$ tc qdisc del dev enp4s0f0 clsact
+
+# dump structures of the BPF program based on the DWARF information
+$ llc <prog>.bc -march=bpf -mattr=dwarfris -filetype=obj -o <prog>.o
+$ pahole <prog>.o
+
+# bpftool useful commands
+$ bpftool map dump id <id>
+$ bpftool prog show id <id>
+$ bpftool map --json --pretty
+$ bpftool prog dump xlated id <id>
+
+# mount bpf to fs
+$ mount bpf /sys/fs/bpf -t bpf
+
+# check bpf in the file system
+$ mount | grep bpf
+$ tree /sys/fs/bpf/
+
+# Download iproute2
+$ sudo apt-get install -y libssl-dev bc libelf-dev \
+libcap-dev gcc-multilib libncurses5-dev pkg-config libmnl-dev graphviz
+$ git clone https://github.com/shemminger/iproute2.git
+$ cd iproute2/
+$ ./configure --prefix=/usr
+$ make
+$ make install
