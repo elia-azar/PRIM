@@ -69,14 +69,46 @@ parser MyParser(packet_in packet, out headers hdr, inout metadata meta) {
 }
 
 control MyPipe(inout headers hdr, inout metadata meta) {
+    bool to_drop = false;
+    CounterArray(32w10, true) counters;
 
-    Register<bit<32>, bit<32>>(1) packet_counter_reg;
+    action save() {
+        to_drop = false;
+    }
+
+    action drop() {
+        to_drop = true;
+    }
+
+    table udp_exact {
+        key = {
+            hdr.udp.dport: exact;
+        }
+        actions = {
+            drop;
+            save;
+        }
+        default_action = drop();
+
+        // match port 320
+        const entries = {
+            (0x0140) : save();
+        }
+        implementation = hash_table(8);
+    }
 
     apply {
-        bit<32> last_count;
-        bit<32> index = 0;
-        last_count = packet_counter_reg.read(index);
-        packet_counter_reg.write(index, last_count + 1);
+		if (hdr.ipv4.isValid()) {
+            udp_exact.apply();
+		}
+        if (to_drop) {
+            counters.increment(0);
+            meta.output_action = ubpf_action.DROP;
+        }else {
+            counters.increment(1);
+            meta.output_action = ubpf_action.PASS;
+        }
+        meta.output_port = 0;
     }
 }
 
