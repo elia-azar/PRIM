@@ -1,12 +1,7 @@
-/* -*- P4_16 -*- */
 #include <core.p4>
-#include <ebpf_model.p4>
+#include "xdp_model.p4"
 
 const bit<16> TYPE_IPV4 = 0x800;
-
-/*************************************************************************
-*********************** H E A D E R S  ***********************************
-*************************************************************************/
 
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
@@ -28,7 +23,7 @@ header ipv4_t {
     bit<13>   fragOffset;
     bit<8>    ttl;
     bit<8>    protocol;
-    bit<16>   hdrChecksum;
+    bit<16>   hdrrChecksum;
     ip4Addr_t srcAddr;
     ip4Addr_t dstAddr;
 }
@@ -40,30 +35,20 @@ header udp_t {
     bit<16>  checksum;
 }
 
-struct metadata {
-    bit<32>  counter;
-}
-
 struct headers {
     ethernet_t   ethernet;
     ipv4_t       ipv4;
     udp_t        udp;
 }
 
-/*************************************************************************
-*********************** P A R S E R  ***********************************
-*************************************************************************/
-
 parser MyParser(packet_in packet, out headers hdr) {
-
     state start {
         transition parse_ethernet;
     }
-
     state parse_ethernet {
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
-            TYPE_IPV4: parse_ipv4;
+            IPV4_ETHTYPE: parse_ipv4;
             default: accept;
         }
     }
@@ -80,26 +65,20 @@ parser MyParser(packet_in packet, out headers hdr) {
 	    packet.extract(hdr.udp);
 	    transition accept;
     }
-
 }
 
+control MyIngress(inout headers hdr, in xdp_input xin, out xdp_output xout) {
+    bool xoutdrop = false;
+    CounterArray(32w10, true) counters;
 
-/*************************************************************************
-****************  F I L T E R   P R O C E S S I N G   ********************
-*************************************************************************/
-
-control MyFilter(inout headers hdr, out bool accept) {
-    
-    CounterArray(32w2, true) drop_save_counter;
+    action save() {
+        xoutdrop = false;
+    }
 
     action drop() {
-        accept = false;
+        xoutdrop = true;
     }
 
-    action save(){
-        accept = true;
-    }
-    
     table udp_exact {
         key = {
             hdr.udp.dport: exact;
@@ -114,24 +93,30 @@ control MyFilter(inout headers hdr, out bool accept) {
         const entries = {
             (0x0140) : save();
         }
-
-        // I think this is required in EBPF model
         implementation = hash_table(8);
     }
-    
+
     apply {
-        accept = false;
-        if (hdr.udp.isValid()) {
+		if (hdr.ipv4.isValid()) {
             udp_exact.apply();
+		}
+        if (xoutdrop) {
+            counters.increment(0);
+            xout.output_action = xdp_action.XDP_DROP;
+        }else {
+            counters.increment(1);
+            xout.output_action = xdp_action.XDP_PASS;
         }
-        if (accept) {
-            drop_save_counter.increment(1);
-        }else{
-            drop_save_counter.increment(0);
-        }
+        xout.output_port = 0;
     }
 }
 
-ebpfFilter(
-MyParser(),
-MyFilter()) main;
+control MyDeparser(in headers hdr, packet_out packet) {
+    apply {
+        packet.emit(hdr.ethernet);
+        packet.emit(hdr.ipv4);
+        packet.emit(hdr.udp);
+    }
+}
+
+xdp(MyParser(), MyIngress(), MyDeparser()) main;

@@ -1,0 +1,34 @@
+https://github.com/vmware/p4c-xdp
+
+[ERROR] Docker/Vagrant does not work
+-> Can't play with vagrant because VT-x is disabled in the BIOS for all CPU modes.
+
+# sudo kvm-ok
+INFO: /dev/kvm does not exist
+HINT:   sudo modprobe kvm_intel
+INFO: Your CPU supports KVM extensions
+INFO: KVM (vmx) is disabled by your BIOS
+HINT: Enter your BIOS setup and enable Virtualization Technology (VT),
+      and then hard poweroff/poweron your system
+KVM acceleration can NOT be used
+
+# sudo modprobe kvm_intel
+modprobe: ERROR: could not insert 'kvm_intel': Operation not supported
+
+In order to it, we should enable VT in kernel, and we can't do it without changing BIOS manually when booting
+
+[BUG] P4-16 Compiler
+
+# make check-xdp
+12% tests passed, 15 tests failed out of 17
+Only xdp7 and xdp12 passed the test
+
+[BUG-FIX] Modified the Makefile inside tests/ and was able to compile all the p4 codes to obj files
+except for xdp7 and xdp12 due to limitation problems.
+-> error: xdp12.c:0:0: in function ebpf_filter i32 (%struct.xdp_md*): 
+Looks like the BPF stack limit of 512 bytes is exceeded. 
+Please move large on stack variables into BPF per-cpu array map.
+
+
+[TODO] Check how to access values inside hash map
+[DONE] Create P4 filter code
