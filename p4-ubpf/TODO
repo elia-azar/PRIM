@@ -10,7 +10,7 @@ kernel required version: 5.0+
 [TODO] Install P4rt-OVS
 https://github.com/Orange-OpenSource/p4rt-ovs
 
-[TODO] Implement the pipeline in p4
+[DONE] Implement the pipeline in p4
 [TODO] Compile with ubpf-p4 and load it
 Follow examples:
 https://github.com/p4lang/p4c/blob/master/backends/ubpf/docs/EXAMPLES.md

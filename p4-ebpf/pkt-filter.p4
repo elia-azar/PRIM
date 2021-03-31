@@ -50,6 +50,8 @@ struct headers {
     udp_t        udp;
 }
 
+extern void save_packet(in headers hdr);
+
 /*************************************************************************
 *********************** P A R S E R  ***********************************
 *************************************************************************/
@@ -126,6 +128,7 @@ control MyFilter(inout headers hdr, out bool accept) {
         }
         if (accept) {
             drop_save_counter.increment(1);
+            save_packet(hdr);
         }else{
             drop_save_counter.increment(0);
         }
