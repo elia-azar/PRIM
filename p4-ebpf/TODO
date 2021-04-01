@@ -6,4 +6,9 @@
 [DONE] Load the prog in the kernel
 [DONE] Use bpftool to access the control plane
 [BUG]  Map counters not working after incoming ingress traffic
+  |
+  --> [IDEA] Adapt xdp_stats.c and run it separately
+  |
+  --> https://github.com/xdp-project/xdp-tutorial/blob/master/basic-solutions/xdp_stats.c
+
 [BUG]  Created an extern function in a file that saves pkts to pcap file, but compilation failed
