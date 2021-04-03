@@ -8,8 +8,8 @@ void open_pcap_file(){
     return;
 }
 
-void pkts_save(headers hdr){
-    fwrite (&hdr, 1, sizeof(headers) , pFile);
+void pkts_save(struct headers hdr){
+    fwrite (&hdr, 1, sizeof(struct headers) , pFile);
 }
 
 void close_pcap_file(){

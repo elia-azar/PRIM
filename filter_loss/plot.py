@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
-from numpy import mean, sqrt, var
+from numpy import var, mean, sqrt
 
 # create data 
-file_name = "data/results_dump"
+file_name = "data/results_dump5_.txt"
+
 cap = []
 lower_cap = []
 upper_cap = []
@@ -17,28 +18,28 @@ upper_total = []
 total_box = []
 
 N = 50
-x = [0,10,20,30,40,50,60,70,80,90,100]
+# value returned by parser.py
+x = [1, 2, 3, 4, 5, 6, 7]
 
-for i in range(11):
-    file = open(file_name + str(i) + ".txt", 'r')
-    Lines = file.readlines() 
+file = open(file_name, 'r')
+Lines = file.readlines()
+
+for i in range(7):
+    # Strips the newline character
     captured = 0
     filtered = 0
-    # Strips the newline character 
-    for j in range(len(Lines)):
+    for j in range(i*50*4, (i+1)*50*4, 4):
         line = Lines[j].strip().split()
-        if len(line) < 1:
-            continue
-        if line[0] == "Capture":
-            captured_ = int(line[-1])
-        elif line[0] == "Filter":
-            filtered_ = int(line[-1])
-        elif line[0] == "Device:":
-            dev_ = int(line[-1])
-            cap_box.append(captured_ * 100 / dev_)
-            filter_box.append(filtered_ * 100 / dev_)
-    #cap.append(captured/20)
-    #filter.append(filtered/20)
+
+        index = Lines[j+1].strip().split().index("total") + 1
+        captured_ = int(Lines[j+1].strip().split()[index])
+        index = Lines[j+2].strip().split().index("total") + 1
+        filtered_ = int(Lines[j+2].strip().split()[index])
+        index = Lines[j+3].strip().split().index("total") + 1
+        dev_ = int(Lines[j+3].strip().split()[index])
+        
+        cap_box.append(captured_ * 100 / dev_)
+        filter_box.append(filtered_ * 100 / dev_)
 
 
 for i,j in zip(cap_box,filter_box):
@@ -47,7 +48,7 @@ for i,j in zip(cap_box,filter_box):
 
 # basic plot
 
-for i in range(11):
+for i in range(7):
     sub_cap = cap_box[N*i:N*(i+1)]
     sub_filter = filter_box[N*i:N*(i+1)]
     sub_total = total_box[N*i:N*(i+1)]
@@ -82,9 +83,9 @@ plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, 
 plt.plot(x, cap, label = "Captured pkts", color="blue") 
 plt.plot(x, filter, label = "Dropped pkts", color="orange")
 plt.plot(x, total, label = "Treated pkts", color="green")
-plt.title('Packet filtering behaviour')
+plt.title('RX packets vs filter size with 50% packets matching the filter')
 plt.ylabel('RX pkts (%)')
-plt.xlabel('Pkts matching the filter (%)')
+plt.xlabel('Filter size')
 plt.legend() 
 
-plt.savefig("percentage.png")
+plt.savefig("percentage_vs_filter_50_match.png")

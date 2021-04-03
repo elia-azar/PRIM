@@ -4,5 +4,5 @@
 extern FILE* pFile;
 
 void open_pcap_file();
-void pkts_save(headers hdr);
+void pkts_save(struct headers hdr);
 void close_pcap_file();
