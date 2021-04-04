@@ -30,5 +30,9 @@ Looks like the BPF stack limit of 512 bytes is exceeded.
 Please move large on stack variables into BPF per-cpu array map.
 
 
-[TODO] Check how to access values inside hash map
+
 [DONE] Create P4 filter code
+[DONE] Compile the P4 code to obj file
+[DONE] Load it on a device
+
+[TODO] Check how to access values inside hash map
