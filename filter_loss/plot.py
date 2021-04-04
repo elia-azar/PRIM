@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 
 # create data 
-file_name = "data/results_dump5_.txt"
+file_name = "data/results_dump6_.txt"
 
 cap = []
 lower_cap = []
@@ -83,9 +83,9 @@ plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, 
 plt.plot(x, cap, label = "Captured pkts", color="blue") 
 plt.plot(x, filter, label = "Dropped pkts", color="orange")
 plt.plot(x, total, label = "Treated pkts", color="green")
-plt.title('RX packets vs filter size with 50% packets matching the filter')
+plt.title('RX packets vs filter size with 60% packets matching the filter')
 plt.ylabel('RX pkts (%)')
 plt.xlabel('Filter size')
 plt.legend() 
 
-plt.savefig("percentage_vs_filter_50_match.png")
+plt.savefig("percentage_vs_filter_60_match.png")
