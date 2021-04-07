@@ -73,7 +73,7 @@ sock = socket.fromfd(socket_fd,socket.AF_NETLINK,socket.SOCK_DGRAM)
 #sock.setblocking(True)
 
 while 1:
-    
+    """
     #retrieve raw packet from socket
     packet_str = os.read(socket_fd,256)
 
@@ -96,8 +96,8 @@ while 1:
     dst_port = packet_bytearray[ETH_HLEN + ip_header_length + 2]
     dst_port = dst_port << 8
     dst_port = dst_port + packet_bytearray[ETH_HLEN+ ip_header_length +3]
-    
-    #sleep(2)
+    """
+    sleep(2)
     #print stats
     s = ""
     if len(bpf["pkt_count"].items()):
