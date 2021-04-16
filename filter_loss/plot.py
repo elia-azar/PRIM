@@ -88,4 +88,4 @@ plt.ylabel('RX pkts (%)')
 plt.xlabel('Filter size')
 plt.legend() 
 
-plt.savefig("percentage_vs_filter_60_match.png")
+plt.savefig("images/percentage_vs_filter_60_match.png")
