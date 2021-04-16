@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
+import parser as moon_parser
 
 # create data 
 file_name = "data/results_dump"
@@ -17,7 +18,8 @@ lower_loss = []
 
 N = 50
 # value returned by parser.py
-x = [0.9980000000000001, 2.0036, 3.0095999999999994, 4.0186, 5.0254, 6.0295999999999985, 7.035200000000001, 8.0556, 9.055399999999999, 10.0658, 11.057999999999998, 11.917, 12.3904, 12.9014, 13.401800000000003, 13.8924, 14.389199999999999, 14.852200000000003]
+x = moon_parser.mean_list()
+
 
 def loss(rec, trans):
     loss = []
@@ -72,4 +74,4 @@ plt.ylabel('Pkt loss (%)')
 plt.xlabel('Pkt rate in Mpps')
 plt.legend() 
 
-plt.savefig("loss.png")
+plt.savefig("images/loss.png")

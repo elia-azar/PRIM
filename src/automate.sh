@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for j in {1..20}
+for j in {1..50}
 do
 for i in {1..18}
 do

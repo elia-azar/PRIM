@@ -29,12 +29,10 @@ def print_list(x):
             print("{:.2f}".format(xxx), end=', ')
         print()
 
-def mean_list(x):
+def mean_list():
     l = []
     for xx in x:
         l.append(mean(xx))
     return l
 
-#print_list(x)
-
-print(mean_list(x))
+#print(mean_list(x))

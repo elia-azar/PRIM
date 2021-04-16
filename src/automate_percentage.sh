@@ -4,7 +4,7 @@
 for p in {0..10}
 do
 	echo "Starting with percentage $p"
-	for j in {1..20}
+	for j in {1..50}
 	do
 		echo "Starting with test $j"
 		./dump_automate.sh -n $p &
