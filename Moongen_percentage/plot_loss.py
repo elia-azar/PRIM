@@ -64,4 +64,4 @@ plt.ylabel('Lost pkts (%)')
 plt.xlabel('Pkts matching the filter (%)')
 plt.legend() 
 
-plt.savefig("percentage_loss.png")
+plt.savefig("images/percentage_loss.png")

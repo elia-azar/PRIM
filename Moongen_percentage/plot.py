@@ -87,4 +87,4 @@ plt.ylabel('RX pkts (%)')
 plt.xlabel('Pkts matching the filter (%)')
 plt.legend() 
 
-plt.savefig("percentage.png")
+plt.savefig("images/percentage.png")

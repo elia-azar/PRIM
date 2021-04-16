@@ -1,4 +1,4 @@
-# Measuring packet loss vs filter size
+# Measuring packet loss vs throughput
 
 ## Overview
 In this section, we describe how packet loss varies with regard to throughput varying from 1 Mpps to 14.8 Mpps.
