@@ -15,6 +15,8 @@ from time import sleep
 import socket
 import os
 
+DEBUG = 1
+
 #args
 def usage():
     print("USAGE: %s [-i <if_name>]" % argv[0])
@@ -52,6 +54,76 @@ if len(argv) == 3:
 if len(argv) > 3:
     usage()
 
+def parse_ipv4(pkt):
+    return_val = ""
+
+    src_addr = ""
+    dst_addr = ""
+    for i in range(4):
+        src_addr += str(pkt[12 + i]) + "."
+        dst_addr += str(pkt[16 + i]) + "."
+    
+    src_addr = src_addr[:-1]
+    dst_addr = src_addr[:-1]
+
+    #calculate ip header length
+    ip_header_length = pkt[0]                   #load Byte
+    ip_header_length = ip_header_length & 0x0F  #mask bits 0..3
+    ip_header_length = ip_header_length << 2    #shift to obtain length
+
+    #retrieve transport protocol
+    proto = pkt[9]
+    return_val += "proto:" + str(proto) + ", "
+
+    #retrieve source port
+    src_port = packet_bytearray[ip_header_length]                 #load Byte
+    src_port = src_port << 8                                      #shift MSB
+    src_port = src_port + packet_bytearray[ip_header_length + 1]  #add LSB
+    return_val += src_addr + ":" + str(src_port) + " -> "
+    
+    #retrieve destination port
+    dst_port = packet_bytearray[ip_header_length + 2]            #load Byte
+    dst_port = dst_port << 8                                     #shift MSB
+    dst_port = dst_port + packet_bytearray[ip_header_length +3]  #add LSB
+    return_val += dst_addr + ":" + str(dst_port)
+
+    return return_val
+
+def parse_ipv6(pkt):
+    return_val = ""
+
+    #retrieve next header type
+    proto = pkt[6]
+    return_val += "Next Header:" + str(proto) + ", "
+
+    src_addr = ""
+    dst_addr = ""
+    for i in range(16):
+        src_addr += str(hex(pkt[8 + i]))[2:] + ":"
+        dst_addr += str(hex(pkt[24 + i]))[2:] + ":"
+    
+    src_addr = src_addr[:-1]
+    dst_addr = src_addr[:-1]
+
+    return_val += src_addr + " -> " + dst_addr
+
+    return return_val
+
+def print_hex(pkt):
+    print("-------------------------------------")
+    i = 0
+    for val in packet_bytearray:
+        str_val = str(hex(val))[2:]
+        str_val = str_val if len(str_val) != 1 else "0" + str_val
+        print(str_val + " ", end = "")
+        i += 1
+        if i % 8 == 0:
+            print("  ", end = "")
+        if i % 16 == 0:
+            print()
+    print()
+    return
+
 print ("binding socket to '%s'" % interface)
 
 # initialize BPF - load source code from pkt-filter.c
@@ -76,86 +148,44 @@ while 1:
     #retrieve raw packet from socket
     packet_str = os.read(socket_fd,256)
 
-    #DEBUG - print raw packet in hex format
-    #packet_hex = toHex(packet_str)
-    #print ("%s" % packet_hex)
-
     #convert packet into bytearray
     packet_bytearray = bytearray(packet_str)
 
-    print("-------------------------------------")
-    i = 0
-    for val in packet_bytearray:
-        str_val = str(hex(val))[2:]
-        str_val = str_val if len(str_val) != 1 else "0" + str_val
-        print(str_val + " ", end = "")
-        i += 1
-        if i % 8 == 0:
-            print("  ", end = "")
-        if i % 16 == 0:
-            print()
-    
-    print()
-    print()
+    if DEBUG == 1:
+        print_hex(packet_bytearray)
 
-    """
-    #ethernet header length
-    ETH_HLEN = 14
+    elif DEBUG == 2:
+        #ethernet header length
+        ETH_HLEN = 14
 
-    src_mac = ""
-    dst_mac = ""
-    for i in range(6): 
-        src_mac += str(hex(packet_bytearray[i]))[2:] + ":"
-        dst_mac += str(hex(packet_bytearray[6+i]))[2:] + ":"
-    
-    src_mac = src_mac[:-1]
-    dst_mac = src_mac[:-1]
+        src_mac = ""
+        dst_mac = ""
+        for i in range(6): 
+            src_mac += str(hex(packet_bytearray[i]))[2:] + ":"
+            dst_mac += str(hex(packet_bytearray[6+i]))[2:] + ":"
+        
+        src_mac = src_mac[:-1]
+        dst_mac = src_mac[:-1]
 
-    ether_type = str((packet_bytearray[ETH_HLEN - 2] << 8) + packet_bytearray[ETH_HLEN - 1])
+        ether_type = str((packet_bytearray[ETH_HLEN - 2] << 8) + packet_bytearray[ETH_HLEN - 1])
 
-    #calculate packet total length
-    total_length = packet_bytearray[ETH_HLEN + 2]               #load MSB
-    total_length = total_length << 8                            #shift MSB
-    total_length = total_length + packet_bytearray[ETH_HLEN+3]  #add LSB
+        result = src_mac + " " + dst_mac + " ether_type: " + ether_type 
+        if ether_type == 2048:
+            result += ", " + parse_ipv4(packet_bytearray[ETH_HLEN])
+        elif ether_type == 34525:
+            result += ", " + parse_ipv6(packet_bytearray[ETH_HLEN])
+        
+        print("-------------------------------------")
+        print(result)
+        print()
 
-    src_addr = ""
-    dst_addr = ""
-    for i in range(4):
-        src_addr += str(packet_bytearray[ETH_HLEN + 12 + i]) + "."
-        dst_addr += str(packet_bytearray[ETH_HLEN + 16 + i]) + "."
-    
-    src_addr = src_addr[:-1]
-    dst_addr = src_addr[:-1]
-
-    #calculate ip header length
-    ip_header_length = packet_bytearray[ETH_HLEN]               #load Byte
-    ip_header_length = ip_header_length & 0x0F                  #mask bits 0..3
-    ip_header_length = ip_header_length << 2                    #shift to obtain length
-
-    #retrieve transport protocol
-    proto = packet_bytearray[ETH_HLEN + 9]
-
-    #retrieve source port
-    src_port = packet_bytearray[ETH_HLEN + ip_header_length]           #load Byte
-    src_port = src_port << 8                                               #shift MSB
-    src_port = src_port + packet_bytearray[ETH_HLEN+ ip_header_length + 1]  #add LSB
-    
-    #retrieve destination port
-    dst_port = packet_bytearray[ETH_HLEN + ip_header_length + 2]           #load Byte
-    dst_port = dst_port << 8                                               #shift MSB
-    dst_port = dst_port + packet_bytearray[ETH_HLEN+ ip_header_length +3]  #add LSB
-
-    print("--------------")
-    print(src_mac + ", " + dst_mac + " with ether_type:" + ether_type+ " and proto:" + str(proto) + ", " + src_addr + ":" + str(src_port) + " -> " + dst_addr + ":" + str(dst_port))
-    """
-    """
-    sleep(2)
-    #print stats
-    s = ""
-    if len(bpf["pkt_count"].items()):
-        for k,v in bpf["pkt_count"].items():
-            s += "ID {}: {}\t".format(k.value, v.value)
-        print(s)
     else:
-        print("No entries yet")
-    """
+        sleep(2)
+        #print stats
+        s = ""
+        if len(bpf["pkt_count"].items()):
+            for k,v in bpf["pkt_count"].items():
+                s += "ID {}: {}\t".format(k.value, v.value)
+            print(s)
+        else:
+            print("No entries yet")
