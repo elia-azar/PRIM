@@ -1,0 +1,10 @@
+Packet received has an ipv6 format with a dst address of the enp4s0f0 interface
+The next header type is 0: hop-by-hop option
+
+-------------------------------------
+33 33 00 00 00 16 90 e2   ba cb f5 38 86 dd 60 00   
+00 00 00 24 00 01 fe 80   00 00 00 00 00 00 92 e2   
+ba ff fe cb f5 38 ff 02   00 00 00 00 00 00 00 00   
+00 00 00 00 00 16 3a 00   05 02 00 00 01 00 8f 00   
+39 1e 00 00 00 01 04 00   00 00 ff 02 00 00 00 00   
+00 00 00 00 00 01 ff cb   f5 38 
