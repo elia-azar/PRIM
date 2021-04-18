@@ -26,14 +26,15 @@ def usage():
 
 #help
 def help():
-    print("USAGE: %s [-i <if_name>]" % argv[0])
+    print("USAGE: %s [-i <if_name>] [-d <debug_mode>]" % argv[0])
     print("")
     print("optional arguments:")
     print("   -h                       print this help")
     print("   -i if_name               select interface if_name. Default is enp4s0f0")
+    print("   -d debug_mode            select debugging mode. Default is 1")
     print("")
     print("examples:")
-    print("   pkt-filter -i enp4s0f0     # bind socket to enp4s0f0")
+    print("   pkt-filter -i enp4s0f0  -d 1   # bind socket to enp4s0f0")
     exit()
 
 #arguments
@@ -45,13 +46,22 @@ if len(argv) == 2:
     else:
         usage()
 
-if len(argv) == 3:
+elif len(argv) == 3:
     if str(argv[1]) == '-i':
         interface = argv[2]
+    elif str(argv[1]) == '-d':
+        DEBUG = int(argv[2])
     else:
         usage()
 
-if len(argv) > 3:
+elif len(argv) == 5:
+    if str(argv[1]) != '-i' or str(argv[3]) != '-d':
+        usage()
+    else:
+        interface = argv[2]
+        DEBUG = int(argv[4])
+
+else:
     usage()
 
 def parse_ipv4(pkt):
@@ -112,7 +122,7 @@ def parse_ipv6(pkt):
 def print_hex(pkt):
     print("-------------------------------------")
     i = 0
-    for val in packet_bytearray:
+    for val in pkt:
         str_val = str(hex(val))[2:]
         str_val = str_val if len(str_val) != 1 else "0" + str_val
         print(str_val + " ", end = "")
@@ -171,9 +181,9 @@ while 1:
 
         result = src_mac + " " + dst_mac + " ether_type: " + ether_type 
         if ether_type == 2048:
-            result += ", " + parse_ipv4(packet_bytearray[ETH_HLEN])
+            result += ", " + parse_ipv4(packet_bytearray[ETH_HLEN:])
         elif ether_type == 34525:
-            result += ", " + parse_ipv6(packet_bytearray[ETH_HLEN])
+            result += ", " + parse_ipv6(packet_bytearray[ETH_HLEN:])
         
         print("-------------------------------------")
         print(result)
