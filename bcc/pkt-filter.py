@@ -14,12 +14,27 @@ from time import sleep
 
 import socket
 import os
+import ctypes
+
+class ifreq(ctypes.Structure):
+    _fields_ = [("ifr_ifrn", ctypes.c_char * 16),
+                ("ifr_flags", ctypes.c_short)]
+
+class FLAGS(object):
+  # linux/if_ether.h
+  ETH_P_ALL     = 0x0003 # all protocols
+  ETH_P_IP      = 0x0800 # IP only
+  # linux/if.h
+  IFF_PROMISC   = 0x100
+  # linux/sockios.h
+  SIOCGIFFLAGS  = 0x8913 # get the active flags
+  SIOCSIFFLAGS  = 0x8914 # set the active flags
 
 DEBUG = 1
 
 #args
 def usage():
-    print("USAGE: %s [-i <if_name>]" % argv[0])
+    print("USAGE: %s [-i <if_name>] [-d <debug_mode>]" % argv[0])
     print("")
     print("Try '%s -h' for more options." % argv[0])
     exit()
@@ -40,7 +55,10 @@ def help():
 #arguments
 interface="enp4s0f0"
 
-if len(argv) == 2:
+if len(argv) == 1:
+    print()
+
+elif len(argv) == 2:
     if str(argv[1]) == '-h':
         help()
     else:
@@ -150,8 +168,16 @@ BPF.attach_raw_socket(function_udp_filter, interface)
 socket_fd = function_udp_filter.sock
 
 #create python socket object, from the file descriptor
-sock = socket.fromfd(socket_fd,socket.AF_NETLINK,socket.SOCK_DGRAM)
+sock = socket.fromfd(socket_fd,socket.PF_PACKET, socket.SOCK_RAW, socket.htons(FLAGS.ETH_P_ALL))
 #set it as blocking socket
+
+import fcntl
+ifr = ifreq()
+ifr.ifr_ifrn = b'enp4s0f0'
+fcntl.ioctl(sock, FLAGS.SIOCGIFFLAGS, ifr) # get the flags
+ifr.ifr_flags |= FLAGS.IFF_PROMISC # add the promiscuous flag
+fcntl.ioctl(sock, FLAGS.SIOCSIFFLAGS, ifr) # update
+
 sock.setblocking(True)
 
 while 1:
