@@ -38,7 +38,7 @@ pcap_file = ""
 printed_pkts = 0
 #args
 def usage():
-    print("USAGE: %s [-i <if_name>] [-m <mode>]" % argv[0])
+    print("USAGE: %s [-i <if_name>] [-m <mode>] [-f <filter>]" % argv[0])
     print("")
     print("Try '%s -h' for more options." % argv[0])
     exit()
@@ -50,10 +50,11 @@ def help():
     print("optional arguments:")
     print("   -h                       print this help")
     print("   -i if_name               select interface if_name. Default is enp4s0f0")
-    print("   -m mode            select debugging mode. Default is 1")
+    print("   -m mode                  select mode. Default is 1")
+    print("   -f filter                  select filter mode. Default is 1")
     print("")
     print("examples:")
-    print("   pkt-filter -i enp4s0f0  -m 1   # bind socket to enp4s0f0")
+    print("   pkt-filter -i enp4s0f0 -m 1 -f 0  # bind socket to enp4s0f0")
     exit()
 
 def parse_ipv4(pkt):
@@ -133,6 +134,7 @@ def main():
     global printed_pkts
     #arguments
     interface="enp4s0f0"
+    filter = 1
 
     if len(argv) == 1:
         print()
@@ -148,26 +150,38 @@ def main():
             interface = argv[2]
         elif str(argv[1]) == '-m':
             MODE = int(argv[2])
+        elif str(argv[1]) == '-f':
+            filter = int(argv[2])
         else:
             usage()
 
-    elif len(argv) == 5:
-        if str(argv[1]) != '-i' or str(argv[3]) != '-m':
+    elif len(argv) == 7:
+        if str(argv[1]) != '-i' or str(argv[3]) != '-m' or str(argv[5]) != '-f':
             usage()
         else:
             interface = argv[2]
             MODE = int(argv[4])
+            filter = int(argv[6])
 
     else:
         usage()
 
     print ("binding socket to '%s'" % interface)
 
-    # initialize BPF - load source code from pkt-filter.c
-    bpf = BPF(src_file = "pkt-filter.c",debug = 0)
+    function_udp_filter = 0
 
-    #load eBPF program udp_filter of type SOCKET_FILTER into the kernel eBPF vm
-    function_udp_filter = bpf.load_func("udp_filter", BPF.SOCKET_FILTER)
+    if filter == 0:
+        # initialize BPF - load source code from pkt-filter.c
+        bpf = BPF(src_file = "dumb-filter.c",debug = 0)
+
+        #load eBPF program udp_filter of type SOCKET_FILTER into the kernel eBPF vm
+        function_udp_filter = bpf.load_func("dumb_filter", BPF.SOCKET_FILTER)
+    else:
+        # initialize BPF - load source code from pkt-filter.c
+        bpf = BPF(src_file = "pkt-filter.c",debug = 0)
+
+        #load eBPF program udp_filter of type SOCKET_FILTER into the kernel eBPF vm
+        function_udp_filter = bpf.load_func("udp_filter", BPF.SOCKET_FILTER)
 
     #create raw socket, bind it to interface
     #attach bpf program to socket created
