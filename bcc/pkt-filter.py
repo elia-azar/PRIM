@@ -134,7 +134,7 @@ def main():
     global printed_pkts
     #arguments
     interface="enp4s0f0"
-    filter = 1
+    filter_mode = 1
 
     if len(argv) == 1:
         print()
@@ -151,7 +151,7 @@ def main():
         elif str(argv[1]) == '-m':
             MODE = int(argv[2])
         elif str(argv[1]) == '-f':
-            filter = int(argv[2])
+            filter_mode = int(argv[2])
         else:
             usage()
 
@@ -161,7 +161,7 @@ def main():
         else:
             interface = argv[2]
             MODE = int(argv[4])
-            filter = int(argv[6])
+            filter_mode = int(argv[6])
 
     else:
         usage()
@@ -170,7 +170,7 @@ def main():
 
     function_udp_filter = 0
 
-    if filter == 0:
+    if filter_mode == 0:
         # initialize BPF - load source code from pkt-filter.c
         bpf = BPF(src_file = "dumb-filter.c",debug = 0)
 

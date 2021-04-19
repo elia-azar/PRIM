@@ -12,6 +12,7 @@ int dumb_filter(struct __sk_buff *skb) {
 
     u64 key = 1;
     u64 counter = 0;
+    u64 *p;
 
     p = pkt_count.lookup(&key);
     if (p != 0) {
