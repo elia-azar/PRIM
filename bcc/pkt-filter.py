@@ -16,6 +16,7 @@ import socket
 import os
 import ctypes
 import sys
+import pcap as pcap
 
 class ifreq(ctypes.Structure):
     _fields_ = [("ifr_ifrn", ctypes.c_char * 16),
@@ -32,25 +33,26 @@ class FLAGS(object):
     SIOCSIFFLAGS  = 0x8914 # set the active flags
 
 bpf = 0
-
+MODE = 1
+pcap_file = ""
 #args
 def usage():
-    print("USAGE: %s [-i <if_name>] [-d <debug_mode>]" % argv[0])
+    print("USAGE: %s [-i <if_name>] [-m <mode>]" % argv[0])
     print("")
     print("Try '%s -h' for more options." % argv[0])
     exit()
 
 #help
 def help():
-    print("USAGE: %s [-i <if_name>] [-d <debug_mode>]" % argv[0])
+    print("USAGE: %s [-i <if_name>] [-m <mode>]" % argv[0])
     print("")
     print("optional arguments:")
     print("   -h                       print this help")
     print("   -i if_name               select interface if_name. Default is enp4s0f0")
-    print("   -d debug_mode            select debugging mode. Default is 1")
+    print("   -m mode            select debugging mode. Default is 1")
     print("")
     print("examples:")
-    print("   pkt-filter -i enp4s0f0  -d 1   # bind socket to enp4s0f0")
+    print("   pkt-filter -i enp4s0f0  -m 1   # bind socket to enp4s0f0")
     exit()
 
 def parse_ipv4(pkt):
@@ -125,7 +127,8 @@ def print_hex(pkt):
 
 def main():
     global bpf
-    DEBUG = 1
+    global MODE
+    global pcap_file
     #arguments
     interface="enp4s0f0"
 
@@ -141,17 +144,17 @@ def main():
     elif len(argv) == 3:
         if str(argv[1]) == '-i':
             interface = argv[2]
-        elif str(argv[1]) == '-d':
-            DEBUG = int(argv[2])
+        elif str(argv[1]) == '-m':
+            MODE = int(argv[2])
         else:
             usage()
 
     elif len(argv) == 5:
-        if str(argv[1]) != '-i' or str(argv[3]) != '-d':
+        if str(argv[1]) != '-i' or str(argv[3]) != '-m':
             usage()
         else:
             interface = argv[2]
-            DEBUG = int(argv[4])
+            MODE = int(argv[4])
 
     else:
         usage()
@@ -183,7 +186,9 @@ def main():
     fcntl.ioctl(sock, FLAGS.SIOCSIFFLAGS, ifr) # update
 
     sock.setblocking(True)
-
+    if MODE == 3:
+        pcap_file = pcap.Pcap('temp.pcap')
+    
     while 1:
         #retrieve raw packet from socket
         packet_str = os.read(socket_fd,256)
@@ -191,10 +196,10 @@ def main():
         #convert packet into bytearray
         packet_bytearray = bytearray(packet_str)
 
-        if DEBUG == 1:
+        if MODE == 1:
             print_hex(packet_bytearray)
 
-        elif DEBUG == 2:
+        elif MODE == 2:
             #ethernet header length
             ETH_HLEN = 14
 
@@ -219,6 +224,11 @@ def main():
             print(result)
             print()
 
+        elif MODE == 3:
+            pcap_file.write(packet_bytearray)
+            # flush data
+            pcap_file.pcap_file.flush()
+
         else:
             sleep(2)
             #print stats
@@ -237,6 +247,8 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('Interrupted')
         try:
+            if MODE == 3:
+                pcap_file.close()
             s = ""
             if len(bpf["pkt_count"].items()):
                 for k,v in bpf["pkt_count"].items():
