@@ -35,6 +35,7 @@ class FLAGS(object):
 bpf = 0
 MODE = 1
 pcap_file = ""
+printed_pkts = 0
 #args
 def usage():
     print("USAGE: %s [-i <if_name>] [-m <mode>]" % argv[0])
@@ -129,6 +130,7 @@ def main():
     global bpf
     global MODE
     global pcap_file
+    global printed_pkts
     #arguments
     interface="enp4s0f0"
 
@@ -220,6 +222,7 @@ def main():
             elif ether_type == "34525":
                 result += ", " + parse_ipv6(packet_bytearray[ETH_HLEN:])
             
+            printed_pkts += 1
             print("-------------------------------------")
             print(result)
             print()
@@ -247,7 +250,9 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('Interrupted')
         try:
-            if MODE == 3:
+            if MODE == 2:
+                print("Printed packets: {}".format(printed_pkts))
+            elif MODE == 3:
                 pcap_file.close()
             s = ""
             if len(bpf["pkt_count"].items()):
