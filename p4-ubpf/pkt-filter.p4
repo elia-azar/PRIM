@@ -56,7 +56,7 @@ parser MyParser(packet_in packet, out headers hdr, inout metadata meta) {
 
     state parse_ipv4 {
         packet.extract(hdr.ipv4);
-        transition select(hdr.ipv4.diffserv) {
+        transition select(hdr.ipv4.protocol) {
             0x11: parse_udp;
 	        default: accept;
 	    }

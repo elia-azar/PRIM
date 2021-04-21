@@ -23,7 +23,7 @@ header ipv4_t {
     bit<13>   fragOffset;
     bit<8>    ttl;
     bit<8>    protocol;
-    bit<16>   hdrrChecksum;
+    bit<16>   hdrChecksum;
     ip4Addr_t srcAddr;
     ip4Addr_t dstAddr;
 }
@@ -55,8 +55,8 @@ parser MyParser(packet_in packet, out headers hdr) {
 
     state parse_ipv4 {
         packet.extract(hdr.ipv4);
-        transition select(hdr.ipv4.diffserv) {
-            0x11: parse_udp;
+        transition select(hdr.ipv4.protocol) {
+            8w17: parse_udp;
 	        default: accept;
 	    }
     }
@@ -87,25 +87,37 @@ control MyIngress(inout headers hdr, in xdp_input xin, out xdp_output xout) {
             drop;
             save;
         }
-        default_action = drop();
+        default_action = save();
 
         // match port 320
         const entries = {
-            (0x0140) : save();
+            (0x4001) : save();
         }
         implementation = hash_table(8);
     }
 
     apply {
-		if (hdr.ipv4.isValid()) {
-            udp_exact.apply();
-		}
-        if (xoutdrop) {
+        if (!hdr.ethernet.isValid()) {
             counters.increment(0);
             xout.output_action = xdp_action.XDP_DROP;
-        }else {
+        }
+		else if (!hdr.ipv4.isValid()) {
             counters.increment(1);
-            xout.output_action = xdp_action.XDP_PASS;
+            xout.output_action = xdp_action.XDP_DROP;
+		}
+        else if(!hdr.udp.isValid()){
+            counters.increment(2);
+            xout.output_action = xdp_action.XDP_DROP;
+        }
+        else{
+            udp_exact.apply();
+            if (xoutdrop) {
+                counters.increment(3);
+                xout.output_action = xdp_action.XDP_DROP;
+            }else {
+                counters.increment(4);
+                xout.output_action = xdp_action.XDP_PASS;
+            }
         }
         xout.output_port = 0;
     }
