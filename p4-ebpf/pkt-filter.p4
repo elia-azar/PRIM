@@ -50,7 +50,7 @@ struct headers {
     udp_t        udp;
 }
 
-extern void save_packet(in headers hdr);
+//extern void save_packet(in headers hdr);
 
 /*************************************************************************
 *********************** P A R S E R  ***********************************
@@ -113,11 +113,9 @@ control MyFilter(inout headers hdr, out bool accept) {
         default_action = drop();
 
         // match port 320
-        const entries = {
-            (0x0140) : save();
-        }
-
-        // I think this is required in EBPF model
+        //const entries = {
+        //    (0x0140) : save();
+        //}
         implementation = hash_table(8);
     }
     
@@ -125,12 +123,12 @@ control MyFilter(inout headers hdr, out bool accept) {
         accept = false;
         if (hdr.udp.isValid()) {
             udp_exact.apply();
-        }
-        if (accept) {
-            drop_save_counter.increment(1);
-            save_packet(hdr);
-        }else{
-            drop_save_counter.increment(0);
+            if (accept) {
+                drop_save_counter.increment(1);
+                //save_packet(hdr);
+            }else{
+                drop_save_counter.increment(0);
+            }
         }
     }
 }
