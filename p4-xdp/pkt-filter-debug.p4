@@ -57,13 +57,13 @@ parser MyParser(packet_in packet, out headers hdr) {
         packet.extract(hdr.ipv4);
         transition select(hdr.ipv4.protocol) {
             8w17: parse_udp;
-            default: accept;
-        }
+	        default: accept;
+	    }
     }
 
     state parse_udp {
-        packet.extract(hdr.udp);
-        transition accept;
+	    packet.extract(hdr.udp);
+	    transition accept;
     }
 }
 
@@ -81,29 +81,43 @@ control MyIngress(inout headers hdr, in xdp_input xin, out xdp_output xout) {
 
     table udp_exact {
         key = {
-            hdr.udp.dport: exact;
+            hdr.udp.dport: ternary;
         }
         actions = {
             drop;
             save;
         }
-        default_action = drop();
+        default_action = save();
+
+        // match port 320
+        const entries = {
+            _ : save();
+        }
         implementation = hash_table(8);
     }
 
     apply {
-        if(hdr.udp.isValid()){
-            udp_exact.apply();
-            if (xoutdrop) {
-                counters.increment(0);
-                xout.output_action = xdp_action.XDP_DROP;
-            }else {
-                counters.increment(1);
-                xout.output_action = xdp_action.XDP_PASS;
-            }
+        if (!hdr.ethernet.isValid()) {
+            counters.increment(0);
+            xout.output_action = xdp_action.XDP_DROP;
+        }
+		else if (!hdr.ipv4.isValid()) {
+            counters.increment(1);
+            xout.output_action = xdp_action.XDP_DROP;
+		}
+        else if(!hdr.udp.isValid()){
+            counters.increment(2);
+            xout.output_action = xdp_action.XDP_DROP;
         }
         else{
-            xout.output_action = xdp_action.XDP_DROP;
+            udp_exact.apply();
+            if (xoutdrop) {
+                counters.increment(3);
+                xout.output_action = xdp_action.XDP_DROP;
+            }else {
+                counters.increment(4);
+                xout.output_action = xdp_action.XDP_PASS;
+            }
         }
         xout.output_port = 0;
     }
