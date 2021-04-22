@@ -1,0 +1,35 @@
+root@fdio:/opt/tools/p4c/backends/ebpf# make -f runtime/kernel.mk BPFOBJ=pkt-filter.o P4FILE=pkt-filter.p4
+pass verify_cmds: true
+pass verify_cmds: true
+pass verify_target_bpf: true
+clang -O2 -g -D__KERNEL__ -D__ASM_SYSREG_H -Wno-unused-value  -Wno-pointer-sign -Wno-compare-distinct-pointer-types -Wno-gnu-variable-sized-type-not-at-end -Wno-address-of-packed-member -Wno-tautological-compare -Wno-unknown-warning-option -Wnoparentheses-equality -I/opt/tools/p4c/backends/ebpf/runtime/ -I/opt/tools/p4c/backends/ebpf/runtime/usr/include/bpf/ -I/opt/tools/p4c/backends/ebpf/runtime/contrib/libbpf/include/uapi/ -emit-llvm -c pkt-filter.c -o pkt-filter.bc
+pkt-filter.c:32:1: error: expected parameter declarator
+BPF_MAP_LOOKUP_ELEM(MyFilter_udp_exact, &key_save);
+^
+/opt/tools/p4c/backends/ebpf/runtime/ebpf_kernel.h:96:25: note: expanded from macro 'BPF_MAP_LOOKUP_ELEM'
+    bpf_map_lookup_elem(&table, key)
+                        ^
+pkt-filter.c:32:1: error: expected ')'
+/opt/tools/p4c/backends/ebpf/runtime/ebpf_kernel.h:96:25: note: expanded from macro 'BPF_MAP_LOOKUP_ELEM'
+    bpf_map_lookup_elem(&table, key)
+                        ^
+pkt-filter.c:32:1: note: to match this '('
+/opt/tools/p4c/backends/ebpf/runtime/ebpf_kernel.h:96:24: note: expanded from macro 'BPF_MAP_LOOKUP_ELEM'
+    bpf_map_lookup_elem(&table, key)
+                       ^
+pkt-filter.c:32:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+BPF_MAP_LOOKUP_ELEM(MyFilter_udp_exact, &key_save);
+^
+/opt/tools/p4c/backends/ebpf/runtime/ebpf_kernel.h:96:5: note: expanded from macro 'BPF_MAP_LOOKUP_ELEM'
+    bpf_map_lookup_elem(&table, key)
+    ^
+pkt-filter.c:32:1: error: redefinition of 'bpf_map_lookup_elem' as different kind of symbol
+/opt/tools/p4c/backends/ebpf/runtime/ebpf_kernel.h:96:5: note: expanded from macro 'BPF_MAP_LOOKUP_ELEM'
+    bpf_map_lookup_elem(&table, key)
+    ^
+/opt/tools/p4c/backends/ebpf/runtime/usr/include/bpf/bpf_helper_defs.h:35:16: note: previous definition is here
+static void *(*bpf_map_lookup_elem)(void *map, const void *key) = (void *) 1;
+               ^
+1 warning and 3 errors generated.
+runtime/kernel.mk:67: recipe for target 'pkt-filter.bc' failed
+make: *** [pkt-filter.bc] Error 1

@@ -20,8 +20,8 @@ enum ebpf_errorCodes {
 
 void* memcpy(void* dest, const void* src, size_t num);
 
-//struct MyFilter_udp_exact_key key_save = {.field0 = 320};
-//struct MyFilter_udp_exact_value value_save = {.action = 1};
+struct MyFilter_udp_exact_key key_save = {.field0 = 320};
+struct MyFilter_udp_exact_value value_save = {.action = 1};
 
 REGISTER_START()
 REGISTER_TABLE(MyFilter_udp_exact, BPF_MAP_TYPE_HASH, sizeof(struct MyFilter_udp_exact_key), sizeof(struct MyFilter_udp_exact_value), 8)
@@ -29,7 +29,8 @@ REGISTER_TABLE(MyFilter_udp_exact_defaultAction, BPF_MAP_TYPE_ARRAY, sizeof(u32)
 REGISTER_TABLE(MyFilter_drop_save_counter, BPF_MAP_TYPE_HASH, sizeof(MyFilter_drop_save_counter_key), sizeof(MyFilter_drop_save_counter_value), 2)
 REGISTER_END()
 
-//BPF_MAP_UPDATE_ELEM(MyFilter_udp_exact, &key_save, &value, BPF_ANY);
+BPF_MAP_LOOKUP_ELEM(MyFilter_udp_exact, &key_save);
+//BPF_MAP_UPDATE_ELEM(MyFilter_udp_exact, &key_save, &value_save, BPF_ANY);
 
 SEC("prog")
 

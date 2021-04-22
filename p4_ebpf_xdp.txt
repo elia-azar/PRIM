@@ -1,4 +1,5 @@
 bpftool map update id 124 key 64 01 value 01 00 00 00
+
 p4c-ebpf pkt-no-filter.p4 -o pkt-no-filter.c
 make -f runtime/kernel.mk BPFOBJ=pkt-no-filter.o P$FILE=pkt-no-filter.p4
 tc qdisc add dev enp4s0f0 clsact
