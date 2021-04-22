@@ -2,8 +2,7 @@ LLC ?= llc
 CLANG ?= clang
 CC= gcc
 CFLAGS=-g
-BPFOBJ= xdp1.o xdp2.o xdp3.o xdp4.o xdp5.o xdp6.o xdp8.o xdp9.o xdp10.o \
-        xdp11.o xdp13.o xdp14.o xdp15.o xdp16.o
+BPFOBJ= pkt-filter.o
 BPFLOADER=bpfloader
 BPFLIB=../lib/
 #IFACE=enp0s16
@@ -67,7 +66,7 @@ verify_target_bpf: verify_cmds
 	sudo ./$(BPFLOADER) $@ || true
 
 clean: clean_loader
-	rm -f *.o *_ebpf.c xdp[1-9]*.[ch]
+	rm -f *.o *_ebpf.c pkt-filter.[ch]
 
 clean_loader:
 	rm -f bpfloader
