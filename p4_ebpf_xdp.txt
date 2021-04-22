@@ -1,0 +1,109 @@
+bpftool map update id 124 key 64 01 value 01 00 00 00
+p4c-ebpf pkt-no-filter.p4 -o pkt-no-filter.c
+make -f runtime/kernel.mk BPFOBJ=pkt-no-filter.o P$FILE=pkt-no-filter.p4
+tc qdisc add dev enp4s0f0 clsact
+tc filter add dev enp4s0f0 ingress bpf da obj pkt-no-filter.o section prog verbose
+tc filter show dev enp4s0f0 ingress
+bpftool prog show id 97
+bpftool map dump id 127
+bpftool map delete id 127 key 1 0 0 0
+
+
+
+Filter w. dev/null
+871045560
+c0 31 5b 04 = 79704411
+90,85
+
+869057532
+b0 61 53 04 = 72573360
+91,65
+
+864744741
+f0 58 4a 04 = 71981296
+91,68
+
+
+/dev/null
+
+864971100
+2a 2f 7d 04 = 75312938
+91,29
+
+869471316
+4c b1 89 04 = 76132684
+91,24
+
+863041095
+e0 84 84 04 = 75793632
+91,28
+
+XDP 
+
+make
+ip link set dev enp4s0f0 xdp obj pkt-filter.o
+ip -d link show enp4s0f0
+bpftool prog show id 95
+bpftool map update id 68 key 64 01 value 01 00 00 00
+bpftool map delete id 70 key 0 0 0 0
+
+sudo ip link set dev enp4s0f0 xdp off
+
+/dev/null with filter
+
+871097220
+da 97 5f 03 = 56596442
+93,50
+
+870505020
+ec af 60 03 = 56668140
+93,49
+
+867841632
+80 17 5c 03 = 56366976
+93,50
+
+
+/dev/null
+
+869349159
+7a 1e 61 03 = 56696442
+93,48
+
+867991068
+10 c8 5e 03 = 56543248
+93,49
+
+867227823
+40 e5 6d 03 = 57533760
+93,37
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ebpf with udp filter
+
+864682131
+d0 5b 8e 04 = 76438480
+91,16
+
+866203758
+10 2e 82 04 = 75640336
+91,27
+
+
+866229210
+b0 2c 8b 04 = 76229808
+91,20
+
+
