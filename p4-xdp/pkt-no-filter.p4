@@ -1,12 +1,7 @@
-/* -*- P4_16 -*- */
 #include <core.p4>
-#include <ebpf_model.p4>
+#include "xdp_model.p4"
 
 const bit<16> TYPE_IPV4 = 0x800;
-
-/*************************************************************************
-*********************** H E A D E R S  ***********************************
-*************************************************************************/
 
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
@@ -40,28 +35,16 @@ header udp_t {
     bit<16>  checksum;
 }
 
-struct metadata {
-    bit<32>  counter;
-}
-
 struct headers {
     ethernet_t   ethernet;
     ipv4_t       ipv4;
     udp_t        udp;
 }
 
-//extern void save_packet(in headers hdr);
-
-/*************************************************************************
-*********************** P A R S E R  ***********************************
-*************************************************************************/
-
 parser MyParser(packet_in packet, out headers hdr) {
-
     state start {
         transition parse_ethernet;
     }
-
     state parse_ethernet {
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
@@ -73,33 +56,33 @@ parser MyParser(packet_in packet, out headers hdr) {
     state parse_ipv4 {
         packet.extract(hdr.ipv4);
         transition select(hdr.ipv4.protocol) {
-            0x11: parse_udp;
-	        default: accept;
-	    }
+            8w17: parse_udp;
+            default: accept;
+        }
     }
 
     state parse_udp {
-	    packet.extract(hdr.udp);
-	    transition accept;
+        packet.extract(hdr.udp);
+        transition accept;
     }
-
 }
 
+control MyIngress(inout headers hdr, in xdp_input xin, out xdp_output xout) {
+    CounterArray(32w2, true) accept_counters;
 
-/*************************************************************************
-****************  F I L T E R   P R O C E S S I N G   ********************
-*************************************************************************/
-
-control MyFilter(inout headers hdr, out bool accept) {
-    
-    CounterArray(32w2, true) save_counter;
-    
     apply {
-        accept = true;
-        save_counter.increment(1);
+        accept_counters.increment(1);
+        xout.output_action = xdp_action.XDP_PASS;
+        xout.output_port = 0;
     }
 }
 
-ebpfFilter(
-MyParser(),
-MyFilter()) main;
+control MyDeparser(in headers hdr, packet_out packet) {
+    apply {
+        packet.emit(hdr.ethernet);
+        packet.emit(hdr.ipv4);
+        packet.emit(hdr.udp);
+    }
+}
+
+xdp(MyParser(), MyIngress(), MyDeparser()) main;
