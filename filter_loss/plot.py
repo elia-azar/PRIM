@@ -2,8 +2,9 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 
 # create data 
-file_name = "data/results_dump6_.txt"
+file_name = "data/results_dump10_.txt"
 
+scatter_cap = []
 cap = []
 lower_cap = []
 upper_cap = []
@@ -17,14 +18,15 @@ lower_total = []
 upper_total = []
 total_box = []
 
+SCATTER = True
 N = 50
 # value returned by parser.py
-x = [1, 2, 3, 4, 5, 6, 7]
+x = [0, 1, 2, 3, 4, 5, 6, 7]
 
 file = open(file_name, 'r')
 Lines = file.readlines()
 
-for i in range(7):
+for i in range(8):
     # Strips the newline character
     captured = 0
     filtered = 0
@@ -48,8 +50,9 @@ for i,j in zip(cap_box,filter_box):
 
 # basic plot
 
-for i in range(7):
+for i in range(8):
     sub_cap = cap_box[N*i:N*(i+1)]
+    scatter_cap.append(tuple(sub_cap))
     sub_filter = filter_box[N*i:N*(i+1)]
     sub_total = total_box[N*i:N*(i+1)]
     #sub_total, sub_cap, sub_filter = (list(t) for t in zip(*sorted(zip(sub_total, sub_cap, sub_filter))))
@@ -72,20 +75,28 @@ for i in range(7):
     upper_total.append(mean_total + 1.96 * std / sqrt(len(sub_total)))
 
 
-plt.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
-plt.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
-plt.plot(x, lower_filter, x, upper_filter, color='orange', alpha=0.1)
-plt.fill_between(x, lower_filter, upper_filter, where=upper_filter >= lower_filter, alpha=0.3, facecolor='orange', interpolate=True)
-plt.plot(x, lower_total, x, upper_total, color='green', alpha=0.1)
-plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='green', interpolate=True)
+if SCATTER:
+    for xe, ye in zip(x, scatter_cap):
+        plt.scatter([xe] * len(ye), ye)
 
-# plot lines 
-plt.plot(x, cap, label = "Captured pkts", color="blue") 
-plt.plot(x, filter, label = "Dropped pkts", color="orange")
-plt.plot(x, total, label = "Treated pkts", color="green")
-plt.title('RX packets vs filter size with 60% packets matching the filter')
+    plt.xticks([0,1,2,3,4,5,6,7])
+    plt.axes().set_xticklabels(['0','1','2','3','4','5','6','7'])
+else:
+    plt.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
+    plt.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
+    #plt.plot(x, lower_filter, x, upper_filter, color='orange', alpha=0.1)
+    #plt.fill_between(x, lower_filter, upper_filter, where=upper_filter >= lower_filter, alpha=0.3, facecolor='orange', interpolate=True)
+    #plt.plot(x, lower_total, x, upper_total, color='green', alpha=0.1)
+    #plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='green', interpolate=True)
+
+    # plot lines 
+    plt.plot(x, cap, label = "Captured pkts", color="blue") 
+    #plt.plot(x, filter, label = "Dropped pkts", color="orange")
+    #plt.plot(x, total, label = "Treated pkts", color="green")
+
+plt.title('RX packets vs filter size with 50% packets matching the filter')
 plt.ylabel('RX pkts (%)')
 plt.xlabel('Filter size')
 plt.legend() 
 
-plt.savefig("images/percentage_vs_filter_60_match.png")
+plt.savefig("images/%s_percentage_vs_filter_50_match.png" % ("scatter" if SCATTER else "plot"))
