@@ -54,7 +54,7 @@ def help():
     print("   -f filter                  select filter mode. Default is 1")
     print("")
     print("examples:")
-    print("   pkt-filter -i enp4s0f0 -m 1 -f 0  # bind socket to enp4s0f0")
+    print("   ./pkt-filter.py -i enp4s0f0 -m 1 -f 0  # bind socket to enp4s0f0")
     exit()
 
 def parse_ipv4(pkt):
@@ -246,7 +246,7 @@ def main():
             # flush data
             pcap_file.pcap_file.flush()
 
-        else:
+        elif MODE == 4:
             sleep(2)
             #print stats
             s = ""
@@ -256,6 +256,8 @@ def main():
                 print(s)
             else:
                 print("No entries yet")
+        else:
+            sleep(10)
 
 
 if __name__ == '__main__':
