@@ -2,7 +2,7 @@
 
 num=0
 
-echo 'STARTING Moongen traffic generator'
+echo 'STARTING Moongen receptor'
 
 while getopts ":n:" arg; do
 	case "${arg}" in
