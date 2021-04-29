@@ -69,9 +69,9 @@ plt.fill_between(x, lower_loss, upper_loss, where=upper_loss >= lower_loss, alph
 
 # plot lines 
 plt.plot(x, pkt_loss, color="blue") 
-plt.title('Packet Loss vs. sending rate')
+plt.title('Packet Loss as a function input rate')
 plt.ylabel('Pkt loss (%)')
-plt.xlabel('Pkt rate in Mpps')
+plt.xlabel('Pkt rate (Mpps)')
 plt.legend() 
 
 plt.savefig("images/loss.png")

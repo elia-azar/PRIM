@@ -14,24 +14,24 @@ while getopts ":m:" arg; do
 	esac
 done
 
-if [ $method = "p4ebpf" ]
+if [ $method == "p4ebpf" ]
 then
-	export P4EBPF=/opt/tools/p4c/backends/ebpf;
+	export P4EBPF=$P4C/backends/ebpf;
 	tc qdisc add dev enp4s0f0 clsact;
 	tc filter add dev enp4s0f0 ingress bpf da obj $P4EBPF/pkt-no-filter.o section prog verbose;
 	# retrieve prog id with the following command
-	tc filter show dev enp4s0f0 ingress
+	tc filter show dev enp4s0f0 ingress;
 	# retrieve map id with the following id
-	bpftool prog id <prog_id>
+	bpftool prog id 64;
 
-elif [ $method = "p4xdp" ]
+elif [ $method == "p4xdp" ]
 then
-	export P4XDP=${P4C-XDP}/test;
+	export P4XDP=$P4C/extensions/p4c-xdp/tests;
 	ip link set dev enp4s0f0 xdp obj $P4XDP/pkt-no-filter.o;
 	# retrieve prog id with the following command
-	ip -d link show enp4s0f0
+	ip -d link show enp4s0f0;
 	# retrieve map id with the following id
-	bpftool prog id <prog_id>
+	bpftool prog id 64;
 fi
 
 for j in {1..50}
@@ -39,7 +39,7 @@ do
 	for i in {1..18}
 	do
 		echo "Starting $i"
-		if [ $method in $methods_with_id ]
+		if [[ $methods_with_list =~ (^|[[:space:]])$method($|[[:space:]]) ]]
 		then
 			./${method}_automate.sh -n $i -i $id &
 		else
@@ -55,11 +55,11 @@ do
 	done
 done
 
-if [ $nom = "p4ebpf" ]
+if [ $nom == "p4ebpf" ]
 then
 	tc qdisc del dev enp4s0f0 clsact
 
-elif [ $method = "p4xdp" ]
+elif [ $method == "p4xdp" ]
 then
 	ip link set dev enp4s0f0 xdp off
 fi
