@@ -13,7 +13,7 @@ while getopts ":n:" arg; do
 done
 
 
-timeout 70s tcpdump -i enp4s0f0 > /dev/null 2>test.txt
+timeout 70s tcpdump -i enp4s0f0 -w /dev/null 2>test.txt
 
 sleep 2
 echo "New results" >> results_tcpdump${num}.txt
