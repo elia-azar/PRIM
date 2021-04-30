@@ -9,6 +9,7 @@
 #include <inttypes.h>
 #include <sys/types.h>
 #include <sys/queue.h>
+#include <netinet/in.h>
 #include <setjmp.h>
 #include <stdarg.h>
 #include <ctype.h>
@@ -38,10 +39,16 @@ struct rte_flow *flow;
 
 #define SRC_IP ((0<<24) + (0<<16) + (0<<8) + 0) /* src ip = 0.0.0.0 */
 #define DEST_IP ((192<<24) + (168<<16) + (1<<8) + 1) /* dest ip = 192.168.1.1 */
-#define FULL_MASK 0xffffffff /* full mask */
+#define FULL_MASK_32 0xffffffff /* full mask */
 #define EMPTY_MASK 0x0 /* empty mask */
 
+#define DST_PORT 320
+#define FULL_MASK_16 0xffff
+
+#define PROTO 17
 #include "flow_blocks.c"
+
+unsigned long rx_packets = 0;
 
 static inline void
 print_ether_addr(const char *what, struct rte_ether_addr *eth_addr)
@@ -56,10 +63,17 @@ main_loop(void)
 {
 	struct rte_mbuf *mbufs[32];
 	struct rte_ether_hdr *eth_hdr;
+	struct rte_ipv4_hdr *ip_hdr;
+	struct rte_udp_hdr *udp_hdr;
 	struct rte_flow_error error;
 	uint16_t nb_rx;
 	uint16_t i;
 	uint16_t j;
+	uint32_t ip_dst;
+	uint32_t ip_src;
+	uint8_t ip_proto;
+	uint16_t src_port;
+	uint16_t dst_port;
 	int ret;
 
 	while (!force_quit) {
@@ -70,15 +84,48 @@ main_loop(void)
 				for (j = 0; j < nb_rx; j++) {
 					struct rte_mbuf *m = mbufs[j];
 
-					eth_hdr = rte_pktmbuf_mtod(m,
-							struct rte_ether_hdr *);
+					/* save ether type of the incoming packet */
+					eth_hdr = rte_pktmbuf_mtod(m, struct rte_ether_hdr *);
+
+					/* Remove the Ethernet header and trailer from the input packet */
+					rte_pktmbuf_adj(m, (uint16_t)sizeof(struct rte_ether_hdr));
+
+					/* if this is an IPv4 packet */
+					//if (likely(RTE_ETH_IS_IPV4_HDR(m->packet_type))) {
+	
+					/* Read the lookup key (i.e. ip_dst) from the input packet */
+					ip_hdr = rte_pktmbuf_mtod(m, struct rte_ipv4_hdr *);
+					ip_src = rte_be_to_cpu_32(ip_hdr->src_addr);
+					ip_dst = rte_be_to_cpu_32(ip_hdr->dst_addr);
+					ip_proto = ip_hdr->next_proto_id;
+
+					/* Remove the Ethernet header and trailer from the input packet */
+					rte_pktmbuf_adj(m, (uint16_t)sizeof(struct rte_ipv4_hdr));
+
+					//if (likely(ip_proto == 17)){
+					udp_hdr = rte_pktmbuf_mtod(m, struct rte_udp_hdr *);
+					src_port = rte_be_to_cpu_16(udp_hdr->src_port);
+					dst_port = rte_be_to_cpu_16(udp_hdr->dst_port);
+
 					print_ether_addr("src=",
 							&eth_hdr->s_addr);
 					print_ether_addr(" - dst=",
 							&eth_hdr->d_addr);
-					printf(" - queue=0x%x",
-							(unsigned int)i);
+					printf(" -- ");
+					printf("%i.%i.%i.%i:",  (int)(ip_src >> 24 & 0xff),
+											(int)(ip_src >> 16 & 0xff),
+											(int)(ip_src >> 8 & 0xff),
+											(int)(ip_src & 0xff));
+					printf("%i -> ", src_port);
+					printf("%i.%i.%i.%i:",  (int)(ip_dst >> 24 & 0xff),
+											(int)(ip_dst >> 16 & 0xff),
+											(int)(ip_dst >> 8 & 0xff),
+											(int)(ip_dst & 0xff));
+					printf("%i - ", dst_port);
+					printf(" proto=%i", ip_proto);
 					printf("\n");
+
+					rx_packets += 1;
 
 					rte_pktmbuf_free(m);
 				}
@@ -88,11 +135,10 @@ main_loop(void)
 
 	/* closing and releasing resources */
 	rte_flow_flush(port_id, &error);
-	ret = rte_eth_dev_stop(port_id);
-	if (ret < 0)
-		printf("Failed to stop port %u: %s",
-		       port_id, rte_strerror(-ret));
+	rte_eth_dev_stop(port_id);
 	rte_eth_dev_close(port_id);
+
+	printf("Total packets received = %lu\n", rx_packets);
 	return ret;
 }
 
@@ -248,9 +294,11 @@ main(int argc, char **argv)
 	init_port();
 
 	/* create flow for send packet with */
-	flow = generate_ipv4_flow(port_id, selected_queue,
-				SRC_IP, EMPTY_MASK,
-				DEST_IP, FULL_MASK, &error);
+	flow = generate_udpv4_flow(port_id, selected_queue,
+							SRC_IP, EMPTY_MASK,
+							PROTO, DST_PORT, 
+							FULL_MASK_16,
+							&error);
 	if (!flow) {
 		printf("Flow can't be created %d message: %s\n",
 			error.type,
@@ -258,10 +306,5 @@ main(int argc, char **argv)
 		rte_exit(EXIT_FAILURE, "error in creating flow");
 	}
 
-	ret = main_loop();
-
-	/* clean up the EAL */
-	rte_eal_cleanup();
-
-	return ret;
+	return main_loop();
 }

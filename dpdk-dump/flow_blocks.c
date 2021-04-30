@@ -2,13 +2,14 @@
  * Copyright 2017 Mellanox Technologies, Ltd
  */
 
-#define MAX_PATTERN_NUM		3
+#define MAX_PATTERN_NUM		4
 #define MAX_ACTION_NUM		2
 
 struct rte_flow *
-generate_ipv4_flow(uint16_t port_id, uint16_t rx_q,
+generate_udpv4_flow(uint16_t port_id, uint16_t rx_q,
 		uint32_t src_ip, uint32_t src_mask,
-		uint32_t dest_ip, uint32_t dest_mask,
+		uint8_t proto, uint16_t dstp, 
+		uint16_t dst_port_mask,
 		struct rte_flow_error *error);
 
 
@@ -24,10 +25,12 @@ generate_ipv4_flow(uint16_t port_id, uint16_t rx_q,
  *   The src ip value to match the input packet.
  * @param src_mask
  *   The mask to apply to the src ip.
- * @param dest_ip
- *   The dest ip value to match the input packet.
- * @param dest_mask
- *   The mask to apply to the dest ip.
+ * @param proto
+ *   The transport protocol
+ * @param dstp
+ *   The dst port value to match the input packet.
+ * @param dst_port_mask
+ *   The mask to apply to the dst port.
  * @param[out] error
  *   Perform verbose error reporting if not NULL.
  *
@@ -35,9 +38,10 @@ generate_ipv4_flow(uint16_t port_id, uint16_t rx_q,
  *   A flow if the rule could be created else return NULL.
  */
 struct rte_flow *
-generate_ipv4_flow(uint16_t port_id, uint16_t rx_q,
+generate_udpv4_flow(uint16_t port_id, uint16_t rx_q,
 		uint32_t src_ip, uint32_t src_mask,
-		uint32_t dest_ip, uint32_t dest_mask,
+		uint8_t proto, uint16_t dstp,
+		uint16_t dst_port_mask,
 		struct rte_flow_error *error)
 {
 	struct rte_flow_attr attr;
@@ -47,6 +51,8 @@ generate_ipv4_flow(uint16_t port_id, uint16_t rx_q,
 	struct rte_flow_action_queue queue = { .index = rx_q };
 	struct rte_flow_item_ipv4 ip_spec;
 	struct rte_flow_item_ipv4 ip_mask;
+	struct rte_flow_item_udp udp_spec;
+    struct rte_flow_item_udp udp_mask;
 	int res;
 
 	memset(pattern, 0, sizeof(pattern));
@@ -81,16 +87,22 @@ generate_ipv4_flow(uint16_t port_id, uint16_t rx_q,
 	 */
 	memset(&ip_spec, 0, sizeof(struct rte_flow_item_ipv4));
 	memset(&ip_mask, 0, sizeof(struct rte_flow_item_ipv4));
-	ip_spec.hdr.dst_addr = htonl(dest_ip);
-	ip_mask.hdr.dst_addr = dest_mask;
 	ip_spec.hdr.src_addr = htonl(src_ip);
 	ip_mask.hdr.src_addr = src_mask;
 	pattern[1].type = RTE_FLOW_ITEM_TYPE_IPV4;
 	pattern[1].spec = &ip_spec;
 	pattern[1].mask = &ip_mask;
 
+	memset(&udp_spec, 0, sizeof(struct rte_flow_item_udp));
+	memset(&udp_mask, 0, sizeof(struct rte_flow_item_udp));
+	udp_spec.hdr.dst_port = htonl(dstp);
+	udp_mask.hdr.dst_port = dst_port_mask;
+	pattern[2].type = RTE_FLOW_ITEM_TYPE_UDP;
+	pattern[2].spec = &udp_spec;
+	pattern[2].mask = &udp_mask;
+
 	/* the final level must be always type end */
-	pattern[2].type = RTE_FLOW_ITEM_TYPE_END;
+	pattern[3].type = RTE_FLOW_ITEM_TYPE_END;
 
 	res = rte_flow_validate(port_id, &attr, pattern, action, error);
 	if (!res)
