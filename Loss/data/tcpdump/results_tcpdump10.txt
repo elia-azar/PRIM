@@ -1,0 +1,250 @@
+New results
+60233438 packets captured
+60233438 packets received by filter
+0 packets dropped by kernel
+528971292 packets dropped by interface
+New results
+63944770 packets captured
+63944770 packets received by filter
+0 packets dropped by kernel
+524289445 packets dropped by interface
+New results
+64056831 packets captured
+64056831 packets received by filter
+0 packets dropped by kernel
+523031729 packets dropped by interface
+New results
+65074398 packets captured
+65074398 packets received by filter
+0 packets dropped by kernel
+523461965 packets dropped by interface
+New results
+63874066 packets captured
+63874066 packets received by filter
+0 packets dropped by kernel
+523291543 packets dropped by interface
+New results
+62525458 packets captured
+62525458 packets received by filter
+0 packets dropped by kernel
+517464955 packets dropped by interface
+New results
+63901527 packets captured
+63901527 packets received by filter
+0 packets dropped by kernel
+525431219 packets dropped by interface
+New results
+64897321 packets captured
+64897321 packets received by filter
+0 packets dropped by kernel
+523383640 packets dropped by interface
+New results
+63318178 packets captured
+63318178 packets received by filter
+0 packets dropped by kernel
+519863374 packets dropped by interface
+New results
+64960801 packets captured
+64960801 packets received by filter
+0 packets dropped by kernel
+524210035 packets dropped by interface
+New results
+64153076 packets captured
+64153076 packets received by filter
+0 packets dropped by kernel
+520990360 packets dropped by interface
+New results
+64251155 packets captured
+64251155 packets received by filter
+0 packets dropped by kernel
+524262213 packets dropped by interface
+New results
+63594161 packets captured
+63594161 packets received by filter
+0 packets dropped by kernel
+522410862 packets dropped by interface
+New results
+64218115 packets captured
+64218115 packets received by filter
+0 packets dropped by kernel
+524827793 packets dropped by interface
+New results
+64282434 packets captured
+64282434 packets received by filter
+0 packets dropped by kernel
+522912092 packets dropped by interface
+New results
+63846693 packets captured
+63846693 packets received by filter
+0 packets dropped by kernel
+525289934 packets dropped by interface
+New results
+64119205 packets captured
+64119205 packets received by filter
+0 packets dropped by kernel
+523915930 packets dropped by interface
+New results
+63646179 packets captured
+63646179 packets received by filter
+0 packets dropped by kernel
+524518547 packets dropped by interface
+New results
+64132056 packets captured
+64132056 packets received by filter
+0 packets dropped by kernel
+522997958 packets dropped by interface
+New results
+64065222 packets captured
+64065222 packets received by filter
+0 packets dropped by kernel
+523204526 packets dropped by interface
+New results
+63828327 packets captured
+63828327 packets received by filter
+0 packets dropped by kernel
+524160755 packets dropped by interface
+New results
+64337550 packets captured
+64337550 packets received by filter
+0 packets dropped by kernel
+524759009 packets dropped by interface
+New results
+64256439 packets captured
+64256439 packets received by filter
+0 packets dropped by kernel
+525799043 packets dropped by interface
+New results
+63114098 packets captured
+63114098 packets received by filter
+0 packets dropped by kernel
+516019704 packets dropped by interface
+New results
+65017165 packets captured
+65017165 packets received by filter
+0 packets dropped by kernel
+524379715 packets dropped by interface
+New results
+64351249 packets captured
+64351249 packets received by filter
+0 packets dropped by kernel
+523813981 packets dropped by interface
+New results
+65201250 packets captured
+65201250 packets received by filter
+0 packets dropped by kernel
+523981871 packets dropped by interface
+New results
+63726642 packets captured
+63726642 packets received by filter
+0 packets dropped by kernel
+519660794 packets dropped by interface
+New results
+63770171 packets captured
+63770171 packets received by filter
+0 packets dropped by kernel
+522329163 packets dropped by interface
+New results
+64779437 packets captured
+64779437 packets received by filter
+0 packets dropped by kernel
+524234907 packets dropped by interface
+New results
+63300786 packets captured
+63300786 packets received by filter
+0 packets dropped by kernel
+525822674 packets dropped by interface
+New results
+64183043 packets captured
+64183043 packets received by filter
+0 packets dropped by kernel
+522991386 packets dropped by interface
+New results
+64647027 packets captured
+64647027 packets received by filter
+0 packets dropped by kernel
+524675072 packets dropped by interface
+New results
+57110501 packets captured
+57110501 packets received by filter
+0 packets dropped by kernel
+527947632 packets dropped by interface
+New results
+63625954 packets captured
+63625954 packets received by filter
+0 packets dropped by kernel
+522567628 packets dropped by interface
+New results
+64721778 packets captured
+64721778 packets received by filter
+0 packets dropped by kernel
+524617835 packets dropped by interface
+New results
+63806107 packets captured
+63806107 packets received by filter
+0 packets dropped by kernel
+523253095 packets dropped by interface
+New results
+63628318 packets captured
+63628318 packets received by filter
+0 packets dropped by kernel
+524545102 packets dropped by interface
+New results
+64014395 packets captured
+64014395 packets received by filter
+0 packets dropped by kernel
+522191031 packets dropped by interface
+New results
+64018651 packets captured
+64018651 packets received by filter
+0 packets dropped by kernel
+516902713 packets dropped by interface
+New results
+64537282 packets captured
+64537282 packets received by filter
+0 packets dropped by kernel
+525013633 packets dropped by interface
+New results
+64572939 packets captured
+64572939 packets received by filter
+0 packets dropped by kernel
+520544540 packets dropped by interface
+New results
+64192216 packets captured
+64192216 packets received by filter
+0 packets dropped by kernel
+525833908 packets dropped by interface
+New results
+62886162 packets captured
+62886162 packets received by filter
+0 packets dropped by kernel
+526433354 packets dropped by interface
+New results
+64675143 packets captured
+64675143 packets received by filter
+0 packets dropped by kernel
+524437922 packets dropped by interface
+New results
+63974837 packets captured
+63974837 packets received by filter
+0 packets dropped by kernel
+523210113 packets dropped by interface
+New results
+63900904 packets captured
+63900904 packets received by filter
+0 packets dropped by kernel
+524153887 packets dropped by interface
+New results
+63554914 packets captured
+63554914 packets received by filter
+0 packets dropped by kernel
+524545426 packets dropped by interface
+New results
+65044802 packets captured
+65044802 packets received by filter
+0 packets dropped by kernel
+523164906 packets dropped by interface
+New results
+64354866 packets captured
+64354866 packets received by filter
+0 packets dropped by kernel
+519589427 packets dropped by interface
