@@ -15,49 +15,54 @@ def loss(rec, trans):
     return loss
 
 def parse(file_name):
-    if METHOD == "tcpdump":
-        return parse_tcpdump(file_name)
-    elif METHOD == "moongen":
-        return parse_moongen(file_name)
-
-def parse_moongen(file_name):
     received = []
-    sent = []
     for i in range(1,19):
         file = open(file_name + str(i) + ".txt", 'r')
         Lines = file.readlines() 
-        # Strips the newline character 
-        for j in range(0, len(Lines), 4):
-            line = Lines[j].strip().split()
-            if len(line) < 1:
-                continue
-            elif line[0] == "New":
-                index = Lines[j+1].strip().split().index("total") + 1
-                received.append(int(Lines[j+1].strip().split()[index]))
-                index = Lines[j+3].strip().split().index("total") + 1
-                sent.append(int(Lines[j+3].strip().split()[index]))
-    return received, sent
-
-def parse_tcpdump(file_name):
-    received = []
-    sent = []
-    for i in range(1,19):
-        file = open(file_name + str(i) + ".txt", 'r')
-        Lines = file.readlines() 
-        # Strips the newline character 
-        for j in range(0, len(Lines), 5):
-            line = Lines[j].strip().split()
-            if len(line) < 1:
-                continue
-            elif line[0] == "New":
-                received.append(int(Lines[j+1].split()[0].strip()))
+        if METHOD == "tcpdump":
+            parse_tcpdump(Lines, received)
+        elif METHOD == "moongen":
+            parse_moongen(Lines, received)
+        elif METHOD == "p4ebpf" or METHOD == "p4xdp":
+            parse_p4ebpf_p4xdp(Lines, received)
+    
     sent = the_parser.sent_list("data/%s/%s_results_generator" % (METHOD, METHOD))
-    #print("THIS IS THE RX LIST: ")
-    #print_list(received)
-    #print("-------------------------------------------")
-    #print("THIS IS THE SENT LIST: ")
-    #print_list(sent)
+
     return received, sent
+
+def parse_moongen(Lines, received):
+    for j in range(0, len(Lines), 4):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            index = Lines[j+1].strip().split().index("total") + 1
+            received.append(int(Lines[j+1].strip().split()[index]))
+
+def parse_tcpdump(Lines, received):
+    for j in range(0, len(Lines), 5):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            received.append(int(Lines[j+1].split()[0].strip()))
+
+def parse_p4ebpf_p4xdp(Lines, received):
+    for j in range(0, len(Lines), 3):
+        line = Lines[j].strip().split()
+        value = 0
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            splitted_line = Lines[j+1].split()
+            value += int(splitted_line[9].strip(), 16)
+            value *= 256**2
+            value += int(splitted_line[8].strip(), 16)
+            value *= 256**2
+            value += int(splitted_line[7].strip(), 16)
+            value *= 256**2
+            value += int(splitted_line[6].strip(), 16)
+            received.append(value)
 
 def compute_min_mean_max(file_name):
     pkt_loss = []
@@ -100,7 +105,7 @@ def plot_loss(lower_loss, pkt_loss, upper_loss):
     plt.savefig("images/loss_%s.png" % METHOD)
 
 x,y,z = compute_min_mean_max(file_name)
-print_list(x)
-print_list(y)
-print_list(z)
-#plot_loss(x,y,z)
+#print_list(x)
+#print_list(y)
+#print_list(z)
+plot_loss(x,y,z)
