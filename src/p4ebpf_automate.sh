@@ -21,7 +21,7 @@ sleep 70
 
 echo "New results" >> results_p4ebpf${num}.txt
 # retrieve value from the map
-bpftool map dump id $id > results_p4ebpf${num}.txt
+bpftool map dump id $id >> results_p4ebpf${num}.txt
 
 # delete entries from the map
 bpftool map delete id $id key 1 0 0 0
