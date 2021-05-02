@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "tcpdump" 
+METHOD = "p4ebpf" 
 
 # create data 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
@@ -56,11 +56,11 @@ def parse_p4ebpf_p4xdp(Lines, received):
         elif line[0] == "New":
             splitted_line = Lines[j+1].split()
             value += int(splitted_line[9].strip(), 16)
-            value *= 256**2
+            value *= 256
             value += int(splitted_line[8].strip(), 16)
-            value *= 256**2
+            value *= 256
             value += int(splitted_line[7].strip(), 16)
-            value *= 256**2
+            value *= 256
             value += int(splitted_line[6].strip(), 16)
             received.append(value)
 
@@ -84,9 +84,10 @@ def compute_min_mean_max(file_name):
     return lower_loss, pkt_loss, upper_loss
 
 def print_list(x):
+    print("this is the length of the list: %i" % len(x))
     for xx in x:
         print("{:.2f}".format(xx), end=', ')
-    print()
+    print("-------------------------------------------")
 
 
 def plot_loss(lower_loss, pkt_loss, upper_loss):
@@ -105,7 +106,7 @@ def plot_loss(lower_loss, pkt_loss, upper_loss):
     plt.savefig("images/loss_%s.png" % METHOD)
 
 x,y,z = compute_min_mean_max(file_name)
-#print_list(x)
-#print_list(y)
-#print_list(z)
+print_list(x)
+print_list(y)
+print_list(z)
 plot_loss(x,y,z)
