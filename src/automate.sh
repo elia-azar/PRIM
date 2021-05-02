@@ -20,7 +20,7 @@ then
 	# retrieve prog id with the following command
 	read prog_id <<< $( tc filter show dev enp4s0f0 ingress | awk '{for (I=1;I<NF;I++) if ($I == "id") print $(I+1)}' )
 	# retrieve map id with the following command
-	read id <<< $( bpftool prog show id $prog_id | awk '{for (I=1;I<NF;I++) if ($I == "maps_id") print $(I+1)}' | sed 's/,.*$//' )
+	read id <<< $( bpftool prog show id $prog_id | awk '{for (I=1;I<NF;I++) if ($I == "map_ids") print $(I+1)}' | sed 's/,.*$//' )
 
 elif [ $method == "p4xdp" ]
 then
@@ -29,7 +29,7 @@ then
 	# retrieve prog id with the following command
 	read prog_id <<< $( ip -d link show enp4s0f0 | awk '{for (I=1;I<NF;I++) if ($I == "id") print $(I+1)}' )
 	# retrieve map id with the following id
-	read id <<< $( bpftool prog show id $prog_id | awk '{for (I=1;I<NF;I++) if ($I == "maps_id") print $(I+1)}' | sed 's/,.*$//' )
+	read id <<< $( bpftool prog show id $prog_id | awk '{for (I=1;I<NF;I++) if ($I == "map_ids") print $(I+1)}' | sed 's/,.*$//' )
 fi
 
 for j in {1..50}
