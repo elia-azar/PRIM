@@ -1,0 +1,150 @@
+New results
+key: 01 00 00 00  value: 50 bd 5e 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 14 c7 59 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 5d db 58 03
+Found 1 element
+New results
+key: 01 00 00 00  value: b6 34 5c 03
+Found 1 element
+New results
+key: 01 00 00 00  value: a8 94 55 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 41 f3 52 03
+Found 1 element
+New results
+key: 01 00 00 00  value: e0 ba 50 03
+Found 1 element
+New results
+key: 01 00 00 00  value: b0 36 62 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 80 1c 5d 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 05 82 5a 03
+Found 1 element
+New results
+key: 01 00 00 00  value: f5 9f 61 03
+Found 1 element
+New results
+key: 01 00 00 00  value: f0 3c 5b 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 57 cd 58 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 60 9b 55 03
+Found 1 element
+New results
+key: 01 00 00 00  value: a2 15 5c 03
+Found 1 element
+New results
+key: 01 00 00 00  value: db 30 59 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 80 1a 61 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 13 f1 4d 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 60 cb 5a 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 60 d2 59 03
+Found 1 element
+New results
+key: 01 00 00 00  value: b9 3c 5d 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 00 fc 5f 03
+Found 1 element
+New results
+key: 01 00 00 00  value: d7 5b 5e 03
+Found 1 element
+New results
+key: 01 00 00 00  value: ea 75 5a 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 40 db 5b 03
+Found 1 element
+New results
+key: 01 00 00 00  value: fa 07 61 03
+Found 1 element
+New results
+key: 01 00 00 00  value: f9 f2 61 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 90 dd 55 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 80 eb 55 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 17 ed 5c 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 30 9d 49 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 00 c0 56 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 70 6d 5c 03
+Found 1 element
+New results
+key: 01 00 00 00  value: b7 0b 60 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 60 b8 5b 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 40 6a 5a 03
+Found 1 element
+New results
+key: 01 00 00 00  value: e0 bd 5d 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 50 99 5c 03
+Found 1 element
+New results
+key: 01 00 00 00  value: c0 cd 5e 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 46 9c 5f 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 40 e1 4e 03
+Found 1 element
+New results
+key: 01 00 00 00  value: d0 f4 59 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 60 4d 61 03
+Found 1 element
+New results
+key: 01 00 00 00  value: b0 2f 5c 03
+Found 1 element
+New results
+key: 01 00 00 00  value: b0 bb 5d 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 73 49 5b 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 80 e8 56 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 73 1b 59 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 60 89 58 03
+Found 1 element
+New results
+key: 01 00 00 00  value: 30 84 4f 03
+Found 1 element

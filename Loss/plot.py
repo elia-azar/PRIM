@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "p4ebpf" 
+METHOD = "p4xdp" 
 
 # create data 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
@@ -87,6 +87,7 @@ def print_list(x):
     print("this is the length of the list: %i" % len(x))
     for xx in x:
         print("{:.2f}".format(xx), end=', ')
+    print()
     print("-------------------------------------------")
 
 
