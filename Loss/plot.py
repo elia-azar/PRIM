@@ -25,6 +25,8 @@ def parse(file_name):
             parse_moongen(Lines, received)
         elif METHOD == "p4ebpf" or METHOD == "p4xdp":
             parse_p4ebpf_p4xdp(Lines, received)
+        elif METHOD == "bcc":
+            parse_bcc(Lines, received)
     
     sent = the_parser.sent_list("data/%s/%s_results_generator" % (METHOD, METHOD))
 
@@ -63,6 +65,14 @@ def parse_p4ebpf_p4xdp(Lines, received):
             value *= 256
             value += int(splitted_line[6].strip(), 16)
             received.append(value)
+
+def parse_bcc(Lines, received):
+    for j in range(0, len(Lines), 2):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            received.append(int(Lines[j+1].split()[2].strip()))
 
 def compute_min_mean_max(file_name):
     pkt_loss = []
