@@ -13,7 +13,7 @@ while getopts ":n:" arg; do
 done
 
 
-timeout 70s ~/pkt-filter.py -i enp4s0f0 -m 5 -f 0 > test.txt
+timeout 70s ~/pkt-filter.py -i enp4s0f0 -m 5 -f 0
 
 sleep 2
 echo "New results" >> results_bcc${num}.txt

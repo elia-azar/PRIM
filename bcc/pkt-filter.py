@@ -17,6 +17,7 @@ import os
 import ctypes
 import sys
 import pcap as pcap
+import signal
 
 class ifreq(ctypes.Structure):
     _fields_ = [("ifr_ifrn", ctypes.c_char * 16),
@@ -205,6 +206,9 @@ def main():
     if MODE == 3:
         pcap_file = pcap.Pcap('temp.pcap')
     
+    if MODE == 5:
+        sys.stdout = open('test.txt', 'w')
+    
     while 1:
         #retrieve raw packet from socket
         packet_str = os.read(socket_fd,256)
@@ -259,24 +263,27 @@ def main():
         else:
             sleep(10)
 
+def signal_handler(signum, frame):
+    print('Exiting')
+    try:
+        if MODE == 2:
+            print("Printed packets: {}".format(printed_pkts))
+        elif MODE == 3:
+            pcap_file.close()
+        s = ""
+        if len(bpf["pkt_count"].items()):
+            for k,v in bpf["pkt_count"].items():
+                s += "ID {}: {}\t".format(k.value, v.value)
+            print(s)
+        else:
+            print("No entries yet")
+        if MODE == 5:
+            sys.stdout.close()
+        sys.exit(0)
+    except SystemExit:
+        os._exit(0)
 
 if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        print('Interrupted')
-        try:
-            if MODE == 2:
-                print("Printed packets: {}".format(printed_pkts))
-            elif MODE == 3:
-                pcap_file.close()
-            s = ""
-            if len(bpf["pkt_count"].items()):
-                for k,v in bpf["pkt_count"].items():
-                    s += "ID {}: {}\t".format(k.value, v.value)
-                print(s)
-            else:
-                print("No entries yet")
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+    main()
