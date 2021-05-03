@@ -5,7 +5,7 @@ In this section, we describe how packet loss varies with regard to the percentag
 
 The results were saved in a txt file inside data/.
 
-* results_dump${i}.txt, with $i*10 representing the percentage of packets that matches the filter. For example, results_dump5.txt contains the results for 50% packets matching the filter.
+* results_${method}${i}.txt, with $i*10 representing the percentage of packets that matches the filter. For example, results_moongen5.txt contains the results for 50% packets matching the moongen's filter.
 
 To run the tests, open a terminal and run the following:
 
@@ -14,7 +14,7 @@ $ sudo ../src/automate_percentage.sh
 ```
 
 ## Result Analysis
-We ran 50 tests per throughput. The obtained results in results_dump${i}.txt have the following format (The files were manually edited to have a file that's easy to read):
+We ran 50 tests per throughput. The obtained results in results_${method}${i}.txt have the following format (The files were manually edited to have a file that's easy to read):
 
 ```
 Capture 253228727 
