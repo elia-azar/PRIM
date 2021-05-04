@@ -2,7 +2,6 @@
 
 num=0
 id=0
-
 echo 'STARTING P4-XDP'
 
 while getopts ":n:i:" arg; do
@@ -12,7 +11,7 @@ while getopts ":n:i:" arg; do
 			;;
 		i)
 			id=${OPTARG}
-			;;		
+			;;
 	esac
 done
 

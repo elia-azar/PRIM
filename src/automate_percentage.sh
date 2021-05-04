@@ -16,7 +16,7 @@ if [ $method == "p4ebpf" ]
 then
 	export P4EBPF=$P4C/backends/ebpf
 	tc qdisc add dev enp4s0f0 clsact
-	tc filter add dev enp4s0f0 ingress bpf da obj $P4EBPF/pkt-no-filter.o section prog verbose
+	tc filter add dev enp4s0f0 ingress bpf da obj $P4EBPF/pkt-filter.o section prog verbose
 	# retrieve prog id with the following command
 	read prog_id <<< $( tc filter show dev enp4s0f0 ingress | awk '{for (I=1;I<NF;I++) if ($I == "id") print $(I+1)}' )
 	# retrieve map id with the following command
@@ -25,7 +25,7 @@ then
 elif [ $method == "p4xdp" ]
 then
 	export P4XDP=$P4C/extensions/p4c-xdp/tests;
-	ip link set dev enp4s0f0 xdp obj $P4XDP/pkt-no-filter.o
+	ip link set dev enp4s0f0 xdp obj $P4XDP/pkt-filter.o
 	# retrieve prog id with the following command
 	read prog_id <<< $( ip -d link show enp4s0f0 | awk '{for (I=1;I<NF;I++) if ($I == "id") print $(I+1)}' )
 	# retrieve map id with the following id
@@ -43,7 +43,7 @@ do
 			echo "Map id: $id"
 			./${method}_automate.sh -n $p -i $id &
 		else
-			./${method}_automate.sh -n $p &
+			./${method}_automate.sh -n $p -f 1 &
 		fi
 		sleep 6
 		timeout 60s ./moongen.sh -p $p > test_generator.txt
