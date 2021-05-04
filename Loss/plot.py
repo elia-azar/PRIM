@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "p4xdp" 
+METHOD = "bcc" 
 
 # create data 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
@@ -117,7 +117,4 @@ def plot_loss(lower_loss, pkt_loss, upper_loss):
     plt.savefig("images/loss_%s.png" % METHOD)
 
 x,y,z = compute_min_mean_max(file_name)
-print_list(x)
-print_list(y)
-print_list(z)
 plot_loss(x,y,z)
