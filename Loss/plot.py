@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "bcc" 
+METHOD = "xdpdump" 
 
 # create data 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
@@ -21,6 +21,8 @@ def parse(file_name):
         Lines = file.readlines() 
         if METHOD == "tcpdump":
             parse_tcpdump(Lines, received)
+        elif METHOD == "xdpdump":
+            parse_xdpdump(Lines, received)
         elif METHOD == "moongen":
             parse_moongen(Lines, received)
         elif METHOD == "p4ebpf" or METHOD == "p4xdp":
@@ -40,6 +42,14 @@ def parse_moongen(Lines, received):
         elif line[0] == "New":
             index = Lines[j+1].strip().split().index("total") + 1
             received.append(int(Lines[j+1].strip().split()[index]))
+
+def parse_xdpdump(Lines, received):
+    for j in range(0, len(Lines), 4):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            received.append(int(Lines[j+1].split()[0].strip()))
 
 def parse_tcpdump(Lines, received):
     for j in range(0, len(Lines), 5):
