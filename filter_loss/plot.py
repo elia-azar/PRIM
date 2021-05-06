@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 
+METHOD = "moongen"
+
 # create data 
-file_name = "data/results_dump10_.txt"
+file_name = "data/%s/results_dump5_.txt" % METHOD
 
 scatter_cap = []
 cap = []
@@ -21,12 +23,12 @@ total_box = []
 SCATTER = True
 N = 50
 # value returned by parser.py
-x = [0, 1, 2, 3, 4, 5, 6, 7]
+x = [0, 1, 2, 3, 4, 5, 6]
 
 file = open(file_name, 'r')
 Lines = file.readlines()
 
-for i in range(8):
+for i in range(7):
     # Strips the newline character
     captured = 0
     filtered = 0
@@ -50,7 +52,7 @@ for i,j in zip(cap_box,filter_box):
 
 # basic plot
 
-for i in range(8):
+for i in range(7):
     sub_cap = cap_box[N*i:N*(i+1)]
     scatter_cap.append(tuple(sub_cap))
     sub_filter = filter_box[N*i:N*(i+1)]
@@ -77,10 +79,10 @@ for i in range(8):
 
 if SCATTER:
     for xe, ye in zip(x, scatter_cap):
-        plt.scatter([xe] * len(ye), ye)
+        plt.scatter([xe] * len(ye), ye, color = 'b')
 
-    plt.xticks([0,1,2,3,4,5,6,7])
-    plt.axes().set_xticklabels(['0','1','2','3','4','5','6','7'])
+    plt.xticks([0,1,2,3,4,5,6])
+    plt.axes().set_xticklabels(['0','1','2','3','4','5','6'])
 else:
     plt.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
     plt.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
