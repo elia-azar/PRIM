@@ -16,7 +16,7 @@ while getopts ":n:" arg; do
 	esac
 done
 
-if [ $filter == 0 ]
+if [[ $filter == 0 ]]
 then
 	timeout 70s xdpdump -P -i enp4s0f0 -w /dev/null &> test.txt
 else

@@ -16,7 +16,7 @@ while getopts ":n:f:" arg; do
 done
 
 
-if [ $filter == 0 ]
+if [[ $filter == 0 ]]
 then
 	timeout 70s tcpdump -i enp4s0f0 -w /dev/null 2>test.txt
 else

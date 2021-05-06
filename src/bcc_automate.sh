@@ -1,7 +1,7 @@
 #!/bin/bash
 
 num=0
-filter = 0
+filter=0
 
 echo 'STARTING BCC'
 
@@ -16,7 +16,7 @@ while getopts ":n:" arg; do
 	esac
 done
 
-if [ $filter == 0 ]
+if [[ $filter == 0 ]]
 then
 	timeout 70s ~/pkt-filter.py -i enp4s0f0 -m 5 -f 0
 else
