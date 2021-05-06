@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from numpy import mean, sqrt, var
 
-METHOD = "moongen"
+METHOD = "tcpdump"
 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
 N = 50

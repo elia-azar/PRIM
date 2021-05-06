@@ -1,0 +1,30 @@
+New results
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+790729619 packets dropped by interface
+New results
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+788996053 packets dropped by interface
+New results
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+785877209 packets dropped by interface
+New results
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+790785494 packets dropped by interface
+New results
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+783238041 packets dropped by interface
+New results
+2079144 packets captured
+2080266 packets received by filter
+0 packets dropped by kernel
+249188148 packets dropped by interface
