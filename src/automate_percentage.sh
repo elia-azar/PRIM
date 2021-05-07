@@ -30,6 +30,12 @@ then
 	read prog_id <<< $( ip -d link show enp4s0f0 | awk '{for (I=1;I<NF;I++) if ($I == "id") print $(I+1)}' )
 	# retrieve map id with the following id
 	read id <<< $( bpftool prog show id $prog_id | awk '{for (I=1;I<NF;I++) if ($I == "map_ids") print $(I+1)}' | sed 's/,.*$//' )
+elif [ $method == "xdpdump" ]
+then
+	cd $XDP_TOOLS/xdp-dump
+	xdp-filter load enp4s0f0 -f udp -p deny
+	xdp-filter port 320
+	cd $CONFIG_DIR
 fi
 
 for p in {0..10}
@@ -38,7 +44,7 @@ do
 	for j in {1..50}
 	do
 		echo "Starting with test $p:$j"
-		if [ $method == "p4ebpf" ] || [ $method == "p4xdp" ]
+		if [ $method == "p4ebpf" ] || [ $method == "p4xdp" ] || [ $method == "xdpdump" ]
 		then
 			echo "Map id: $id"
 			./${method}_automate.sh -n $p -i $id &
@@ -60,6 +66,10 @@ then
 	tc qdisc del dev enp4s0f0 clsact
 
 elif [ $method == "p4xdp" ]
+then
+	ip link set dev enp4s0f0 xdp off
+
+elif [ $method == "xdpdump" ]
 then
 	ip link set dev enp4s0f0 xdp off
 fi
