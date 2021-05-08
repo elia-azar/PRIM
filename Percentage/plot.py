@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from numpy import mean, sqrt, var
 
-METHOD = "tcpdump"
+METHOD = "xdpdump"
 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
 N = 50
@@ -19,6 +19,8 @@ def parse(file_name):
             parse_moongen(Lines, cap_box, filtered_box, total_box)
         if METHOD == "tcpdump":
             parse_tcpdump(Lines, cap_box, filtered_box, total_box)
+        if METHOD == "xdpdump":
+            parse_xdpdump(Lines, cap_box, filtered_box, total_box)
 
     return cap_box, filtered_box, total_box
 
@@ -54,6 +56,19 @@ def parse_tcpdump(Lines, cap_box, filtered_box, total_box):
     for i,j in zip(cap_box,filtered_box):
         total_box.append(i+j)
 
+def parse_xdpdump(Lines, cap_box, filtered_box, total_box):
+    captured = 0
+    for j in range(0, len(Lines), 4):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            captured = int(Lines[j+1].split()[0].strip())
+            dev = int(Lines[j+3].split()[0].strip()) + captured
+            cap_box.append(captured * 100 / dev)
+            filtered_box.append(0)
+    for i,j in zip(cap_box,filtered_box):
+        total_box.append(i+j)
 
 
 def compute_min_mean_max(file_name):
@@ -97,7 +112,7 @@ def compute_min_mean_max(file_name):
 def plot_percentage(lower_cap, cap, upper_cap, lower_filtered, filtered, upper_filtered, lower_total, total, upper_total):
     plt.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
     plt.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
-    if METHOD != "tcpdump":
+    if METHOD not in ["tcpdump", "xdpdump"]:
         plt.plot(x, lower_filtered, x, upper_filtered, color='orange', alpha=0.1)
         plt.fill_between(x, lower_filtered, upper_filtered, where=upper_filtered >= lower_filtered, alpha=0.3, facecolor='orange', interpolate=True)
         plt.plot(x, lower_total, x, upper_total, color='green', alpha=0.1)
@@ -105,7 +120,7 @@ def plot_percentage(lower_cap, cap, upper_cap, lower_filtered, filtered, upper_f
 
     # plot lines 
     plt.plot(x, cap, label = "Captured pkts", color="blue")
-    if METHOD != "tcpdump":
+    if METHOD not in ["tcpdump", "xdpdump"]:
         plt.plot(x, filtered, label = "Dropped pkts", color="orange")
         plt.plot(x, total, label = "Treated pkts", color="green")
     plt.title('Packet filtering behaviour -- %s' % METHOD)
