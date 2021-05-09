@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 from numpy import mean, sqrt, var
+import common as common
 
-METHOD = "bcc"
+METHOD = "p4ebpf"
 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
 N = 50
@@ -17,6 +18,8 @@ def parse_loss(file_name):
             parse_loss_moongen(Lines, total_box)
         elif METHOD == "bcc":
             parse_loss_bcc(i, Lines, total_box)
+        elif METHOD in ["p4ebpf", "p4xdp"]:
+            parse_loss_p4_ebpf_xdp(i, Lines, total_box)
 
     return total_box
 
@@ -53,32 +56,40 @@ def parse_loss_bcc(i, Lines, total_box):
         elif len(line) == 6:
                 filtered.append(int(line[2].strip()))
                 captured.append(int(line[5].strip()))
-    dev = parse_generator(i)
+    dev = common.parse_generator(i, METHOD)
     cap_box = [100 * a / b for a, b in zip(captured, dev)]
     filtered_box = [100 * a / b for a, b in zip(filtered, dev)]
     for i,j in zip(cap_box,filtered_box):
         total_box.append(100 - i - j)
 
-
-def parse_generator(i):
-    x = []
-    file = open("data/bcc/results_generator" + str(i) + ".txt", 'r')
-    Lines = file.readlines()
-    # Strips the newline character 
-    for j in range(0, len(Lines), 4):
-        res = 0
+def parse_loss_p4_ebpf_xdp(i, Lines, total_box):
+    captured = []
+    filtered = []
+    step = 4
+    if i in [0, 10]:
+        step = 3
+    for j in range(0, len(Lines), step):
         line = Lines[j].strip().split()
         if len(line) < 1:
             continue
-        elif line[0] == "New":
-            index = Lines[j+1].strip().split().index("total") + 1
-            res += float(Lines[j+1].strip().split()[index])
-            index = Lines[j+2].strip().split().index("total") + 1
-            res += float(Lines[j+2].strip().split()[index])
-            index = Lines[j+3].strip().split().index("total") + 1
-            res += float(Lines[j+3].strip().split()[index])
-            x.append(res)
-    return x
+        if step == 3:
+            line = Lines[j+1].split()
+            key = line[1]
+            if key == "01":
+                captured.append(common.hex2num(line[-4:]))
+                filtered.append(0)
+            elif key == "00":
+                filtered.append(common.hex2num(line[-4:]))
+                captured.append(0)
+        elif step == 4:
+            filtered.append(common.hex2num(Lines[j+1].split()[-4:]))
+            captured.append(common.hex2num(Lines[j+2].split()[-4:]))
+    dev = common.parse_generator(i, METHOD)
+    cap_box = [100 * a / b for a, b in zip(captured, dev)]
+    filtered_box = [100 * a / b for a, b in zip(filtered, dev)]
+    for i,j in zip(cap_box,filtered_box):
+        total_box.append(100 - i - j)
+
 
 def compute_min_mean_max_loss(file_name):
     total_box = parse_loss(file_name)
