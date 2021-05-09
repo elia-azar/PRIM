@@ -1,0 +1,100 @@
+New results
+ID 0: 53380854	ID 1: 6025098	
+New results
+ID 0: 52436111	ID 1: 5918354	
+New results
+ID 0: 51903623	ID 1: 5856073	
+New results
+ID 0: 52694125	ID 1: 5949332	
+New results
+ID 0: 53823636	ID 1: 6071724	
+New results
+ID 0: 52929692	ID 1: 5973446	
+New results
+ID 0: 53332687	ID 1: 6017473	
+New results
+ID 0: 52977916	ID 1: 5980101	
+New results
+ID 0: 53026731	ID 1: 5984181	
+New results
+ID 0: 52599509	ID 1: 5932205	
+New results
+ID 0: 54225144	ID 1: 6120472	
+New results
+ID 0: 52148035	ID 1: 5882189	
+New results
+ID 0: 53124233	ID 1: 5999863	
+New results
+ID 0: 53131787	ID 1: 5993081	
+New results
+ID 0: 53421527	ID 1: 6023383	
+New results
+ID 0: 53615000	ID 1: 6052104	
+New results
+ID 0: 51965463	ID 1: 5860297	
+New results
+ID 0: 53829293	ID 1: 6072852	
+New results
+ID 0: 50778747	ID 1: 5727143	
+New results
+ID 0: 53648167	ID 1: 6052554	
+New results
+ID 0: 53265302	ID 1: 6015993	
+New results
+ID 0: 53213251	ID 1: 6002799	
+New results
+ID 0: 53665438	ID 1: 6053202	
+New results
+ID 0: 52758409	ID 1: 5956936	
+New results
+ID 0: 53400498	ID 1: 6024670	
+New results
+ID 0: 52914072	ID 1: 5968984	
+New results
+ID 0: 53607866	ID 1: 6041959	
+New results
+ID 0: 53904874	ID 1: 6084838	
+New results
+ID 0: 52339377	ID 1: 5903567	
+New results
+ID 0: 52094759	ID 1: 5880026	
+New results
+ID 0: 53328177	ID 1: 6018544	
+New results
+ID 0: 52857393	ID 1: 5964863	
+New results
+ID 0: 53587113	ID 1: 6046488	
+New results
+ID 0: 52976611	ID 1: 5976570	
+New results
+ID 0: 53451744	ID 1: 6029556	
+New results
+ID 0: 53813046	ID 1: 6069708	
+New results
+ID 0: 54164089	ID 1: 6110711	
+New results
+ID 0: 52777538	ID 1: 5955360	
+New results
+ID 0: 52767529	ID 1: 5953415	
+New results
+ID 0: 52017200	ID 1: 5869505	
+New results
+ID 0: 53801642	ID 1: 6069190	
+New results
+ID 0: 51960606	ID 1: 5857970	
+New results
+ID 0: 54105171	ID 1: 6099982	
+New results
+ID 0: 53144832	ID 1: 5999968	
+New results
+ID 0: 51449699	ID 1: 5804254	
+New results
+ID 0: 54473045	ID 1: 6147211	
+New results
+ID 0: 53465951	ID 1: 6032785	
+New results
+ID 0: 52666285	ID 1: 5944548	
+New results
+ID 0: 52959355	ID 1: 5970453	
+New results
+ID 0: 52794083	ID 1: 5955422	

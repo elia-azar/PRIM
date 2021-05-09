@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from numpy import mean, sqrt, var
 
-METHOD = "xdpdump"
+METHOD = "bcc"
 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
 N = 50
@@ -17,10 +17,12 @@ def parse(file_name):
         Lines = file.readlines()
         if METHOD == "moongen":
             parse_moongen(Lines, cap_box, filtered_box, total_box)
-        if METHOD == "tcpdump":
+        elif METHOD == "tcpdump":
             parse_tcpdump(Lines, cap_box, filtered_box, total_box)
-        if METHOD == "xdpdump":
+        elif METHOD == "xdpdump":
             parse_xdpdump(Lines, cap_box, filtered_box, total_box)
+        elif METHOD == "bcc":
+            parse_bcc(i, Lines, cap_box, filtered_box, total_box)
 
     return cap_box, filtered_box, total_box
 
@@ -69,6 +71,50 @@ def parse_xdpdump(Lines, cap_box, filtered_box, total_box):
             filtered_box.append(0)
     for i,j in zip(cap_box,filtered_box):
         total_box.append(i+j)
+
+def parse_bcc(i, Lines, cap_box, filtered_box, total_box):
+    captured = []
+    filtered = []
+    for j in range(0, len(Lines), 2):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        line = Lines[j+1].split()
+        if len(line) == 3:
+            if line[1].strip() == "0:":
+                captured.append(0)
+                filtered.append(int(line[2].strip()))
+            elif line[1].strip() == "1:":
+                captured.append(int(line[2].strip()))
+                filtered.append(0)
+        elif len(line) == 6:
+                filtered.append(int(line[2].strip()))
+                captured.append(int(line[5].strip()))
+    dev = parse_generator(i)
+    cap_box.extend([100 * a / b for a, b in zip(captured, dev)])
+    filtered_box.extend([100 * a / b for a, b in zip(filtered, dev)])
+    for i,j in zip(cap_box,filtered_box):
+        total_box.append(i+j)
+
+def parse_generator(i):
+    x = []
+    file = open("data/bcc/results_generator" + str(i) + ".txt", 'r')
+    Lines = file.readlines()
+    # Strips the newline character 
+    for j in range(0, len(Lines), 4):
+        res = 0
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            index = Lines[j+1].strip().split().index("total") + 1
+            res += float(Lines[j+1].strip().split()[index])
+            index = Lines[j+2].strip().split().index("total") + 1
+            res += float(Lines[j+2].strip().split()[index])
+            index = Lines[j+3].strip().split().index("total") + 1
+            res += float(Lines[j+3].strip().split()[index])
+            x.append(res)
+    return x
 
 
 def compute_min_mean_max(file_name):

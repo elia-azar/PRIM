@@ -20,7 +20,9 @@ if [[ $filter == 0 ]]
 then
 	timeout 70s ~/pkt-filter.py -i enp4s0f0 -m 5 -f 0
 else
-	timeout 70s ~/pkt-filter.py -i enp4s0f0 -m 5 -f 1
+	cd ~
+	timeout 70s ./pkt-filter.py -i enp4s0f0 -m 5 -f 1
+	cd $CONFIG_DIR
 fi
 
 sleep 2

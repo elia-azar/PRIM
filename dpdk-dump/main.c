@@ -1,3 +1,8 @@
+/**
+ * https://github.com/marty90/DPDK-Dump
+ * Code taken from the above git repo but adapted to our case
+*/
+
 #include <pcap/pcap.h>
 #include <stdio.h>
 #include <string.h>
@@ -52,16 +57,6 @@
 
 #define CHECK_INTERVAL 1000  /* 100ms */
 #define MAX_REPEAT_TIMES 90  /* 9s (90 * 100ms) in total */
-
-/* RSS symmetrical 40 Byte seed, according to "Scalable TCP Session Monitoring with Symmetric Receive-side Scaling" (Shinae Woo, KyoungSoo Park from KAIST)  */
-uint8_t rss_seed [] = {	0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a,
-			0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a,
-			0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a,
-			0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a,
-			0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a, 0x6d, 0x5a
-};
-
-/* Struct for devices configuration for const defines see rte_ethdev.h */
 
 
 static const struct rte_eth_conf port_conf = {
