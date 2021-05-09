@@ -2,10 +2,12 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "xdpdump" 
+METHOD = "bcc"
 
-# create data 
-file_name = "data/%s/results_%s" % (METHOD, METHOD)
+Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump"]
+
+Colors = ["orange", "blue", "red", "green", "pink", "purple"]
+
 N = 50
 
 def loss(rec, trans):
@@ -111,20 +113,25 @@ def print_list(x):
     print("-------------------------------------------")
 
 
-def plot_loss(lower_loss, pkt_loss, upper_loss):
+def plot_loss(lower_loss, pkt_loss, upper_loss, color_):
     # value returned by parser.py
     x = the_parser.mean_list("data/%s/%s_results_generator" % (METHOD, METHOD))
     # plot lower and upper bounds
-    plt.plot(x, lower_loss, color='blue', alpha=0.1)
-    plt.plot(x, upper_loss, color='blue', alpha=0.1)
-    plt.fill_between(x, lower_loss, upper_loss, where=upper_loss >= lower_loss, alpha=0.3, facecolor='blue', interpolate=True)
+    plt.plot(x, lower_loss, color=color_, alpha=0.1)
+    plt.plot(x, upper_loss, color=color_, alpha=0.1)
+    plt.fill_between(x, lower_loss, upper_loss, where=upper_loss >= lower_loss, alpha=0.3, facecolor=color_, interpolate=True)
     # plot mean pkt loss
-    plt.plot(x, pkt_loss, color="blue") 
-    plt.title('Packet Loss as a function input rate -- %s' % METHOD)
+    plt.plot(x, pkt_loss, color=color_, label=METHOD)
+
+def plot_save():
+    plt.title('Packet Loss as a function input rate')
     plt.ylabel('Pkt loss (%)')
     plt.xlabel('Pkt rate (Mpps)')
-    plt.legend() 
-    plt.savefig("images/loss_%s.png" % METHOD)
+    plt.legend(loc="best") 
+    plt.savefig("images/loss.png")
 
-x,y,z = compute_min_mean_max(file_name)
-plot_loss(x,y,z)
+for color, METHOD in zip(Colors, Methods):
+    file_name = "data/%s/results_%s" % (METHOD, METHOD)
+    x,y,z = compute_min_mean_max(file_name)
+    plot_loss(x,y,z, color)
+plot_save()
