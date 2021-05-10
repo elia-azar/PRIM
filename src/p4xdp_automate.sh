@@ -24,3 +24,4 @@ bpftool map dump id $id >> results_p4xdp${num}.txt
 
 # delete entries from the map
 bpftool map delete id $id key 1 0 0 0
+bpftool map delete id $id key 0 0 0 0
