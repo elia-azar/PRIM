@@ -1,0 +1,200 @@
+New results 1
+[0;34m[Device: id=0] TX[0m: 0.16 (StdDev 0.00) Mpps, 81 (StdDev 0) Mbit/s (106 Mbit/s with framing), total 9215153 packets with 589760064 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.11 (StdDev 0.00) Mpps, 57 (StdDev 0) Mbit/s (75 Mbit/s with framing), total 6499588 packets with 416004672 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.61 (StdDev 0.01) Mpps, 7480 (StdDev 7) Mbit/s (9817 Mbit/s with framing), total 851077437 packets with 54468934656 bytes (incl. CRC)
+New results 2
+[0;34m[Device: id=0] TX[0m: 14.61 (StdDev 0.03) Mpps, 7480 (StdDev 14) Mbit/s (9818 Mbit/s with framing), total 849676609 packets with 54379332480 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.26 (StdDev 0.00) Mpps, 132 (StdDev 0) Mbit/s (173 Mbit/s with framing), total 15020841 packets with 961307520 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.01 (StdDev 0.00) Mpps, 4 (StdDev 0) Mbit/s (6 Mbit/s with framing), total 490118 packets with 31364352 bytes (incl. CRC)
+New results 3
+[0;34m[Device: id=0] TX[0m: 0.18 (StdDev 0.00) Mpps, 91 (StdDev 0) Mbit/s (119 Mbit/s with framing), total 15565491 packets with 996209600 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.34 (StdDev 0.01) Mpps, 7341 (StdDev 4) Mbit/s (9635 Mbit/s with framing), total 831625496 packets with 53224040896 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.36 (StdDev 0.00) Mpps, 186 (StdDev 0) Mbit/s (244 Mbit/s with framing), total 21188854 packets with 1356059328 bytes (incl. CRC)
+New results 4
+[0;34m[Device: id=0] TX[0m: 0.17 (StdDev 0.00) Mpps, 87 (StdDev 0) Mbit/s (114 Mbit/s with framing), total 9864665 packets with 631360064 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.16 (StdDev 0.00) Mpps, 82 (StdDev 0) Mbit/s (108 Mbit/s with framing), total 14790287 packets with 946575040 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.55 (StdDev 0.01) Mpps, 7449 (StdDev 4) Mbit/s (9777 Mbit/s with framing), total 843884279 packets with 54008575680 bytes (incl. CRC)
+New results 5
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 23 (StdDev 0) Mbit/s (30 Mbit/s with framing), total 2575070 packets with 680379264 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.32 (StdDev 0.00) Mpps, 166 (StdDev 0) Mbit/s (218 Mbit/s with framing), total 26919061 packets with 1207234944 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.51 (StdDev 0.02) Mpps, 7429 (StdDev 10) Mbit/s (9750 Mbit/s with framing), total 841531710 packets with 53858039616 bytes (incl. CRC)
+New results 6
+[0;34m[Device: id=0] TX[0m: 0.35 (StdDev 0.00) Mpps, 178 (StdDev 0) Mbit/s (233 Mbit/s with framing), total 20277908 packets with 1297776256 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.20 (StdDev 0.00) Mpps, 104 (StdDev 0) Mbit/s (137 Mbit/s with framing), total 11970298 packets with 766113472 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.33 (StdDev 0.01) Mpps, 7336 (StdDev 3) Mbit/s (9629 Mbit/s with framing), total 832843539 packets with 53301981952 bytes (incl. CRC)
+New results 7
+[0;34m[Device: id=0] TX[0m: 0.29 (StdDev 0.00) Mpps, 148 (StdDev 0) Mbit/s (194 Mbit/s with framing), total 16831980 packets with 1077231616 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.22 (StdDev 0.00) Mpps, 114 (StdDev 0) Mbit/s (150 Mbit/s with framing), total 22431924 packets with 1435678848 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.37 (StdDev 0.00) Mpps, 7356 (StdDev 2) Mbit/s (9655 Mbit/s with framing), total 833324211 packets with 53332728896 bytes (incl. CRC)
+New results 8
+[0;34m[Device: id=0] TX[0m: 14.82 (StdDev 0.03) Mpps, 7586 (StdDev 16) Mbit/s (9956 Mbit/s with framing), total 865770423 packets with 55409304128 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.06 (StdDev 0.00) Mpps, 29 (StdDev 0) Mbit/s (38 Mbit/s with framing), total 3311915 packets with 211984384 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.00 (StdDev 0.00) Mpps, 1 (StdDev 0) Mbit/s (2 Mbit/s with framing), total 135844 packets with 8675136 bytes (incl. CRC)
+New results 9
+[0;34m[Device: id=0] TX[0m: 0.32 (StdDev 0.00) Mpps, 165 (StdDev 0) Mbit/s (216 Mbit/s with framing), total 18779354 packets with 1201871296 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.37 (StdDev 0.01) Mpps, 7359 (StdDev 3) Mbit/s (9659 Mbit/s with framing), total 833635109 packets with 53352638080 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.18 (StdDev 0.00) Mpps, 95 (StdDev 0) Mbit/s (124 Mbit/s with framing), total 17126594 packets with 1096118272 bytes (incl. CRC)
+New results 10
+[0;34m[Device: id=0] TX[0m: 0.30 (StdDev 0.00) Mpps, 152 (StdDev 0) Mbit/s (200 Mbit/s with framing), total 17332329 packets with 1109248064 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 18 (StdDev 0) Mbit/s (24 Mbit/s with framing), total 2039846 packets with 130549376 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.54 (StdDev 0.02) Mpps, 7447 (StdDev 12) Mbit/s (9774 Mbit/s with framing), total 851550661 packets with 54499264064 bytes (incl. CRC)
+New results 11
+[0;34m[Device: id=0] TX[0m: 0.06 (StdDev 0.00) Mpps, 29 (StdDev 0) Mbit/s (38 Mbit/s with framing), total 3315046 packets with 212179584 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.29 (StdDev 0.00) Mpps, 149 (StdDev 0) Mbit/s (195 Mbit/s with framing), total 16936480 packets with 1083899968 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.53 (StdDev 0.02) Mpps, 7439 (StdDev 10) Mbit/s (9764 Mbit/s with framing), total 843094678 packets with 53958077504 bytes (incl. CRC)
+New results 12
+[0;34m[Device: id=0] TX[0m: 0.19 (StdDev 0.00) Mpps, 98 (StdDev 0) Mbit/s (128 Mbit/s with framing), total 11093439 packets with 709997952 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.14 (StdDev 0.00) Mpps, 73 (StdDev 0) Mbit/s (95 Mbit/s with framing), total 13192090 packets with 844261440 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.55 (StdDev 0.01) Mpps, 7448 (StdDev 6) Mbit/s (9775 Mbit/s with framing), total 843665219 packets with 53994588480 bytes (incl. CRC)
+New results 13
+[0;34m[Device: id=0] TX[0m: 0.14 (StdDev 0.00) Mpps, 74 (StdDev 0) Mbit/s (97 Mbit/s with framing), total 8384100 packets with 536556480 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.13 (StdDev 0.00) Mpps, 65 (StdDev 0) Mbit/s (85 Mbit/s with framing), total 15025654 packets with 961656448 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.61 (StdDev 0.01) Mpps, 7480 (StdDev 7) Mbit/s (9817 Mbit/s with framing), total 847296740 packets with 54227002688 bytes (incl. CRC)
+New results 14
+[0;34m[Device: id=0] TX[0m: 14.83 (StdDev 0.04) Mpps, 7592 (StdDev 20) Mbit/s (9965 Mbit/s with framing), total 860069600 packets with 55044485888 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 14 (StdDev 0) Mbit/s (18 Mbit/s with framing), total 6547941 packets with 419055552 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 10 (StdDev 0) Mbit/s (13 Mbit/s with framing), total 1101052 packets with 70448512 bytes (incl. CRC)
+New results 15
+[0;34m[Device: id=0] TX[0m: 0.00 (StdDev 0.00) Mpps, 1 (StdDev 3) Mbit/s (1 Mbit/s with framing), total 20880 packets with 4973440 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 14 (StdDev 3) Mbit/s (19 Mbit/s with framing), total 1642878 packets with 101504256 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.85 (StdDev 0.04) Mpps, 7601 (StdDev 21) Mbit/s (9976 Mbit/s with framing), total 866059434 packets with 55427806592 bytes (incl. CRC)
+New results 16
+[0;34m[Device: id=0] TX[0m: 0.05 (StdDev 0.00) Mpps, 27 (StdDev 0) Mbit/s (35 Mbit/s with framing), total 6547356 packets with 419011968 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.82 (StdDev 0.04) Mpps, 7587 (StdDev 20) Mbit/s (9958 Mbit/s with framing), total 859484063 packets with 55006807680 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.00 (StdDev 0.00) Mpps, 1 (StdDev 0) Mbit/s (2 Mbit/s with framing), total 164086 packets with 10692672 bytes (incl. CRC)
+New results 17
+[0;34m[Device: id=0] TX[0m: 0.35 (StdDev 0.00) Mpps, 178 (StdDev 0) Mbit/s (234 Mbit/s with framing), total 20258282 packets with 1296504448 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.51 (StdDev 0.02) Mpps, 7428 (StdDev 11) Mbit/s (9749 Mbit/s with framing), total 841445699 packets with 53852554240 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 11 (StdDev 0) Mbit/s (15 Mbit/s with framing), total 9215453 packets with 589785088 bytes (incl. CRC)
+New results 18
+[0;34m[Device: id=0] TX[0m: 0.10 (StdDev 0.00) Mpps, 50 (StdDev 0) Mbit/s (65 Mbit/s with framing), total 5641649 packets with 361060096 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.59 (StdDev 0.02) Mpps, 7471 (StdDev 9) Mbit/s (9805 Mbit/s with framing), total 846272889 packets with 54161475776 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.19 (StdDev 0.00) Mpps, 97 (StdDev 0) Mbit/s (128 Mbit/s with framing), total 19200700 packets with 1228839360 bytes (incl. CRC)
+New results 19
+[0;34m[Device: id=0] TX[0m: 14.61 (StdDev 0.01) Mpps, 7479 (StdDev 7) Mbit/s (9816 Mbit/s with framing), total 847195674 packets with 54220534080 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 14 (StdDev 0) Mbit/s (18 Mbit/s with framing), total 1583271 packets with 101330176 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.24 (StdDev 0.00) Mpps, 125 (StdDev 0) Mbit/s (164 Mbit/s with framing), total 19287093 packets with 1234362176 bytes (incl. CRC)
+New results 20
+[0;34m[Device: id=0] TX[0m: 14.80 (StdDev 0.04) Mpps, 7579 (StdDev 19) Mbit/s (9947 Mbit/s with framing), total 858558643 packets with 54947771200 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.01 (StdDev 0.00) Mpps, 5 (StdDev 0) Mbit/s (6 Mbit/s with framing), total 534209 packets with 34145728 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.06 (StdDev 0.00) Mpps, 32 (StdDev 0) Mbit/s (42 Mbit/s with framing), total 13066170 packets with 836260480 bytes (incl. CRC)
+New results 21
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 13 (StdDev 0) Mbit/s (17 Mbit/s with framing), total 1893482 packets with 121034432 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 8 (StdDev 0) Mbit/s (11 Mbit/s with framing), total 966833 packets with 62011136 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.83 (StdDev 0.04) Mpps, 7594 (StdDev 21) Mbit/s (9968 Mbit/s with framing), total 860219210 packets with 55054044032 bytes (incl. CRC)
+New results 22
+[0;34m[Device: id=0] TX[0m: 14.83 (StdDev 0.04) Mpps, 7594 (StdDev 20) Mbit/s (9967 Mbit/s with framing), total 865126042 packets with 55367947520 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.01 (StdDev 0.00) Mpps, 7 (StdDev 0) Mbit/s (9 Mbit/s with framing), total 764924 packets with 49092032 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 15 (StdDev 0) Mbit/s (19 Mbit/s with framing), total 1660803 packets with 106273664 bytes (incl. CRC)
+New results 23
+[0;34m[Device: id=0] TX[0m: 0.23 (StdDev 0.00) Mpps, 117 (StdDev 1) Mbit/s (154 Mbit/s with framing), total 15216702 packets with 973883840 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.37 (StdDev 0.02) Mpps, 7357 (StdDev 8) Mbit/s (9656 Mbit/s with framing), total 833422118 packets with 53339013504 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.28 (StdDev 0.00) Mpps, 143 (StdDev 0) Mbit/s (188 Mbit/s with framing), total 16302292 packets with 1043333824 bytes (incl. CRC)
+New results 24
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 20 (StdDev 0) Mbit/s (26 Mbit/s with framing), total 2251014 packets with 144076608 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.81 (StdDev 0.03) Mpps, 7582 (StdDev 17) Mbit/s (9952 Mbit/s with framing), total 862356290 packets with 55190801344 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 14 (StdDev 0) Mbit/s (19 Mbit/s with framing), total 1610377 packets with 103053632 bytes (incl. CRC)
+New results 25
+[0;34m[Device: id=0] TX[0m: 0.01 (StdDev 0.00) Mpps, 5 (StdDev 0) Mbit/s (7 Mbit/s with framing), total 601114 packets with 38484992 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.85 (StdDev 0.04) Mpps, 7605 (StdDev 21) Mbit/s (9981 Mbit/s with framing), total 861462677 packets with 55133627008 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.01 (StdDev 0.00) Mpps, 6 (StdDev 0) Mbit/s (7 Mbit/s with framing), total 4228734 packets with 270609600 bytes (incl. CRC)
+New results 26
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 19 (StdDev 0) Mbit/s (25 Mbit/s with framing), total 2156315 packets with 138007552 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.58 (StdDev 0.02) Mpps, 7464 (StdDev 12) Mbit/s (9797 Mbit/s with framing), total 845553853 packets with 54115466496 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.26 (StdDev 0.00) Mpps, 134 (StdDev 0) Mbit/s (176 Mbit/s with framing), total 23265588 packets with 1488974336 bytes (incl. CRC)
+New results 27
+[0;34m[Device: id=0] TX[0m: 0.26 (StdDev 0.00) Mpps, 134 (StdDev 0) Mbit/s (176 Mbit/s with framing), total 15233071 packets with 974877504 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.61 (StdDev 0.02) Mpps, 7481 (StdDev 13) Mbit/s (9818 Mbit/s with framing), total 855443734 packets with 54748397568 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.00 (StdDev 0.00) Mpps, 2 (StdDev 0) Mbit/s (2 Mbit/s with framing), total 200608 packets with 12879360 bytes (incl. CRC)
+New results 28
+[0;34m[Device: id=0] TX[0m: 0.27 (StdDev 0.00) Mpps, 140 (StdDev 0) Mbit/s (184 Mbit/s with framing), total 25419496 packets with 1626826368 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.05 (StdDev 0.00) Mpps, 24 (StdDev 0) Mbit/s (32 Mbit/s with framing), total 2749153 packets with 175955904 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.56 (StdDev 0.02) Mpps, 7453 (StdDev 11) Mbit/s (9782 Mbit/s with framing), total 844272046 packets with 54033422208 bytes (incl. CRC)
+New results 29
+[0;34m[Device: id=0] TX[0m: 0.21 (StdDev 0.00) Mpps, 108 (StdDev 0) Mbit/s (141 Mbit/s with framing), total 20437787 packets with 1308008320 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.41 (StdDev 0.01) Mpps, 7378 (StdDev 3) Mbit/s (9684 Mbit/s with framing), total 835796105 packets with 53490954368 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.26 (StdDev 0.00) Mpps, 132 (StdDev 0) Mbit/s (174 Mbit/s with framing), total 15108965 packets with 966980160 bytes (incl. CRC)
+New results 30
+[0;34m[Device: id=0] TX[0m: 0.15 (StdDev 0.00) Mpps, 77 (StdDev 0) Mbit/s (101 Mbit/s with framing), total 9393486 packets with 601154624 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 20 (StdDev 0) Mbit/s (26 Mbit/s with framing), total 2240876 packets with 143433664 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.69 (StdDev 0.03) Mpps, 7520 (StdDev 14) Mbit/s (9870 Mbit/s with framing), total 851877091 packets with 54520144704 bytes (incl. CRC)
+New results 31
+[0;34m[Device: id=0] TX[0m: 0.50 (StdDev 0.00) Mpps, 258 (StdDev 0) Mbit/s (339 Mbit/s with framing), total 29557046 packets with 1891676352 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.36 (StdDev 0.00) Mpps, 7351 (StdDev 1) Mbit/s (9648 Mbit/s with framing), total 840810862 packets with 53811902656 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 10 (StdDev 0) Mbit/s (13 Mbit/s with framing), total 1087530 packets with 69569024 bytes (incl. CRC)
+New results 32
+[0;34m[Device: id=0] TX[0m: 0.31 (StdDev 0.00) Mpps, 158 (StdDev 0) Mbit/s (208 Mbit/s with framing), total 18077386 packets with 1156941888 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.23 (StdDev 0.00) Mpps, 116 (StdDev 0) Mbit/s (153 Mbit/s with framing), total 13357969 packets with 854922624 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.34 (StdDev 0.01) Mpps, 7343 (StdDev 3) Mbit/s (9638 Mbit/s with framing), total 834146341 packets with 53385364032 bytes (incl. CRC)
+New results 33
+[0;34m[Device: id=0] TX[0m: 14.83 (StdDev 0.04) Mpps, 7595 (StdDev 20) Mbit/s (9968 Mbit/s with framing), total 845510551 packets with 54112683264 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 19 (StdDev 0) Mbit/s (25 Mbit/s with framing), total 15106317 packets with 966796736 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.00 (StdDev 0.00) Mpps, 2 (StdDev 0) Mbit/s (3 Mbit/s with framing), total 254255 packets with 16271872 bytes (incl. CRC)
+New results 34
+[0;34m[Device: id=0] TX[0m: 0.29 (StdDev 0.00) Mpps, 147 (StdDev 0) Mbit/s (193 Mbit/s with framing), total 22180120 packets with 1419503040 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.55 (StdDev 0.02) Mpps, 7449 (StdDev 12) Mbit/s (9777 Mbit/s with framing), total 843826147 packets with 54004872640 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 21 (StdDev 0) Mbit/s (27 Mbit/s with framing), total 2350075 packets with 150430208 bytes (incl. CRC)
+New results 35
+[0;34m[Device: id=0] TX[0m: 0.36 (StdDev 0.00) Mpps, 186 (StdDev 0) Mbit/s (244 Mbit/s with framing), total 24851443 packets with 1590508928 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.36 (StdDev 0.00) Mpps, 7350 (StdDev 1) Mbit/s (9648 Mbit/s with framing), total 832670101 packets with 53290857024 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.16 (StdDev 0.00) Mpps, 82 (StdDev 0) Mbit/s (107 Mbit/s with framing), total 9313600 packets with 596083264 bytes (incl. CRC)
+New results 36
+[0;34m[Device: id=0] TX[0m: 14.65 (StdDev 0.02) Mpps, 7500 (StdDev 10) Mbit/s (9844 Mbit/s with framing), total 834992302 packets with 53439525888 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.18 (StdDev 0.00) Mpps, 91 (StdDev 0) Mbit/s (119 Mbit/s with framing), total 10168571 packets with 650791744 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.05 (StdDev 0.00) Mpps, 26 (StdDev 0) Mbit/s (34 Mbit/s with framing), total 13876257 packets with 888058688 bytes (incl. CRC)
+New results 37
+[0;34m[Device: id=0] TX[0m: 2.61 (StdDev 5.70) Mpps, 1335 (StdDev 2919) Mbit/s (1752 Mbit/s with framing), total 158033577 packets with 10114142080 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 11 (StdDev 0) Mbit/s (15 Mbit/s with framing), total 1269847 packets with 81246720 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 12.25 (StdDev 5.70) Mpps, 6270 (StdDev 2918) Mbit/s (8229 Mbit/s with framing), total 712868072 packets with 45623586944 bytes (incl. CRC)
+New results 38
+[0;34m[Device: id=0] TX[0m: 0.25 (StdDev 0.00) Mpps, 128 (StdDev 0) Mbit/s (168 Mbit/s with framing), total 20988140 packets with 1343226368 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.29 (StdDev 0.00) Mpps, 147 (StdDev 0) Mbit/s (193 Mbit/s with framing), total 16758250 packets with 1072544320 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.34 (StdDev 0.00) Mpps, 7343 (StdDev 1) Mbit/s (9638 Mbit/s with framing), total 831829128 packets with 53237062464 bytes (incl. CRC)
+New results 39
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 16 (StdDev 0) Mbit/s (20 Mbit/s with framing), total 11223438 packets with 718316864 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 11 (StdDev 0) Mbit/s (15 Mbit/s with framing), total 1237466 packets with 79170944 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.82 (StdDev 0.05) Mpps, 7587 (StdDev 25) Mbit/s (9958 Mbit/s with framing), total 844690006 packets with 54060170432 bytes (incl. CRC)
+New results 40
+[0;34m[Device: id=0] TX[0m: 0.00 (StdDev 0.00) Mpps, 2 (StdDev 0) Mbit/s (3 Mbit/s with framing), total 235478 packets with 15054528 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.03 (StdDev 0.00) Mpps, 15 (StdDev 0) Mbit/s (20 Mbit/s with framing), total 8113885 packets with 519287808 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.84 (StdDev 0.04) Mpps, 7599 (StdDev 20) Mbit/s (9973 Mbit/s with framing), total 860805063 packets with 55091540928 bytes (incl. CRC)
+New results 41
+[0;34m[Device: id=0] TX[0m: 0.10 (StdDev 0.00) Mpps, 50 (StdDev 0) Mbit/s (66 Mbit/s with framing), total 15347623 packets with 982243264 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.74 (StdDev 0.03) Mpps, 7547 (StdDev 15) Mbit/s (9905 Mbit/s with framing), total 854918465 packets with 54714821568 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.04 (StdDev 0.00) Mpps, 20 (StdDev 0) Mbit/s (26 Mbit/s with framing), total 2225700 packets with 142409600 bytes (incl. CRC)
+New results 42
+[0;34m[Device: id=0] TX[0m: 0.32 (StdDev 0.00) Mpps, 164 (StdDev 0) Mbit/s (215 Mbit/s with framing), total 18647298 packets with 1193425024 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.01 (StdDev 0.00) Mpps, 7 (StdDev 0) Mbit/s (9 Mbit/s with framing), total 2780371 packets with 177918016 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.55 (StdDev 0.01) Mpps, 7447 (StdDev 4) Mbit/s (9774 Mbit/s with framing), total 843616322 packets with 53991472384 bytes (incl. CRC)
+New results 43
+[0;34m[Device: id=0] TX[0m: 0.17 (StdDev 0.00) Mpps, 85 (StdDev 0) Mbit/s (112 Mbit/s with framing), total 9580659 packets with 613184384 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.47 (StdDev 0.01) Mpps, 7408 (StdDev 3) Mbit/s (9723 Mbit/s with framing), total 838376114 packets with 53656075136 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.24 (StdDev 0.00) Mpps, 125 (StdDev 0) Mbit/s (164 Mbit/s with framing), total 14018488 packets with 897157184 bytes (incl. CRC)
+New results 44
+[0;34m[Device: id=0] TX[0m: 0.28 (StdDev 0.00) Mpps, 141 (StdDev 0) Mbit/s (186 Mbit/s with framing), total 23998862 packets with 1535965056 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.30 (StdDev 0.00) Mpps, 153 (StdDev 0) Mbit/s (200 Mbit/s with framing), total 17418817 packets with 1114777792 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.31 (StdDev 0.00) Mpps, 7324 (StdDev 1) Mbit/s (9613 Mbit/s with framing), total 829716081 packets with 53101817792 bytes (incl. CRC)
+New results 45
+[0;34m[Device: id=0] TX[0m: 0.13 (StdDev 0.00) Mpps, 66 (StdDev 0) Mbit/s (86 Mbit/s with framing), total 14210629 packets with 909535680 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.67 (StdDev 0.02) Mpps, 7513 (StdDev 12) Mbit/s (9861 Mbit/s with framing), total 851064668 packets with 54468152576 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.08 (StdDev 0.00) Mpps, 38 (StdDev 0) Mbit/s (50 Mbit/s with framing), total 4366938 packets with 279414784 bytes (incl. CRC)
+New results 46
+[0;34m[Device: id=0] TX[0m: 0.35 (StdDev 0.00) Mpps, 179 (StdDev 0) Mbit/s (235 Mbit/s with framing), total 22290881 packets with 1426613056 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.43 (StdDev 0.00) Mpps, 7386 (StdDev 1) Mbit/s (9694 Mbit/s with framing), total 836713030 packets with 53549632576 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.10 (StdDev 0.00) Mpps, 53 (StdDev 1) Mbit/s (70 Mbit/s with framing), total 6067737 packets with 388339840 bytes (incl. CRC)
+New results 47
+[0;34m[Device: id=0] TX[0m: 14.36 (StdDev 0.01) Mpps, 7354 (StdDev 3) Mbit/s (9652 Mbit/s with framing), total 833083363 packets with 53317366848 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.20 (StdDev 0.00) Mpps, 104 (StdDev 0) Mbit/s (137 Mbit/s with framing), total 11975088 packets with 766417344 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.31 (StdDev 0.00) Mpps, 160 (StdDev 0) Mbit/s (210 Mbit/s with framing), total 21494705 packets with 1375617792 bytes (incl. CRC)
+New results 48
+[0;34m[Device: id=0] TX[0m: 0.06 (StdDev 0.00) Mpps, 31 (StdDev 0) Mbit/s (41 Mbit/s with framing), total 3574762 packets with 228791552 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.28 (StdDev 0.00) Mpps, 146 (StdDev 0) Mbit/s (191 Mbit/s with framing), total 26003333 packets with 1664190080 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.53 (StdDev 0.02) Mpps, 7440 (StdDev 10) Mbit/s (9765 Mbit/s with framing), total 842827383 packets with 53940968960 bytes (incl. CRC)
+New results 49
+[0;34m[Device: id=0] TX[0m: 0.30 (StdDev 0.00) Mpps, 152 (StdDev 0) Mbit/s (199 Mbit/s with framing), total 25081940 packets with 1604395776 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 14.56 (StdDev 0.01) Mpps, 7457 (StdDev 6) Mbit/s (9787 Mbit/s with framing), total 844739693 packets with 54063359360 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 9 (StdDev 0) Mbit/s (11 Mbit/s with framing), total 988433 packets with 64089088 bytes (incl. CRC)
+New results 50
+[0;34m[Device: id=0] TX[0m: 14.80 (StdDev 0.03) Mpps, 7575 (StdDev 17) Mbit/s (9942 Mbit/s with framing), total 865970968 packets with 55422155520 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.02 (StdDev 0.00) Mpps, 8 (StdDev 0) Mbit/s (11 Mbit/s with framing), total 942983 packets with 60366336 bytes (incl. CRC)
+[0;34m[Device: id=0] TX[0m: 0.06 (StdDev 0.00) Mpps, 33 (StdDev 0) Mbit/s (43 Mbit/s with framing), total 3725196 packets with 238383552 bytes (incl. CRC)

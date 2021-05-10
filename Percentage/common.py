@@ -1,3 +1,5 @@
+MAX = (256 << 24) + (256 << 16) + (256 << 8) + 256
+
 def hex2num(hex):
     value = int(hex[3].strip(), 16)
     value *= 256
@@ -27,3 +29,17 @@ def parse_generator(i, method):
             res += float(Lines[j+3].strip().split()[index])
             x.append(res)
     return x
+
+def u32_sub(n1, n2):
+    if n1 >= n2:
+        return n1 - n2
+    else:
+        return n1 + MAX - n2
+
+def print_list(x):
+    print("-------------------------------------------")
+    print("this is the length of the list: %i" % len(x))
+    for xx in x:
+        print("{:.2f}".format(xx), end=', ')
+    print()
+    print("-------------------------------------------")

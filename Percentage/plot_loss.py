@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from numpy import mean, sqrt, var
 import common as common
 
-METHOD = "p4ebpf"
+METHOD = "p4xdp"
 
 file_name = "data/%s/results_%s" % (METHOD, METHOD)
 N = 50
@@ -11,6 +11,7 @@ x = [0,10,20,30,40,50,60,70,80,90,100]
 
 def parse_loss(file_name):
     total_box = []
+    xdp_last = 0
     for i in range(11):
         file = open(file_name + str(i) + ".txt", 'r')
         Lines = file.readlines()
@@ -18,8 +19,10 @@ def parse_loss(file_name):
             parse_loss_moongen(Lines, total_box)
         elif METHOD == "bcc":
             parse_loss_bcc(i, Lines, total_box)
-        elif METHOD in ["p4ebpf", "p4xdp"]:
-            parse_loss_p4_ebpf_xdp(i, Lines, total_box)
+        elif METHOD == "p4ebpf":
+            parse_loss_p4_ebpf(i, Lines, total_box)
+        elif METHOD == "p4xdp":
+            xdp_last = parse_loss_p4_xdp(i, Lines, total_box, xdp_last)
 
     return total_box
 
@@ -59,10 +62,10 @@ def parse_loss_bcc(i, Lines, total_box):
     dev = common.parse_generator(i, METHOD)
     cap_box = [100 * a / b for a, b in zip(captured, dev)]
     filtered_box = [100 * a / b for a, b in zip(filtered, dev)]
-    for i,j in zip(cap_box,filtered_box):
+    for i,j in zip(cap_box[-50:],filtered_box[-50:]):
         total_box.append(100 - i - j)
 
-def parse_loss_p4_ebpf_xdp(i, Lines, total_box):
+def parse_loss_p4_ebpf(i, Lines, total_box):
     captured = []
     filtered = []
     step = 4
@@ -87,9 +90,41 @@ def parse_loss_p4_ebpf_xdp(i, Lines, total_box):
     dev = common.parse_generator(i, METHOD)
     cap_box = [100 * a / b for a, b in zip(captured, dev)]
     filtered_box = [100 * a / b for a, b in zip(filtered, dev)]
-    for i,j in zip(cap_box,filtered_box):
+    for i,j in zip(cap_box[-50:],filtered_box[-50:]):
         total_box.append(100 - i - j)
 
+def parse_loss_p4_xdp(i, Lines, total_box, xdp_last):
+    captured = []
+    filtered = []
+    step = 4
+    if i == 0:
+        step = 3
+    for j in range(0, len(Lines), step):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        if i == 0:
+            line = Lines[j+1].split()
+            current_value = common.u32_sub(common.hex2num(line[-4:]), xdp_last)
+            filtered.append(current_value)
+            captured.append(0)
+            xdp_last = common.hex2num(line[-4:])
+        elif i == 10:
+            line = Lines[j+2].split()
+            captured.append(common.hex2num(line[-4:]))
+            filtered.append(0)
+        else:
+            current_value = common.u32_sub(common.hex2num(Lines[j+1].split()[-4:]), xdp_last)
+            filtered.append(current_value)
+            captured.append(common.hex2num(Lines[j+2].split()[-4:]))
+            xdp_last = common.hex2num(Lines[j+1].split()[-4:])
+
+    dev = common.parse_generator(i, METHOD)
+    cap_box = [100 * a / b for a, b in zip(captured, dev)]
+    filtered_box = [100 * a / b for a, b in zip(filtered, dev)]
+    for i,j in zip(cap_box[-50:],filtered_box[-50:]):
+        total_box.append(100 - i - j)
+    return xdp_last
 
 def compute_min_mean_max_loss(file_name):
     total_box = parse_loss(file_name)
