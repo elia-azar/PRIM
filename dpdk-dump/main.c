@@ -104,6 +104,8 @@ int nb_sys_ports;
 static struct rte_mempool * pktmbuf_pool;
 static struct rte_ring    * intermediate_ring;
 
+FILE *fptr;
+
 static inline void
 print_ether_addr(const char *what, struct rte_ether_addr *eth_addr)
 {
@@ -122,11 +124,11 @@ void print_stats(void){
 		rte_eth_stats_get(i, &stat);
 		good_pkt += stat.ipackets;
 		miss_pkt += stat.imissed;
-		printf("\nPORT: %2d Rx: %ld Drp: %ld Tot: %ld Perc: %.3f%%", i, stat.ipackets, stat.imissed, stat.ipackets+stat.imissed, (float)stat.imissed/(stat.ipackets+stat.imissed)*100 );
+		fprintf(fptr,"\nPORT: %2d Rx: %ld Drp: %ld Tot: %ld Perc: %.3f%%", i, stat.ipackets, stat.imissed, stat.ipackets+stat.imissed, (float)stat.imissed/(stat.ipackets+stat.imissed)*100 );
 	}
-	printf("\n-------------------------------------------------");
-	printf("\nTOT:     Rx: %ld Drp: %ld Tot: %ld Perc: %.3f%%", good_pkt, miss_pkt, good_pkt+miss_pkt, (float)miss_pkt/(good_pkt+miss_pkt)*100 );
-	printf("\n");
+	fprintf(fptr,"\n-------------------------------------------------");
+	fprintf(fptr,"\nTOT:     Rx: %ld Drp: %ld Tot: %ld Perc: %.3f%%", good_pkt, miss_pkt, good_pkt+miss_pkt, (float)miss_pkt/(good_pkt+miss_pkt)*100 );
+	fprintf(fptr,"\n");
 
 }
 
@@ -484,6 +486,9 @@ static void signal_handler(int signum)
 		printf("The capture lasted %ld seconds.\n", diff);
 		print_stats();
 
+		/* Close the stats file */
+		fclose(fptr);
+
 		/* Close the pcap file */
 		pcap_close(pd);
 		pcap_dump_close(pcap_file_p);
@@ -516,6 +521,13 @@ int main(int argc, char **argv)
 	uint16_t nr_ports;
 	struct rte_flow_error error;
 	int i;
+
+	fptr = fopen("/opt/scripts/test.txt", "w");
+	if (fptr == NULL)
+	{
+		printf("Could not open file");
+		return 0;
+	}
 
 	ret = rte_eal_init(argc, argv);
 	if (ret < 0)
