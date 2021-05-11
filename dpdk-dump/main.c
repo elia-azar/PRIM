@@ -91,6 +91,7 @@ static const struct rte_eth_txconf tx_conf = {
 static volatile bool force_quit;
 static uint16_t port_id;
 char * file_name = NULL;
+int mode = 0;
 pcap_dumper_t * pcap_file_p;
 uint64_t buffer_size = 1048576;
 uint64_t max_size = 0 ;
@@ -102,6 +103,14 @@ pcap_t *pd;
 int nb_sys_ports;
 static struct rte_mempool * pktmbuf_pool;
 static struct rte_ring    * intermediate_ring;
+
+static inline void
+print_ether_addr(const char *what, struct rte_ether_addr *eth_addr)
+{
+	char buf[RTE_ETHER_ADDR_FMT_SIZE];
+	rte_ether_format_addr(buf, RTE_ETHER_ADDR_FMT_SIZE, eth_addr);
+	printf("%s%s", what, buf);
+}
 
 void print_stats(void){
 	struct rte_eth_stats stat;
@@ -170,6 +179,132 @@ static int main_loop_producer(__attribute__((unused)) void * arg){
 }
 
 static int main_loop_consumer(__attribute__((unused)) void * arg){
+
+	struct timeval t_pack;
+	struct rte_mbuf * m;
+	u_char * packet;
+	char file_name_rotated [1000];
+	int ret;
+
+	/* Init first rotation */
+	ret = gettimeofday(&t_pack, NULL);
+	if (ret != 0) 
+		rte_exit(EXIT_FAILURE,"Error: gettimeofday failed. Quitting...\n");
+	start_secs = t_pack.tv_sec;
+
+
+	while (!force_quit) {
+
+		/* Dequeue packet */
+		// ELIA - use rte_ring_edqueue_bulk_start
+		ret = rte_ring_dequeue(intermediate_ring, (void**)&m);
+		
+		/* Continue polling if no packet available */
+		if( unlikely (ret != 0)) continue;
+
+		/* Read timestamp of the packet */
+		t_pack.tv_usec = m->udata64;
+		t_pack.tv_sec = m->tx_offload;
+
+		packet = rte_pktmbuf_mtod(m, u_char * ); 	
+
+		nb_dumped_packets++;
+
+		/* Free the buffer */
+		rte_pktmbuf_free((struct rte_mbuf *)m);
+	}
+}
+
+static int main_loop_consumer_print(__attribute__((unused)) void * arg){
+
+	struct timeval t_pack;
+	struct rte_mbuf * m;
+	char file_name_rotated [1000];
+	int ret;
+
+	struct rte_mbuf *mbufs[32];
+	struct rte_ether_hdr *eth_hdr;
+	struct rte_ipv4_hdr *ip_hdr;
+	struct rte_udp_hdr *udp_hdr;
+	struct rte_flow_error error;
+	uint16_t nb_rx;
+	uint16_t i;
+	uint16_t j;
+	uint32_t ip_dst;
+	uint32_t ip_src;
+	uint8_t ip_proto;
+	uint16_t src_port;
+	uint16_t dst_port;
+
+	/* Init first rotation */
+	ret = gettimeofday(&t_pack, NULL);
+	if (ret != 0) 
+		rte_exit(EXIT_FAILURE,"Error: gettimeofday failed. Quitting...\n");
+	start_secs = t_pack.tv_sec;
+
+
+	while (!force_quit) {
+
+		/* Dequeue packet */
+		// ELIA - use rte_ring_dequeue_bulk_start
+		ret = rte_ring_dequeue(intermediate_ring, (void**)&m);
+		
+		/* Continue polling if no packet available */
+		if( unlikely (ret != 0)) continue;
+
+		/* Read timestamp of the packet */
+		t_pack.tv_usec = m->udata64;
+		t_pack.tv_sec = m->tx_offload;
+
+		/* save ether type of the incoming packet */
+		eth_hdr = rte_pktmbuf_mtod(m, struct rte_ether_hdr *);
+
+		/* Remove the Ethernet header and trailer from the input packet */
+		rte_pktmbuf_adj(m, (uint16_t)sizeof(struct rte_ether_hdr));
+
+		/* if this is an IPv4 packet */
+		//if (likely(RTE_ETH_IS_IPV4_HDR(m->packet_type))) {
+
+		/* Read the lookup key (i.e. ip_dst) from the input packet */
+		ip_hdr = rte_pktmbuf_mtod(m, struct rte_ipv4_hdr *);
+		ip_src = rte_be_to_cpu_32(ip_hdr->src_addr);
+		ip_dst = rte_be_to_cpu_32(ip_hdr->dst_addr);
+		ip_proto = ip_hdr->next_proto_id;
+
+		/* Remove the Ethernet header and trailer from the input packet */
+		rte_pktmbuf_adj(m, (uint16_t)sizeof(struct rte_ipv4_hdr));
+
+		//if (likely(ip_proto == 17)){
+		udp_hdr = rte_pktmbuf_mtod(m, struct rte_udp_hdr *);
+		src_port = rte_be_to_cpu_16(udp_hdr->src_port);
+		dst_port = rte_be_to_cpu_16(udp_hdr->dst_port);
+
+		print_ether_addr("src=",
+				&eth_hdr->s_addr);
+		print_ether_addr(" - dst=",
+				&eth_hdr->d_addr);
+		printf(" -- ");
+		printf("%i.%i.%i.%i:",  (int)(ip_src >> 24 & 0xff),
+								(int)(ip_src >> 16 & 0xff),
+								(int)(ip_src >> 8 & 0xff),
+								(int)(ip_src & 0xff));
+		printf("%i -> ", src_port);
+		printf("%i.%i.%i.%i:",  (int)(ip_dst >> 24 & 0xff),
+								(int)(ip_dst >> 16 & 0xff),
+								(int)(ip_dst >> 8 & 0xff),
+								(int)(ip_dst & 0xff));
+		printf("%i - ", dst_port);
+		printf(" proto=%i", ip_proto);
+		printf("\n");
+
+		nb_dumped_packets++;
+
+		/* Free the buffer */
+		rte_pktmbuf_free((struct rte_mbuf *)m);
+	}
+}
+
+static int main_loop_consumer_pcap(__attribute__((unused)) void * arg){
 
 	struct timeval t_pack;
 	struct rte_mbuf * m;
@@ -361,9 +496,11 @@ static int parse_args(int argc, char **argv)
 	int option;
 	
 	/* Retrive arguments */
-	while ((option = getopt(argc, argv,"w:W:")) != -1) {
+	while ((option = getopt(argc, argv,"m:w:")) != -1) {
         switch (option) {
-            case 'w' : file_name = strdup(optarg); /* File name, mandatory */
+			case 'm' : mode = atoi(optarg); /* mode, mandatory */
+                break;
+            case 'w' : file_name = strdup(optarg); /* File name, mandatory if mode is 1 */
                 break;
             default: return -1; 
 		}
@@ -429,7 +566,15 @@ int main(int argc, char **argv)
 	init_port(port_id);
 
 	/* Start consumer and producer routine on 2 different cores: consumer launched first... */
-	ret =  rte_eal_mp_remote_launch(main_loop_consumer, NULL, SKIP_MASTER);
+	switch (mode) {
+		case 0 : ret =  rte_eal_mp_remote_launch(main_loop_consumer, NULL, SKIP_MASTER);
+			break;
+		case 1 : ret =  rte_eal_mp_remote_launch(main_loop_consumer_pcap, NULL, SKIP_MASTER);
+			break;
+		case 2 : ret =  rte_eal_mp_remote_launch(main_loop_consumer_print, NULL, SKIP_MASTER);
+			break;
+		default: ret = -1;
+	}
 	if (ret != 0) 
 		rte_exit(EXIT_FAILURE,"Cannot start consumer thread\n");	
 
