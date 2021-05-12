@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "bcc"
+METHOD = "dpdk-dump"
 
-Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump"]
+Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump", "dpdk-dump"]
 
-Colors = ["orange", "blue", "red", "green", "pink", "purple"]
+Colors = ["orange", "blue", "red", "cyan", "pink", "purple", "green"]
 
 N = 50
 
@@ -31,6 +31,8 @@ def parse(file_name):
             parse_p4ebpf_p4xdp(Lines, received)
         elif METHOD == "bcc":
             parse_bcc(Lines, received)
+        elif METHOD == "dpdk-dump":
+            parse_dpdk_dump(Lines, received)
     
     sent = the_parser.sent_list("data/%s/%s_results_generator" % (METHOD, METHOD))
 
@@ -86,6 +88,14 @@ def parse_bcc(Lines, received):
         elif line[0] == "New":
             received.append(int(Lines[j+1].split()[2].strip()))
 
+def parse_dpdk_dump(Lines, received):
+    for j in range(0, len(Lines), 2):
+        line = Lines[j].strip().split()
+        if len(line) < 1:
+            continue
+        elif line[0] == "New":
+            received.append(int(Lines[j+1].split()[2].strip()))
+
 def compute_min_mean_max(file_name):
     pkt_loss = []
     upper_loss = []
@@ -123,6 +133,14 @@ def plot_loss(lower_loss, pkt_loss, upper_loss, color_):
     # plot mean pkt loss
     plt.plot(x, pkt_loss, color=color_, label=METHOD)
 
+
+def single_plot_save():
+    plt.title('Packet Loss as a function input rate -- %s' % METHOD)
+    plt.ylabel('Pkt loss (%)')
+    plt.xlabel('Pkt rate (Mpps)')
+    plt.legend(loc="best")
+    plt.savefig("images/loss_%s.png" % METHOD)
+
 def plot_save():
     plt.title('Packet Loss as a function input rate')
     plt.ylabel('Pkt loss (%)')
@@ -130,8 +148,17 @@ def plot_save():
     plt.legend(loc="best") 
     plt.savefig("images/loss.png")
 
+file_name = "data/%s/results_%s" % (METHOD, METHOD)
+x,y,z = compute_min_mean_max(file_name)
+plot_loss(x,y,z, "blue")
+
+single_plot_save()
+
+"""
 for color, METHOD in zip(Colors, Methods):
     file_name = "data/%s/results_%s" % (METHOD, METHOD)
     x,y,z = compute_min_mean_max(file_name)
     plot_loss(x,y,z, color)
+
 plot_save()
+"""
