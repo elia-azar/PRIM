@@ -18,7 +18,7 @@ done
 
 cd /opt/tools/dpdk-20.11/examples/flow_filtering
 
-timeout 70s ./build/flow --lcores='(0,1)@(0-5)' -n 4 -m 1024 -w 0000:04:00.0 --file-prefix flow_dpdk -- -m ${mode}
+timeout 70s ./build/flow --lcores='(0,1)@(0-5)' -n 4 -m 1024 -w 0000:04:00.0 --file-prefix flow_dpdk -- -m ${mode} -f capture.pcap
 
 cd $CONFIG_DIR
 
