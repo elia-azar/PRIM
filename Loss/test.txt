@@ -1,2 +1,0 @@
-New results
-TOT:     Rx: 412312523 Drp: 49174132 Tot: 461486655 Perc: 10.656%

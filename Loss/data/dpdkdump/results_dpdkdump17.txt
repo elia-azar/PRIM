@@ -1,0 +1,100 @@
+New results
+TOT:     Rx: 394472817 Drp: 460755018 Tot: 855227835 Perc: 53.875%
+New results
+TOT:     Rx: 387282257 Drp: 460231102 Tot: 847513359 Perc: 54.304%
+New results
+TOT:     Rx: 411711955 Drp: 437749364 Tot: 849461319 Perc: 51.533%
+New results
+TOT:     Rx: 393798291 Drp: 460115049 Tot: 853913340 Perc: 53.883%
+New results
+TOT:     Rx: 424235569 Drp: 430974815 Tot: 855210384 Perc: 50.394%
+New results
+TOT:     Rx: 404172213 Drp: 448322619 Tot: 852494832 Perc: 52.589%
+New results
+TOT:     Rx: 398089425 Drp: 435317289 Tot: 833406714 Perc: 52.233%
+New results
+TOT:     Rx: 388562075 Drp: 467224822 Tot: 855786897 Perc: 54.596%
+New results
+TOT:     Rx: 390487249 Drp: 464711795 Tot: 855199044 Perc: 54.340%
+New results
+TOT:     Rx: 406461297 Drp: 447659187 Tot: 854120484 Perc: 52.412%
+New results
+TOT:     Rx: 405637233 Drp: 448477707 Tot: 854114940 Perc: 52.508%
+New results
+TOT:     Rx: 380036657 Drp: 466194967 Tot: 846231624 Perc: 55.091%
+New results
+TOT:     Rx: 382570897 Drp: 462492707 Tot: 845063604 Perc: 54.729%
+New results
+TOT:     Rx: 410359985 Drp: 442622215 Tot: 852982200 Perc: 51.891%
+New results
+TOT:     Rx: 388620499 Drp: 462059870 Tot: 850680369 Perc: 54.317%
+New results
+TOT:     Rx: 395067341 Drp: 460082185 Tot: 855149526 Perc: 53.801%
+New results
+TOT:     Rx: 409243696 Drp: 444428732 Tot: 853672428 Perc: 52.061%
+New results
+TOT:     Rx: 387342673 Drp: 455037068 Tot: 842379741 Perc: 54.018%
+New results
+TOT:     Rx: 406991153 Drp: 448174564 Tot: 855165717 Perc: 52.408%
+New results
+TOT:     Rx: 404303746 Drp: 451477796 Tot: 855781542 Perc: 52.756%
+New results
+TOT:     Rx: 380790129 Drp: 464523774 Tot: 845313903 Perc: 54.953%
+New results
+TOT:     Rx: 400158764 Drp: 455359060 Tot: 855517824 Perc: 53.226%
+New results
+TOT:     Rx: 394120433 Drp: 461005090 Tot: 855125523 Perc: 53.911%
+New results
+TOT:     Rx: 419656305 Drp: 432270141 Tot: 851926446 Perc: 50.740%
+New results
+TOT:     Rx: 403205969 Drp: 444718906 Tot: 847924875 Perc: 52.448%
+New results
+TOT:     Rx: 390435249 Drp: 458883879 Tot: 849319128 Perc: 54.030%
+New results
+TOT:     Rx: 405814738 Drp: 441973994 Tot: 847788732 Perc: 52.133%
+New results
+TOT:     Rx: 391561264 Drp: 460962359 Tot: 852523623 Perc: 54.070%
+New results
+TOT:     Rx: 403361244 Drp: 452026107 Tot: 855387351 Perc: 52.845%
+New results
+TOT:     Rx: 424550977 Drp: 432296525 Tot: 856847502 Perc: 50.452%
+New results
+TOT:     Rx: 407644584 Drp: 446621115 Tot: 854265699 Perc: 52.281%
+New results
+TOT:     Rx: 391919697 Drp: 460478871 Tot: 852398568 Perc: 54.022%
+New results
+TOT:     Rx: 401917473 Drp: 453248622 Tot: 855166095 Perc: 53.001%
+New results
+TOT:     Rx: 405029425 Drp: 450574898 Tot: 855604323 Perc: 52.662%
+New results
+TOT:     Rx: 417144640 Drp: 432108149 Tot: 849252789 Perc: 50.881%
+New results
+TOT:     Rx: 419974087 Drp: 435380819 Tot: 855354906 Perc: 50.901%
+New results
+TOT:     Rx: 390703420 Drp: 464753735 Tot: 855457155 Perc: 54.328%
+New results
+TOT:     Rx: 403309694 Drp: 447478342 Tot: 850788036 Perc: 52.596%
+New results
+TOT:     Rx: 410926609 Drp: 440081234 Tot: 851007843 Perc: 51.713%
+New results
+TOT:     Rx: 354680669 Drp: 496568842 Tot: 851249511 Perc: 58.334%
+New results
+TOT:     Rx: 399515314 Drp: 448822085 Tot: 848337399 Perc: 52.906%
+New results
+TOT:     Rx: 418821767 Drp: 427449799 Tot: 846271566 Perc: 50.510%
+New results
+TOT:     Rx: 409674915 Drp: 441878193 Tot: 851553108 Perc: 51.891%
+New results
+TOT:     Rx: 404353790 Drp: 451253620 Tot: 855607410 Perc: 52.741%
+New results
+TOT:     Rx: 403893585 Drp: 449671365 Tot: 853564950 Perc: 52.682%
+New results
+TOT:     Rx: 387584629 Drp: 461796932 Tot: 849381561 Perc: 54.369%
+New results
+TOT:     Rx: 390317329 Drp: 464859161 Tot: 855176490 Perc: 54.358%
+New results
+TOT:     Rx: 413876030 Drp: 441932476 Tot: 855808506 Perc: 51.639%
+New results
+TOT:     Rx: 390904494 Drp: 462998640 Tot: 853903134 Perc: 54.221%
+New results
+TOT:     Rx: 383397198 Drp: 465017754 Tot: 848414952 Perc: 54.810%

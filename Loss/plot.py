@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 from numpy import var, mean, sqrt
 import parser as the_parser
 
-METHOD = "dpdk-dump"
+METHOD = "bcc"
 
-Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump", "dpdk-dump"]
+Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump", "dpdkdump"]
 
 Colors = ["orange", "blue", "red", "cyan", "pink", "purple", "green"]
 
@@ -31,7 +31,7 @@ def parse(file_name):
             parse_p4ebpf_p4xdp(Lines, received)
         elif METHOD == "bcc":
             parse_bcc(Lines, received)
-        elif METHOD == "dpdk-dump":
+        elif METHOD == "dpdkdump":
             parse_dpdk_dump(Lines, received)
     
     sent = the_parser.sent_list("data/%s/%s_results_generator" % (METHOD, METHOD))
@@ -148,17 +148,16 @@ def plot_save():
     plt.legend(loc="best") 
     plt.savefig("images/loss.png")
 
-file_name = "data/%s/results_%s" % (METHOD, METHOD)
-x,y,z = compute_min_mean_max(file_name)
-plot_loss(x,y,z, "blue")
+#file_name = "data/%s/results_%s" % (METHOD, METHOD)
+#x,y,z = compute_min_mean_max(file_name)
+#plot_loss(x,y,z, "blue")
 
-single_plot_save()
+#single_plot_save()
 
-"""
+
 for color, METHOD in zip(Colors, Methods):
     file_name = "data/%s/results_%s" % (METHOD, METHOD)
     x,y,z = compute_min_mean_max(file_name)
     plot_loss(x,y,z, color)
 
 plot_save()
-"""
