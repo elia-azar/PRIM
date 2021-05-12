@@ -145,7 +145,7 @@ def plot_save():
     plt.title('Packet Loss as a function input rate')
     plt.ylabel('Pkt loss (%)')
     plt.xlabel('Pkt rate (Mpps)')
-    plt.legend(loc="best") 
+    plt.legend(loc="center", prop={'size': 8}) 
     plt.savefig("images/loss.png")
 
 #file_name = "data/%s/results_%s" % (METHOD, METHOD)
