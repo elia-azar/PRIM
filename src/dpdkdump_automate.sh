@@ -1,20 +1,24 @@
 #!/bin/bash
 
 num=0
+mode=0
 
 echo 'STARTING DPDK-DUMP'
 
-while getopts ":n:" arg; do
+while getopts ":n:m:" arg; do
 	case "${arg}" in
 		n)
 			num=${OPTARG}
+			;;
+		m)
+			mode=${OPTARG}
 			;;
 	esac
 done
 
 cd /opt/tools/dpdk-20.11/examples/flow_filtering
 
-timeout 70s ./build/flow --lcores='(0,1)@(0-5)' -n 4 -m 1024 -w 0000:04:00.0 --file-prefix flow_dpdk -- -m 0
+timeout 70s ./build/flow --lcores='(0,1)@(0-5)' -n 4 -m 1024 -w 0000:04:00.0 --file-prefix flow_dpdk -- -m ${mode}
 
 cd $CONFIG_DIR
 
