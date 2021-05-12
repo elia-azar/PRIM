@@ -24,12 +24,12 @@ x = np.arange(len(labels))  # the label locations
 width = 0.30  # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(x - 4*width/8 + width/16, tcpdump_loss, width/8, label='tcpdump')
-rects2 = ax.bar(x - 3*width/8 + width/16, moongen_loss, width/8, label='moongen')
+rects1 = ax.bar(x - 3*width/8 + width/16, dpdkdump_loss, width/8, label='dpdk-dump')
+rects2 = ax.bar(x - 4*width/8 + width/16, p4_xdp_loss, width/8, label='p4-xdp')
 rects3 = ax.bar(x - 2*width/8 + width/16, xdp_loss, width/8, label='xdp-dump')
 rects4 = ax.bar(x - width/8 + width/16, bcc_loss, width/8, label='bcc')
-rects5 = ax.bar(x + width/8 - width/16, dpdkdump_loss, width/8, label='dpdk-dump')
-rects6 = ax.bar(x + 2*width/8 - width/16, p4_xdp_loss, width/8, label='p4-xdp')
+rects5 = ax.bar(x + width/8 - width/16, tcpdump_loss, width/8, label='tcpdump')
+rects6 = ax.bar(x + 2*width/8 - width/16, moongen_loss, width/8, label='moongen')
 rects7 = ax.bar(x + 3*width/8 - width/16, p4_ebpf_loss, width/8, label='p4-ebpf')
 rects8 = ax.bar(x + 4*width/8 - width/16, pdump_loss, width/8, label='pdump')
 # Add some text for labels, title and custom x-axis tick labels, etc.
@@ -37,19 +37,19 @@ ax.set_ylabel('Packet Loss')
 ax.set_title('Packet Loss vs. method')
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
-ax.legend(prop={'size': 7})
+ax.legend(loc="upper center",prop={'size': 7})
 
 fig.tight_layout()
 
 plt.savefig("pkt_loss.png")
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(x - 4*width/8 + width/16, tcpdump, width/8, label='tcpdump')
-rects2 = ax.bar(x - 3*width/8 + width/16, moongen, width/8, label='moongen')
+rects1 = ax.bar(x - 3*width/8 + width/16, dpdkdump, width/8, label='dpdk-dump')
+rects2 = ax.bar(x - 4*width/8 + width/16, p4_xdp, width/8, label='p4-xdp')
 rects3 = ax.bar(x - 2*width/8 + width/16, xdp, width/8, label='xdp-dump')
 rects4 = ax.bar(x - 1*width/8 + width/16, bcc, width/8, label='bcc')
-rects5 = ax.bar(x + width/8 - width/16, dpdkdump, width/8, label='dpdk-dump')
-rects6 = ax.bar(x + 2*width/8 - width/16, p4_xdp, width/8, label='p4-xdp')
+rects5 = ax.bar(x + width/8 - width/16, tcpdump, width/8, label='tcpdump')
+rects6 = ax.bar(x + 2*width/8 - width/16, moongen, width/8, label='moongen')
 rects7 = ax.bar(x + 3*width/8 - width/16, p4_ebpf, width/8, label='p4-ebpf')
 rects8 = ax.bar(x + 4*width/8 - width/16, pdump, width/8, label='pdump')
 # Add some text for labels, title and custom x-axis tick labels, etc.
