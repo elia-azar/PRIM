@@ -39,7 +39,16 @@ ax.set_xticks(x)
 ax.set_xticklabels(labels)
 ax.legend(loc="upper center",prop={'size': 7})
 
-fig.tight_layout()
+ax.grid(axis = 'y', linestyle = '--')
+
+# Shrink current axis by 20%
+box = ax.get_position()
+ax.set_position([box.x0, box.y0, box.width * 0.9, box.height])
+
+# Put a legend to the right of the current axis
+ax.legend(loc='lower left', bbox_to_anchor=(1, 0.5),prop={'size': 7})
+
+#fig.tight_layout()
 
 plt.savefig("pkt_loss.png")
 
@@ -57,9 +66,18 @@ ax.set_ylabel('RX packets')
 ax.set_title('RX packets vs. method')
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
-ax.legend( prop={'size': 7})
+#ax.legend( prop={'size': 7})
 
-fig.tight_layout()
+ax.grid(axis = 'y', linestyle="--")
+
+# Shrink current axis by 20%
+box = ax.get_position()
+ax.set_position([box.x0, box.y0, box.width * 0.9, box.height])
+
+# Put a legend to the right of the current axis
+ax.legend(loc='lower left', bbox_to_anchor=(1, 0.5),prop={'size': 7})
+
+#fig.tight_layout()
 
 plt.savefig("rx_methods.png")
 

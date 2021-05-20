@@ -123,41 +123,54 @@ def print_list(x):
     print("-------------------------------------------")
 
 
-def plot_loss(lower_loss, pkt_loss, upper_loss, color_):
+def plot_loss(fig, ax, lower_loss, pkt_loss, upper_loss, color_):
     # value returned by parser.py
     x = the_parser.mean_list("data/%s/%s_results_generator" % (METHOD, METHOD))
     # plot lower and upper bounds
-    plt.plot(x, lower_loss, color=color_, alpha=0.1)
-    plt.plot(x, upper_loss, color=color_, alpha=0.1)
-    plt.fill_between(x, lower_loss, upper_loss, where=upper_loss >= lower_loss, alpha=0.3, facecolor=color_, interpolate=True)
+    ax.plot(x, lower_loss, color=color_, alpha=0.1)
+    ax.plot(x, upper_loss, color=color_, alpha=0.1)
+    ax.fill_between(x, lower_loss, upper_loss, where=upper_loss >= lower_loss, alpha=0.3, facecolor=color_, interpolate=True)
     # plot mean pkt loss
-    plt.plot(x, pkt_loss, color=color_, label=METHOD)
+    ax.plot(x, pkt_loss, color=color_, label=METHOD)
 
 
-def single_plot_save():
-    plt.title('Packet Loss as a function input rate -- %s' % METHOD)
-    plt.ylabel('Pkt loss (%)')
-    plt.xlabel('Pkt rate (Mpps)')
-    plt.legend(loc="best")
+def single_plot_save(fig, ax):
+    ax.set_title('Packet Loss as a function input rate -- %s' % METHOD)
+    ax.set_ylabel('Pkt loss (%)')
+    ax.set_xlabel('Pkt rate (Mpps)')
+    ax.grid(linestyle="--")
     plt.savefig("images/loss_%s.png" % METHOD)
 
-def plot_save():
-    plt.title('Packet Loss as a function input rate')
-    plt.ylabel('Pkt loss (%)')
-    plt.xlabel('Pkt rate (Mpps)')
-    plt.legend(loc="center", prop={'size': 8}) 
+def plot_save(fig, ax):
+    ax.set_title('Packet Loss as a function input rate')
+    ax.set_ylabel('Pkt loss (%)')
+    ax.set_xlabel('Pkt rate (Mpps)')
+    ax.grid(linestyle="--")
+
+    # Shrink current axis by 20%
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0, box.width * 0.9, box.height])
+
+    # Put a legend to the right of the current axis
+    ax.legend(loc='lower left', bbox_to_anchor=(1, 0.5),prop={'size': 7})
     plt.savefig("images/loss.png")
 
-#file_name = "data/%s/results_%s" % (METHOD, METHOD)
-#x,y,z = compute_min_mean_max(file_name)
-#plot_loss(x,y,z, "blue")
+for METHOD in Methods:
+    fig, ax = plt.subplots()
+    file_name = "data/%s/results_%s" % (METHOD, METHOD)
+    x,y,z = compute_min_mean_max(file_name)
+    plot_loss(fig, ax, x,y,z, "blue")
 
-#single_plot_save()
+    single_plot_save(fig, ax)
 
+"""
+
+fig, ax = plt.subplots()
 
 for color, METHOD in zip(Colors, Methods):
     file_name = "data/%s/results_%s" % (METHOD, METHOD)
     x,y,z = compute_min_mean_max(file_name)
-    plot_loss(x,y,z, color)
+    plot_loss(fig, ax, x,y,z, color)
 
-plot_save()
+plot_save(fig, ax)
+"""

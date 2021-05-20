@@ -20,7 +20,7 @@ lower_total = []
 upper_total = []
 total_box = []
 
-SCATTER = True
+SCATTER = False
 N = 50
 # value returned by parser.py
 x = [0, 1, 2, 3, 4, 5, 6]
@@ -99,6 +99,7 @@ else:
 plt.title('RX packets vs filter size with 50% packets matching the filter')
 plt.ylabel('RX pkts (%)')
 plt.xlabel('Filter size')
-plt.legend() 
+plt.grid(linestyle="--")
+#plt.legend() 
 
 plt.savefig("images/%s_percentage_vs_filter_50_match.png" % ("scatter" if SCATTER else "plot"))

@@ -3,7 +3,8 @@ from numpy import mean, sqrt, var
 import common as common
 
 METHOD = "p4xdp"
-file_name = "data/%s/results_%s" % (METHOD, METHOD)
+Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump"]
+
 N = 50
 
 x = [0,10,20,30,40,50,60,70,80,90,100]
@@ -203,26 +204,30 @@ def compute_min_mean_max(file_name):
 
 
 def plot_percentage(lower_cap, cap, upper_cap, lower_filtered, filtered, upper_filtered, lower_total, total, upper_total):
-    plt.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
-    plt.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
+    fig, ax = plt.subplots()
+    ax.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
+    ax.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
     if METHOD not in ["tcpdump", "xdpdump"]:
-        plt.plot(x, lower_filtered, x, upper_filtered, color='orange', alpha=0.1)
-        plt.fill_between(x, lower_filtered, upper_filtered, where=upper_filtered >= lower_filtered, alpha=0.3, facecolor='orange', interpolate=True)
-        plt.plot(x, lower_total, x, upper_total, color='green', alpha=0.1)
-        plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='green', interpolate=True)
+        ax.plot(x, lower_filtered, x, upper_filtered, color='orange', alpha=0.1)
+        ax.fill_between(x, lower_filtered, upper_filtered, where=upper_filtered >= lower_filtered, alpha=0.3, facecolor='orange', interpolate=True)
+        #ax.plot(x, lower_total, x, upper_total, color='green', alpha=0.1)
+        #ax.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='green', interpolate=True)
 
     # plot lines 
-    plt.plot(x, cap, label = "Captured pkts", color="blue")
+    ax.plot(x, cap, label = "Captured pkts", color="blue")
     if METHOD not in ["tcpdump", "xdpdump"]:
-        plt.plot(x, filtered, label = "Dropped pkts", color="orange")
-        plt.plot(x, total, label = "Treated pkts", color="green")
-    plt.title('Packet filtering behaviour -- %s' % METHOD)
-    plt.ylabel('RX pkts (%)')
-    plt.xlabel('Pkts matching the filter (%)')
-    plt.legend() 
+        ax.plot(x, filtered, label = "Dropped pkts", color="orange")
+        #ax.plot(x, total, label = "Treated pkts", color="green")
+    ax.set_title('Packet filtering behaviour -- %s' % METHOD)
+    ax.set_ylabel('RX pkts (%)')
+    ax.set_xlabel('Pkts matching the filter (%)')
+    ax.grid(linestyle="--")
+    ax.legend() 
 
     # save fig
-    plt.savefig("images/%s_percentage.png" % METHOD)
+    plt.savefig("images/%s_percentage_final.png" % METHOD)
 
-a,b,c,d,e,f,g,h,i = compute_min_mean_max(file_name)
-plot_percentage(a,b,c,d,e,f,g,h,i)
+for METHOD in Methods:
+    file_name = "data/%s/results_%s" % (METHOD, METHOD)
+    a,b,c,d,e,f,g,h,i = compute_min_mean_max(file_name)
+    plot_percentage(a,b,c,d,e,f,g,h,i)

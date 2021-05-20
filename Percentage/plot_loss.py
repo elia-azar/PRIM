@@ -3,8 +3,8 @@ from numpy import mean, sqrt, var
 import common as common
 
 METHOD = "p4xdp"
+Methods = ["bcc", "moongen", "p4ebpf", "p4xdp"]
 
-file_name = "data/%s/results_%s" % (METHOD, METHOD)
 N = 50
 
 x = [0,10,20,30,40,50,60,70,80,90,100]
@@ -141,18 +141,22 @@ def compute_min_mean_max_loss(file_name):
     return lower_total, total, upper_total
 
 def plot_percentage_loss(lower_total, total, upper_total):
-    plt.plot(x, lower_total, x, upper_total, color='red', alpha=0.1)
-    plt.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='red', interpolate=True)
+    fig, ax = plt.subplots()
+    ax.plot(x, lower_total, x, upper_total, color='red', alpha=0.1)
+    ax.fill_between(x, lower_total, upper_total, where=upper_total >= lower_total, alpha=0.3, facecolor='red', interpolate=True)
 
     # plot lines 
-    plt.plot(x, total, label = "Lost pkts", color="red")
-    plt.title('Packet loss vs matching filter -- %s' % METHOD)
-    plt.ylabel('Lost pkts (%)')
-    plt.xlabel('Pkts matching the filter (%)')
-    plt.legend() 
+    ax.plot(x, total, label = "Lost pkts", color="red")
+    ax.set_title('Packet loss vs matching filter -- %s' % METHOD)
+    ax.set_ylabel('Lost pkts (%)')
+    ax.set_xlabel('Pkts matching the filter (%)')
+    ax.grid(linestyle="--")
+    ax.legend() 
 
     # save fig
     plt.savefig("images/%s_percentage_loss.png" % METHOD)
 
-a,b,c = compute_min_mean_max_loss(file_name)
-plot_percentage_loss(a,b,c)
+for METHOD in Methods:
+    file_name = "data/%s/results_%s" % (METHOD, METHOD)
+    a,b,c = compute_min_mean_max_loss(file_name)
+    plot_percentage_loss(a,b,c)
