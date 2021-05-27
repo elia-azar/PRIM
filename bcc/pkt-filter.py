@@ -207,7 +207,7 @@ def main():
         pcap_file = pcap.Pcap('temp.pcap')
     
     if MODE == 5:
-        sys.stdout = open('test.txt', 'w')
+        sys.stdout = open('/opt/scripts/test.txt', 'w')
     
     while 1:
         #retrieve raw packet from socket
