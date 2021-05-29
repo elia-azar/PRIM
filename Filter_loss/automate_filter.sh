@@ -2,12 +2,12 @@
 
 declare -a FilterArray=("" \
 "ether src host 01:02:03:04:05:06" \
-"ether src host 01:02:03:04:05:06 ether dst host aa:cc:dd:cc:00:01" \
-"ether src host 01:02:03:04:05:06 ether dst host aa:cc:dd:cc:00:01 src host 179.14.12.10" \
-"ether src host 01:02:03:04:05:06 ether dst host aa:cc:dd:cc:00:01 src host 179.14.12.10 dst host 10.0.0.10 " \
-"ether src host 01:02:03:04:05:06 ether dst host aa:cc:dd:cc:00:01 src host 179.14.12.10 dst host 10.0.0.10 src port 1234" \
-"ether src host 01:02:03:04:05:06 ether dst host aa:cc:dd:cc:00:01 src host 179.14.12.10 dst host 10.0.0.10 src port 1234 dst port 320" \
-"ether src host 01:02:03:04:05:06 ether dst host aa:cc:dd:cc:00:01 src host 179.14.12.10 dst host 10.0.0.10 udp src port 1234 dst port 320")
+"ether src host 01:02:03:04:05:06 and ether dst host aa:cc:dd:cc:00:01" \
+"ether src host 01:02:03:04:05:06 and ether dst host aa:cc:dd:cc:00:01 and src host 179.14.12.10" \
+"ether src host 01:02:03:04:05:06 and ether dst host aa:cc:dd:cc:00:01 and src host 179.14.12.10 and dst host 10.0.0.10 " \
+"ether src host 01:02:03:04:05:06 and ether dst host aa:cc:dd:cc:00:01 and src host 179.14.12.10 and dst host 10.0.0.10 and src port 1234" \
+"ether src host 01:02:03:04:05:06 and ether dst host aa:cc:dd:cc:00:01 and src host 179.14.12.10 and dst host 10.0.0.10 and src port 1234 and dst port 320" \
+"ether src host 01:02:03:04:05:06 and ether dst host aa:cc:dd:cc:00:01 and src host 179.14.12.10 and dst host 10.0.0.10 and udp and src port 1234 and dst port 320")
 
 declare -i p=10
 
