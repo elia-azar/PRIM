@@ -54,7 +54,7 @@ def compute(file_name):
     lower_cap = []
     upper_cap = []
     received, sent = parse(file_name)
-    for i in range(7):
+    for i in range(8):
         sub_cap = [100*r/s for r,s in zip(received[N*i:N*(i+1)], sent[N*i:N*(i+1)])]
         scatter_cap.append(tuple(sub_cap))
         
@@ -82,7 +82,7 @@ def plot(file_name):
         plt.plot(x, cap, label = "Captured pkts", color="blue") 
 
 
-    plt.title("RX packets vs filter size with 100% packets matching the filter -- {0}".format(METHOD))
+    plt.title("RX packets vs filter size -- {0}".format(METHOD))
     plt.ylabel('RX pkts (%)')
     plt.xlabel('Filter size')
     plt.grid(linestyle="--")
