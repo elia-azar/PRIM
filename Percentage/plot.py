@@ -3,7 +3,8 @@ from numpy import mean, sqrt, var
 import common as common
 
 METHOD = "p4xdp"
-Methods = ["bcc", "moongen", "p4ebpf", "p4xdp", "tcpdump", "xdpdump"]
+Methods = ["bcc", "p4ebpf", "p4xdp", "tcpdump", "xdpdump"]
+Linstyles = ["-", ":", "--", "-.", "+"]
 
 N = 50
 
@@ -203,8 +204,7 @@ def compute_min_mean_max(file_name):
     return lower_cap, cap, upper_cap, lower_filtered, filtered, upper_filtered, lower_total, total, upper_total
 
 
-def plot_percentage(lower_cap, cap, upper_cap, lower_filtered, filtered, upper_filtered, lower_total, total, upper_total):
-    fig, ax = plt.subplots()
+def plot_percentage(ax, lower_cap, cap, upper_cap, lower_filtered, filtered, upper_filtered):
     ax.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
     ax.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
     if METHOD not in ["tcpdump", "xdpdump"]:
@@ -227,7 +227,42 @@ def plot_percentage(lower_cap, cap, upper_cap, lower_filtered, filtered, upper_f
     # save fig
     plt.savefig("images/%s_percentage_final.png" % METHOD)
 
-for METHOD in Methods:
+
+def plot_everything(ax, lower_cap, cap, upper_cap, lower_filtered, filtered, upper_filtered, ls):
+    ax.plot(x, lower_cap, x, upper_cap, color='blue', alpha=0.1)
+    ax.fill_between(x, lower_cap, upper_cap, where=upper_cap >= lower_cap, alpha=0.3, facecolor='blue', interpolate=True)
+    if METHOD not in ["tcpdump", "xdpdump"]:
+        ax.plot(x, lower_filtered, x, upper_filtered, color='orange', alpha=0.1)
+        ax.fill_between(x, lower_filtered, upper_filtered, where=upper_filtered >= lower_filtered, alpha=0.3, facecolor='orange', interpolate=True)
+
+    # plot lines 
+    ax.plot(x, cap, "b"+ls, label = "{} - Captured".format(METHOD))
+    if METHOD not in ["tcpdump", "xdpdump"]:
+        ax.plot(x, filtered,"y"+ls, label = "{} - Dropped".format(METHOD))
+        #ax.plot(x, total, label = "Treated pkts", color="green")
+    
+
+def save_fig(ax):
+    ax.set_title('Packet filtering behaviour')
+    ax.set_ylabel('RX pkts (%)')
+    ax.set_xlabel('Pkts matching the filter (%)')
+    ax.grid(linestyle="--")
+    ax.legend()
+    # Shrink current axis by 20%
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0, box.width * 0.9, box.height])
+
+    # Put a legend to the right of the current axis
+    ax.legend(loc='lower left', bbox_to_anchor=(1, 0.5),prop={'size': 6}) 
+
+    # save fig
+    plt.savefig("images/percentage_final_3.png")
+
+_, ax = plt.subplots()
+
+for METHOD, ls in zip(Methods, Linstyles):
     file_name = "data/%s/results_%s" % (METHOD, METHOD)
     a,b,c,d,e,f,g,h,i = compute_min_mean_max(file_name)
-    plot_percentage(a,b,c,d,e,f,g,h,i)
+    plot_everything(ax,a,b,c,d,e,f, ls)
+
+save_fig(ax)
