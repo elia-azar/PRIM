@@ -99,7 +99,6 @@ control MyFilter(inout headers hdr, out bool accept) {
     }
 
     action save(){
-        accept = true;
     }
     
     table src_ether_exact {
@@ -168,7 +167,7 @@ control MyFilter(inout headers hdr, out bool accept) {
     }
     
     apply {
-        accept = false;
+        accept = true;
         if (hdr.ethernet.isValid() && hdr.ipv4.isValid()  && hdr.udp.isValid()) {
             src_ether_exact.apply();
             dst_ether_exact.apply();
@@ -180,6 +179,8 @@ control MyFilter(inout headers hdr, out bool accept) {
             }else{
                 drop_save_counter.increment(0);
             }
+        }else{
+            accept = false;
         }
     }
 }
